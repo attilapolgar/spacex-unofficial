@@ -1,33 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Provider } from 'react-redux'
 
 import store from './src/store'
 
-import Blink from './src/components/Blink'
-import { connect } from 'react-redux'
+import RootStack from './src/components/RootStack'
 
-class App extends React.Component {
-  constructor () {
-    super()
-    setInterval(() => {}, 1000)
-  }
+export default class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <Blink text='blink!' />
-        </View>
+        <RootStack />
       </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
-// export default connect()(App)
-export default App
