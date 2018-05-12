@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 
+import ScoreBoardPlayer from './ScoreBoardPlayer'
+
 class ScoreBoard extends Component {
   render () {
     return (
       <View style={styles.scoreBoard}>
         {this.props.players.map(player => (
-          <Text key={player.id}>
-            {player.name}: {player.score}
-          </Text>
+          <ScoreBoardPlayer player={player} key={player.id} />
         ))}
       </View>
     )
@@ -18,6 +18,7 @@ class ScoreBoard extends Component {
 const styles = StyleSheet.create({
   scoreBoard: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   }

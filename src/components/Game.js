@@ -5,7 +5,7 @@ import ScoreBoard from '../components/ScoreBoard'
 
 import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 
-class Blink extends Component {
+class Game extends Component {
   constructor (props) {
     super()
     const maxFlex = 10
@@ -22,9 +22,9 @@ class Blink extends Component {
         <TouchableNativeFeedback onPress={() => this.handleTouch(0)}>
           <View style={[styles.field]} />
         </TouchableNativeFeedback>
-
-        <ScoreBoard />
-
+        <View style={styles.scoreBoardContainer}>
+          <ScoreBoard />
+        </View>
         <TouchableNativeFeedback onPress={() => this.handleTouch(1)}>
           <View style={[styles.field]} />
         </TouchableNativeFeedback>
@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  scoreBoardContainer: {
+    flex: 2
+  },
   field: {
-    flex: 2,
-    backgroundColor: 'grey',
-    borderWidth: 10,
-    margin: 30,
-    borderColor: 'lightgrey'
+    flex: 3,
+    backgroundColor: 'grey'
   }
 })
 
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch => ({
   scored: payload => dispatch(scored(payload))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Blink)
+export default connect(mapStateToProps, mapDispatchToProps)(Game)

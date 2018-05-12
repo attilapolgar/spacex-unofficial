@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native'
-import Blink from './Blink'
+import Game from './Game'
+
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     drawerLabel: 'Home',
@@ -15,7 +16,7 @@ export default class HomeScreen extends Component {
   render () {
     return (
       <View style={{ flex: 1 }}>
-        <Blink />
+        <Game />
       </View>
     )
   }
