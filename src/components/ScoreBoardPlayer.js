@@ -8,7 +8,6 @@ class ScoreBoardPlayer extends Component {
     return (
       <View style={styles.scoreBoardPlayer}>
         <Text style={styles.avatar}>{this.props.player.avatar}</Text>
-        <Text style={styles.name}>{this.props.player.name}</Text>
         {this.props.player.ready
           ? <Text style={styles.score}>{this.props.player.score}</Text>
           : <Button
@@ -26,10 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  name: {
-    fontWeight: 'bold',
-    fontSize: 15
   },
   score: {
     marginTop: 10,

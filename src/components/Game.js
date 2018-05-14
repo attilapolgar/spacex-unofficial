@@ -46,9 +46,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = state => ({
-  round: state.round
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
   endRound: () => dispatch(endRound()),
