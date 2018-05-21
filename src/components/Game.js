@@ -1,33 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { endRound, scored } from '../actions'
+import { endRound, scored, startWhenPlayersReady } from '../actions'
 import ScoreBoard from '../components/ScoreBoard'
+import GameSquare from '../components/GameSquare'
 
 import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 
 class Game extends Component {
-  constructor (props) {
+  constructor(props) {
     super()
     const maxFlex = 10
-    this.handleTouch = this.handleTouch.bind(this)
   }
 
-  handleTouch (playerIndex) {
-    this.props.scored({ playerIndex, points: 1 })
-  }
-
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <TouchableNativeFeedback onPress={() => this.handleTouch(0)}>
-          <View style={[styles.field]} />
-        </TouchableNativeFeedback>
+        <GameSquare player={this.props.players[0]} />
         <View style={styles.scoreBoardContainer}>
           <ScoreBoard />
         </View>
-        <TouchableNativeFeedback onPress={() => this.handleTouch(1)}>
-          <View style={[styles.field]} />
-        </TouchableNativeFeedback>
+        <GameSquare player={this.props.players[1]} />
       </View>
     )
   }
@@ -39,18 +31,14 @@ const styles = StyleSheet.create({
   },
   scoreBoardContainer: {
     flex: 2
-  },
-  field: {
-    flex: 3,
-    backgroundColor: 'grey'
   }
 })
 
-const mapStateToProps = state => ({})
-
-const mapDispatchToProps = dispatch => ({
-  endRound: () => dispatch(endRound()),
-  scored: payload => dispatch(scored(payload))
+const mapStateToProps = state => ({
+  started: state.game.stated,
+  players: state.players
 })
+
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
