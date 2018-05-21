@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
-import { playerReady, startWhenPlayersReady } from '../actions'
+import { playerReady } from '../actions'
 import { connect } from 'react-redux'
 
 class ScoreBoardPlayer extends Component {
   onPlayerReady = () => {
     this.props.playerReady({ playerId: this.props.player.id })
-    this.props.startWhenPlayersReady()
   }
   render() {
     return (
@@ -46,8 +45,7 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = dispatch => ({
-  playerReady: payload => dispatch(playerReady(payload)),
-  startWhenPlayersReady: () => dispatch(startWhenPlayersReady())
+  playerReady: payload => dispatch(playerReady(payload))
 })
 
 const mapStateToProps = state => ({})

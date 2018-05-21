@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { endRound, scored, startWhenPlayersReady } from '../actions'
+import { endRound, playerScored, startWhenPlayersReady } from '../actions'
 import ScoreBoard from '../components/ScoreBoard'
 import GameSquare from '../components/GameSquare'
 
@@ -15,11 +15,10 @@ class Game extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <GameSquare player={this.props.players[0]} />
         <View style={styles.scoreBoardContainer}>
           <ScoreBoard />
         </View>
-        <GameSquare player={this.props.players[1]} />
+        <GameSquare player={this.props.player} />
       </View>
     )
   }
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   started: state.game.stated,
-  players: state.players
+  player: state.player
 })
 
 const mapDispatchToProps = dispatch => ({})

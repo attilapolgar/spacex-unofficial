@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { View, StyleSheet, Text, TouchableNativeFeedback } from 'react-native'
 import { connect } from 'react-redux'
-import { scored } from '../actions'
+import { playerScored } from '../actions'
 class GameSquare extends Component {
   handleTouch = playerIndex => {
-    if (this.props.gameStarted) {
-      this.props.scored({ playerId: this.props.player.id, points: 1 })
+    if (this.props.ready) {
+      this.props.playerScored({ score: 1 })
     }
   }
   render() {
     return (
       <TouchableNativeFeedback onPress={this.handleTouch}>
-        <View style={[styles.field]} />
+        <View style={[styles.field]}>
+          {this.props.ready ? true : <Text>press the button to start</Text>}
+        </View>
       </TouchableNativeFeedback>
     )
   }
@@ -20,15 +22,17 @@ class GameSquare extends Component {
 const styles = StyleSheet.create({
   field: {
     flex: 3,
-    backgroundColor: 'grey'
+    backgroundColor: 'grey',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 
 const mapStateToProps = state => ({
-  gameStarted: state.game.started
+  ready: state.player.ready
 })
 const mapDispatchToProps = dispatch => ({
-  scored: payload => dispatch(scored(payload))
+  playerScored: payload => dispatch(playerScored(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameSquare)
