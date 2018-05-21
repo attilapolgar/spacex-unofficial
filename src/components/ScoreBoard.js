@@ -9,6 +9,26 @@ class ScoreBoard extends Component {
     return (
       <View style={styles.scoreBoard}>
         <ScoreBoardPlayer player={this.props.player} />
+        <View>
+          <Text>{this.props.avgReactionTime}</Text>
+        </View>
+        <View style={styles.times}>
+          {this.props.rounds.map(round => (
+            <View key={round.id}>
+              {round.playerReacted ? (
+                round.goodReaction ? (
+                  <Text>
+                    {`${round.id === 0 ? '' : ' | '}${round.reactionTime}`}
+                  </Text>
+                ) : (
+                  <Text>{`${round.id === 0 ? '' : ' | '}X`}</Text>
+                )
+              ) : (
+                false
+              )}
+            </View>
+          ))}
+        </View>
       </View>
     )
   }
@@ -16,14 +36,18 @@ class ScoreBoard extends Component {
 const styles = StyleSheet.create({
   scoreBoard: {
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  times: {
+    flexDirection: 'row'
   }
 })
 
 const mapStateToProps = state => ({
-  player: state.player
+  player: state.player,
+  rounds: state.game.rounds,
+  avgReactionTime: state.game.avgReactionTime
 })
 
 export default connect(mapStateToProps)(ScoreBoard)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { endRound, playerScored, startWhenPlayersReady } from '../actions'
+import { endRound, playerReacted, startWhenPlayersReady } from '../actions'
 import ScoreBoard from '../components/ScoreBoard'
 import GameSquare from '../components/GameSquare'
 

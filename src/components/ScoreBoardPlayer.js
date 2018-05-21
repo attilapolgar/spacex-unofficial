@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
-import { playerReady } from '../actions'
+import {} from '../actions'
 import { connect } from 'react-redux'
 
 class ScoreBoardPlayer extends Component {
-  onPlayerReady = () => {
-    this.props.playerReady({ playerId: this.props.player.id })
-  }
   render() {
     return (
       <View style={styles.scoreBoardPlayer}>
         <Text style={styles.avatar}>{this.props.player.avatar}</Text>
-        {this.props.player.ready ? (
-          <Text style={styles.score}>{this.props.player.score}</Text>
-        ) : (
-          <Button
-            style={styles.readyButton}
-            title="ready"
-            onPress={this.onPlayerReady}
-          />
-        )}
       </View>
     )
   }
@@ -37,16 +25,10 @@ const styles = StyleSheet.create({
   },
   avatar: {
     fontSize: 50
-  },
-  readyButton: {
-    marginTop: 10,
-    height: 50
   }
 })
 
-const mapDispatchToProps = dispatch => ({
-  playerReady: payload => dispatch(playerReady(payload))
-})
+const mapDispatchToProps = dispatch => ({})
 
 const mapStateToProps = state => ({})
 
