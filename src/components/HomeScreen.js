@@ -4,16 +4,16 @@ import Game from './Game'
 
 export default class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    drawerLabel: 'Home',
+    title: 'React!',
     headerRight: (
       <Button
-        title='💡'
-        color='azure'
+        title="💡"
+        color="azure"
         onPress={() => navigation.navigate('About', { who: 'Attila' })}
       />
     )
   })
-  render () {
+  render() {
     return (
       <View style={{ flex: 1 }}>
         <Game />

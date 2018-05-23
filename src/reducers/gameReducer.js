@@ -2,29 +2,40 @@ import { average, round } from '../utils'
 import {
   START_ROUND,
   END_ROUND,
+  END_GAME,
   START_GAME,
   REVEAL_ROUND,
   PLAYER_REACTED
 } from '../constants/action-types'
 
 const initialState = {
+  numberOfRounds: 5,
+  actualRound: 0,
   started: false,
-  avgReactionTime: 0,
-  rounds: []
+  ended: false,
+  rounds: [],
+  target: '🔘'
 }
 
 export default function gameReducer(state = initialState, action) {
   switch (action.type) {
     case START_GAME: {
       return {
-        ...state,
+        ...initialState,
         started: true
+      }
+    }
+    case END_GAME: {
+      return {
+        ...state,
+        ended: true
       }
     }
     case START_ROUND: {
       const { revealDelay } = action.payload
       return {
         ...state,
+        actualRound: state.actualRound + 1,
         rounds: [
           ...state.rounds,
           {
@@ -37,6 +48,7 @@ export default function gameReducer(state = initialState, action) {
         ]
       }
     }
+
     case REVEAL_ROUND: {
       return {
         ...state,
@@ -50,32 +62,19 @@ export default function gameReducer(state = initialState, action) {
         ]
       }
     }
+
     case PLAYER_REACTED: {
-      const reactionTimeStamp = Date.now()
+      const { reactionTime } = action.payload
       const currentRound = state.rounds[state.rounds.length - 1]
-      let reactionTime = 0
-      let goodReaction = false
-      if (currentRound.revealed) {
-        reactionTime = reactionTimeStamp - currentRound.revealTimeStamp
-        goodReaction = true
-      }
       const mcd = {
         ...currentRound,
         playerReacted: true,
-        goodReaction,
-        reactionTimeStamp,
+        goodReaction: currentRound.revealed,
         reactionTime
       }
       const rounds = [...state.rounds.slice(0, state.rounds.length - 1), mcd]
       return {
         ...state,
-        avgReactionTime: round(
-          average(
-            ...rounds
-              .filter(round => round.goodReaction)
-              .map(round => round.reactionTime)
-          )
-        ),
         rounds
       }
     }

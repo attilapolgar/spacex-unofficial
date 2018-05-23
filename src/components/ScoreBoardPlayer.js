@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     height: 50
   },
   avatar: {
-    fontSize: 50
+    fontSize: 100
   }
 })
 

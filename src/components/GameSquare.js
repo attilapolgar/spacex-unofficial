@@ -4,34 +4,42 @@ import {
   StyleSheet,
   Text,
   Button,
-  TouchableNativeFeedback
+  TouchableWithoutFeedback
 } from 'react-native'
 import { connect } from 'react-redux'
 import { playerReactedThunk, startRound, startGameThunk } from '../actions'
 class GameSquare extends Component {
+  lastRender = null
   handleTouch = () => {
-    if (this.props.gameStarted) this.props.playerReacted()
+    const date = Date.now()
+    const reactionTime = date - this.lastRender
+    if (this.props.gameStarted && !this.props.gameEnded) {
+      this.props.playerReacted({ reactionTime })
+    }
+
+    if (!this.props.gameStarted || this.props.gameEnded) {
+      this.props.startGame()
+    }
   }
   render() {
+    this.lastRender = Date.now()
+    const ongoingGame = this.props.gameStarted && !this.props.gameEnded
+    const actualRound = this.props.rounds[this.props.rounds.length - 1]
+
     return (
-      <TouchableNativeFeedback onPress={this.handleTouch}>
+      <TouchableWithoutFeedback onPress={this.handleTouch}>
         <View style={[styles.field]}>
-          {this.props.gameStarted ? (
-            this.props.rounds.length &&
-            this.props.rounds[this.props.rounds.length - 1].revealed ? (
-              <Text style={styles.gem}>💎</Text>
+          {ongoingGame ? (
+            this.props.rounds.length && actualRound.revealed ? (
+              <Text style={styles.gem}>{this.props.target}</Text>
             ) : (
-              <Text />
+              <Text>Wait for it...</Text>
             )
           ) : (
-            <Button
-              style={styles.readyButton}
-              title="start"
-              onPress={this.props.startGame}
-            />
+            <Text style={styles.startText}>Start new test</Text>
           )}
         </View>
-      </TouchableNativeFeedback>
+      </TouchableWithoutFeedback>
     )
   }
 }
@@ -39,13 +47,12 @@ class GameSquare extends Component {
 const styles = StyleSheet.create({
   field: {
     flex: 3,
-    backgroundColor: 'grey',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  readyButton: {
-    marginTop: 10,
-    height: 50
+  startText: {
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   gem: {
     fontSize: 100
@@ -54,10 +61,12 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   gameStarted: state.game.started,
-  rounds: state.game.rounds
+  gameEnded: state.game.ended,
+  rounds: state.game.rounds,
+  target: state.game.target
 })
 const mapDispatchToProps = dispatch => ({
-  playerReacted: () => dispatch(playerReactedThunk()),
+  playerReacted: payload => dispatch(playerReactedThunk(payload)),
   startGame: () => dispatch(startGameThunk())
 })
 

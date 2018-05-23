@@ -3,32 +3,14 @@ import { StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 
 import ScoreBoardPlayer from './ScoreBoardPlayer'
+import ScoreBoardResult from './ScoreBoardResult'
 
 class ScoreBoard extends Component {
   render() {
     return (
       <View style={styles.scoreBoard}>
         <ScoreBoardPlayer player={this.props.player} />
-        <View>
-          <Text>{this.props.avgReactionTime}</Text>
-        </View>
-        <View style={styles.times}>
-          {this.props.rounds.map(round => (
-            <View key={round.id}>
-              {round.playerReacted ? (
-                round.goodReaction ? (
-                  <Text>
-                    {`${round.id === 0 ? '' : ' | '}${round.reactionTime}`}
-                  </Text>
-                ) : (
-                  <Text>{`${round.id === 0 ? '' : ' | '}X`}</Text>
-                )
-              ) : (
-                false
-              )}
-            </View>
-          ))}
-        </View>
+        <ScoreBoardResult rounds={this.props.rounds} />
       </View>
     )
   }

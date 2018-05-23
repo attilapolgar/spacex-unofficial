@@ -15,10 +15,12 @@ class Game extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.scoreBoardContainer}>
+        <View style={styles.container}>
           <ScoreBoard />
         </View>
-        <GameSquare player={this.props.player} />
+        <View style={styles.container}>
+          <GameSquare player={this.props.player} />
+        </View>
       </View>
     )
   }
@@ -27,9 +29,6 @@ class Game extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  scoreBoardContainer: {
-    flex: 2
   }
 })
 

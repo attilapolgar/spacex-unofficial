@@ -3,6 +3,7 @@ import {
   PLAYER_REACTED,
   PLAYER_READY,
   START_GAME,
+  END_GAME,
   START_ROUND,
   END_ROUND,
   REVEAL_ROUND
@@ -18,6 +19,7 @@ export const playerReady = payload => ({
 })
 
 export const startGame = () => ({ type: START_GAME })
+export const endGame = () => ({ type: END_GAME })
 export const startRound = payload => ({ type: START_ROUND, payload })
 export const endRound = () => ({ type: END_ROUND })
 export const revealRound = () => ({ type: REVEAL_ROUND })
@@ -37,9 +39,16 @@ export const startRoundThunk = () => (dispatch, getState) => {
   }, revealDelay)
 }
 
-export const playerReactedThunk = () => (dispatch, getState) => {
+export const playerReactedThunk = payload => (dispatch, getState) => {
   if (timeout) window.clearTimeout(timeout)
-  dispatch(playerReacted())
+  dispatch(playerReacted(payload))
   dispatch(endRound())
-  dispatch(startRoundThunk())
+  const {
+    game: { numberOfRounds, actualRound }
+  } = getState()
+  if (actualRound === numberOfRounds) {
+    dispatch(endGame())
+  } else {
+    dispatch(startRoundThunk())
+  }
 }
