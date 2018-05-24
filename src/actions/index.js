@@ -6,7 +6,8 @@ import {
   END_GAME,
   START_ROUND,
   END_ROUND,
-  REVEAL_ROUND
+  REVEAL_ROUND,
+  RESET_GAME
 } from '../constants/action-types'
 
 let timeout = null
@@ -21,6 +22,7 @@ export const playerReady = payload => ({
 export const startGame = () => ({ type: START_GAME })
 export const endGame = () => ({ type: END_GAME })
 export const startRound = payload => ({ type: START_ROUND, payload })
+export const resetGame = () => ({ type: RESET_GAME })
 export const endRound = () => ({ type: END_ROUND })
 export const revealRound = () => ({ type: REVEAL_ROUND })
 
@@ -49,6 +51,6 @@ export const playerReactedThunk = payload => (dispatch, getState) => {
   if (actualRound === numberOfRounds) {
     dispatch(endGame())
   } else {
-    dispatch(startRoundThunk())
+    // dispatch(startRoundThunk())
   }
 }

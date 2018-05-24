@@ -5,7 +5,8 @@ import {
   END_GAME,
   START_GAME,
   REVEAL_ROUND,
-  PLAYER_REACTED
+  PLAYER_REACTED,
+  RESET_GAME
 } from '../constants/action-types'
 
 const initialState = {
@@ -24,6 +25,9 @@ export default function gameReducer(state = initialState, action) {
         ...initialState,
         started: true
       }
+    }
+    case RESET_GAME: {
+      return initialState
     }
     case END_GAME: {
       return {

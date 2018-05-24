@@ -49,7 +49,10 @@ export default class AboutScreen extends Component {
 }
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  socialImages: { flexDirection: 'row', marginTop: 25 },
+  socialImages: {
+    flexDirection: 'row',
+    marginTop: 50
+  },
   socialImage: {
     margin: 10,
     height: 48,

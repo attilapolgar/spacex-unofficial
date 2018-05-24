@@ -11,19 +11,18 @@ const ScoreBoardResult = ({ rounds, numberOfRounds, actualRound }) => {
         .map(round => round.reactionTime)
     )
   )
-  const finishedRounds = rounds.filter(round => round.playerReacted)
-  const lastRound = finishedRounds[finishedRounds.length - 1]
+  const lastRound = rounds[rounds.length - 1]
   return (
     <View style={styles.scoreBoardResult}>
       <View style={styles.scoreRow}>
         <Text>{`Round ${actualRound} / ${numberOfRounds}`}</Text>
-        <Text style={styles.last}>
-          {lastRound && lastRound.playerReacted
-            ? lastRound.goodReaction
-              ? ` ${lastRound.reactionTime} ms`
-              : '☠️'
-            : ' - '}
-        </Text>
+        {lastRound ? (
+          <Text style={styles.last}>
+            {lastRound.playerReacted ? ` ${lastRound.reactionTime} ms` : ' - '}
+          </Text>
+        ) : (
+          false
+        )}
       </View>
       <View style={styles.scoreRow}>
         <Text>Avgerage</Text>
