@@ -1,10 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Image } from 'react-native'
 import { connect } from 'react-redux'
+
+import stopwatchImage from '../assets/img/stopwatch.png'
 
 const ScoreBoardPlayer = ({ player }) => (
   <View style={styles.scoreBoardPlayer}>
-    <Text style={styles.avatar}>{player.avatar}</Text>
+    <Image style={styles.image} source={stopwatchImage} />
   </View>
 )
 
@@ -14,8 +16,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  avatar: {
-    fontSize: 100
+  image: {
+    width: 150,
+    height: 150
   }
 })
 

@@ -4,10 +4,13 @@ import {
   StyleSheet,
   Text,
   Button,
+  Image,
   TouchableWithoutFeedback
 } from 'react-native'
 import { connect } from 'react-redux'
 import { playerReactedThunk, startRound, startGameThunk } from '../actions'
+
+import fingerprintImage from '../assets/img/fingerprint.png'
 class GameSquare extends Component {
   lastRender = null
   handleTouch = () => {
@@ -31,7 +34,7 @@ class GameSquare extends Component {
         <View style={[styles.field]}>
           {ongoingGame ? (
             this.props.rounds.length && actualRound.revealed ? (
-              <Text style={styles.gem}>{this.props.target}</Text>
+              <Image style={styles.fingerprint} source={fingerprintImage} />
             ) : (
               <Text>Wait for it...</Text>
             )
@@ -54,8 +57,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold'
   },
-  gem: {
-    fontSize: 100
+  fingerprint: {
+    width: 128,
+    height: 128
   }
 })
 

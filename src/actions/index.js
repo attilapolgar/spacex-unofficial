@@ -31,7 +31,7 @@ export const startGameThunk = () => (dispatch, getState) => {
 }
 
 export const startRoundThunk = () => (dispatch, getState) => {
-  const revealDelay = randomIntegerInRange(500, 3000)
+  const revealDelay = randomIntegerInRange(1000, 5000)
   dispatch(startRound({ revealDelay }))
 
   timeout = window.setTimeout(() => {

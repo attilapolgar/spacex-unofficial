@@ -5,6 +5,7 @@ import Game from './Game'
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
+    title: 'Play',
     drawerIcon: <DrawerIcon image={'time'} />
   }
   render() {

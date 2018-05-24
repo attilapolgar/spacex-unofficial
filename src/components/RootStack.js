@@ -16,7 +16,7 @@ const DrawerNavigation = createDrawerNavigator(
   },
   {
     headerMode: 'float',
-    initialRouteName: 'HomeScreen'
+    initialRouteName: 'AboutScreen'
   }
 )
 

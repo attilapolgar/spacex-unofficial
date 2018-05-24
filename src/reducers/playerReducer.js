@@ -2,8 +2,7 @@ import { PLAYER_READY } from '../constants/action-types'
 
 const initialState = {
   id: 'p1',
-  score: 0,
-  avatar: '⏲️'
+  score: 0
 }
 
 export default function playerReducer(state = initialState, action) {
