@@ -1,11 +1,11 @@
 import React from 'react'
 import { Image, StyleSheet } from 'react-native'
-import user from '../assets/img/user.png'
+import info from '../assets/img/info.png'
 import settings from '../assets/img/settings.png'
 import time from '../assets/img/time.png'
 
 const images = {
-  user,
+  user: info,
   settings,
   time
 }
