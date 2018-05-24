@@ -4,27 +4,18 @@ import { endRound, playerReacted, startWhenPlayersReady } from '../actions'
 import ScoreBoard from '../components/ScoreBoard'
 import GameSquare from '../components/GameSquare'
 
-import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
-class Game extends Component {
-  constructor(props) {
-    super()
-    const maxFlex = 10
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.container}>
-          <ScoreBoard />
-        </View>
-        <View style={styles.container}>
-          <GameSquare player={this.props.player} />
-        </View>
-      </View>
-    )
-  }
-}
+const Game = ({ player }) => (
+  <View style={styles.container}>
+    <View style={styles.container}>
+      <ScoreBoard />
+    </View>
+    <View style={styles.container}>
+      <GameSquare player />
+    </View>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

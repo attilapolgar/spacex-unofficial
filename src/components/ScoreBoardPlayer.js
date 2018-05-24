@@ -1,27 +1,18 @@
-import React, { Component } from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
-import {} from '../actions'
+import React from 'react'
+import { StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 
-class ScoreBoardPlayer extends Component {
-  render() {
-    return (
-      <View style={styles.scoreBoardPlayer}>
-        <Text style={styles.avatar}>{this.props.player.avatar}</Text>
-      </View>
-    )
-  }
-}
+const ScoreBoardPlayer = ({ player }) => (
+  <View style={styles.scoreBoardPlayer}>
+    <Text style={styles.avatar}>{player.avatar}</Text>
+  </View>
+)
+
 const styles = StyleSheet.create({
   scoreBoardPlayer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  score: {
-    marginTop: 10,
-    fontSize: 40,
-    height: 50
   },
   avatar: {
     fontSize: 100

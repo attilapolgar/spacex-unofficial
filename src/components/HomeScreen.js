@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native'
+import { View } from 'react-native'
+import DrawerIcon from './DrawerIcon'
 import Game from './Game'
 
 export default class HomeScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'React!',
-    headerRight: (
-      <Button
-        title="💡"
-        color="azure"
-        onPress={() => navigation.navigate('About', { who: 'Attila' })}
-      />
-    )
-  })
+  static navigationOptions = {
+    drawerIcon: <DrawerIcon image={'time'} />
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
