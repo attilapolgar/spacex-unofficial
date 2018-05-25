@@ -1,56 +1,20 @@
 import { randomIntegerInRange } from '../utils'
 import {
-  PLAYER_REACTED,
-  PLAYER_READY,
-  START_GAME,
-  END_GAME,
-  START_ROUND,
-  END_ROUND,
-  REVEAL_ROUND,
-  RESET_GAME
+  NEXT_LAUNCH_FETCH_REQUESTED,
+  NEXT_LAUNCH_FETCH_SUCCEEDED,
+  NEXT_LAUNCH_FETCH_FAILED
 } from '../constants/action-types'
 
-let timeout = null
-
-export const playerReacted = payload => ({ type: PLAYER_REACTED, payload })
-
-export const playerReady = payload => ({
-  type: PLAYER_READY,
+export const fetchNextLaunchFetchRequested = payload => ({
+  type: NEXT_LAUNCH_FETCH_REQUESTED,
+  payload
+})
+export const nextLaunchFetchSuceeded = payload => ({
+  type: NEXT_LAUNCH_FETCH_SUCCEEDED,
   payload
 })
 
-export const startGame = () => ({ type: START_GAME })
-export const endGame = () => ({ type: END_GAME })
-export const startRound = payload => ({ type: START_ROUND, payload })
-export const resetGame = () => ({ type: RESET_GAME })
-export const endRound = () => ({ type: END_ROUND })
-export const revealRound = () => ({ type: REVEAL_ROUND })
-
-export const startGameThunk = () => (dispatch, getState) => {
-  dispatch(startGame())
-
-  dispatch(startRoundThunk())
-}
-
-export const startRoundThunk = () => (dispatch, getState) => {
-  const revealDelay = randomIntegerInRange(1000, 5000)
-  dispatch(startRound({ revealDelay }))
-
-  timeout = window.setTimeout(() => {
-    dispatch(revealRound())
-  }, revealDelay)
-}
-
-export const playerReactedThunk = payload => (dispatch, getState) => {
-  if (timeout) window.clearTimeout(timeout)
-  dispatch(playerReacted(payload))
-  dispatch(endRound())
-  const {
-    game: { numberOfRounds, actualRound }
-  } = getState()
-  if (actualRound === numberOfRounds) {
-    dispatch(endGame())
-  } else {
-    // dispatch(startRoundThunk())
-  }
-}
+export const nextLaunchFetchFailed = payload => ({
+  type: NEXT_LAUNCH_FETCH_FAILED,
+  payload
+})

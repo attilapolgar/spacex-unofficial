@@ -3,20 +3,20 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
 import { Text } from 'react-native'
 
 import AboutScreen from './AboutScreen'
-import HomeScreen from './HomeScreen'
 import SettingsScreen from './SettingsScreen'
+import NextLaunchScreen from './NextLaunchScreen'
 import { DrawerActions } from 'react-navigation'
 import HamburgerIcon from './HamburgerIcon'
 
 const DrawerNavigation = createDrawerNavigator(
   {
-    HomeScreen,
+    NextLaunchScreen,
     SettingsScreen,
     AboutScreen
   },
   {
     headerMode: 'float',
-    initialRouteName: 'HomeScreen'
+    initialRouteName: 'NextLaunchScreen'
   }
 )
 

@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import game from './gameReducer'
-import player from './playerReducer'
+import api from './apiReducer'
 
-export default combineReducers({ game, player })
+export default combineReducers({ api })

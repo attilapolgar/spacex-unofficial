@@ -7,7 +7,7 @@ import store from './src/store'
 import RootStack from './src/components/RootStack'
 
 export default class App extends React.Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <RootStack />
