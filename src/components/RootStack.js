@@ -1,13 +1,19 @@
 import React from 'react'
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
-import { Text } from 'react-native'
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  SafeAreaView,
+  DrawerActions,
+  DrawerItems
+} from 'react-navigation'
+import { Image, ScrollView, StyleSheet } from 'react-native'
 
 import AboutScreen from './AboutScreen'
 import SettingsScreen from './SettingsScreen'
 import NextLaunchScreen from './NextLaunchScreen'
-import { DrawerActions } from 'react-navigation'
 import HamburgerIcon from './HamburgerIcon'
 import DrawerIcon from './DrawerIcon'
+import DrawerContent from './DrawerContent'
 
 const stackNavigatorHOC = component =>
   createStackNavigator(
@@ -59,7 +65,8 @@ const RootStack = createDrawerNavigator(
   },
   {
     initialRouteName: 'NextLaunchScreen',
-    navigationOptions: {}
+    navigationOptions: {},
+    contentComponent: DrawerContent
   }
 )
 
