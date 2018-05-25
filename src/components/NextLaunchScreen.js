@@ -1,42 +1,36 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ActivityIndicator } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import DrawerIcon from './DrawerIcon'
 import { fetchNextLaunchFetchRequested } from '../actions'
 import { connect } from 'react-redux'
 
 import LaunchView from './LaunchView'
 
+import RefreshableScrollView from './RefreshableScrollView'
 class NextLaunchScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return { title: 'Next launch', drawerIcon: <DrawerIcon image={'user'} /> }
   }
-  componentWillMount = () => {
-    this.props.fetchNextLaunch()
-  }
+
   render() {
     return (
-      <View style={styles.container}>
-        {this.props.pending ? (
-          <ActivityIndicator size="large" color="#0000ff" />
-        ) : this.props.success ? (
-          <LaunchView data={this.props.nextLaunch} />
-        ) : (
-          <Text>failed: {this.props.errorMessage}</Text>
-        )}
-      </View>
+      <RefreshableScrollView
+        updateMethod={this.props.fetchNextLaunch}
+        requestState={this.props.requestState}
+      >
+        <LaunchView data={this.props.data} />
+      </RefreshableScrollView>
     )
   }
 }
+
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center' }
+  container: {}
 })
 
 const mapStateToProps = state => ({
-  nextLaunch: state.api.nextLaunch,
-  success: state.api.success,
-  failed: state.api.failed,
-  pending: state.api.pending,
-  errorMessage: state.api.errorMessage
+  data: state.api.nextLaunch,
+  requestState: state.api.nextLaunchRequestState
 })
 
 const mapDispatchToProps = dispatch => ({

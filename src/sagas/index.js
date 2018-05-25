@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga'
-import { all, call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { NEXT_LAUNCH_FETCH_REQUESTED } from '../constants/action-types'
 import { nextLaunchFetchSuceeded, nextLaunchFetchFailed } from '../actions'
 import Api from '../common/api'
@@ -27,7 +27,7 @@ function* fetchNextLaunch() {
 }
 
 function* mySaga() {
-  yield takeEvery(NEXT_LAUNCH_FETCH_REQUESTED, fetchNextLaunch)
+  yield takeLatest(NEXT_LAUNCH_FETCH_REQUESTED, fetchNextLaunch)
 }
 
 export default function* rootSaga() {

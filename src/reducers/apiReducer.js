@@ -4,13 +4,16 @@ import {
   NEXT_LAUNCH_FETCH_FAILED
 } from '../constants/action-types'
 
-const initialState = {
-  latestLaunch: null,
-  nextLaunch: null,
+const initialRequestState = {
   success: false,
   pending: false,
   failed: false,
   errorMessage: null
+}
+
+const initialState = {
+  nextLaunch: null,
+  nextLaunchRequestState: { ...initialRequestState }
 }
 
 export default function apiReducer(state = initialState, action) {
@@ -18,10 +21,12 @@ export default function apiReducer(state = initialState, action) {
     case NEXT_LAUNCH_FETCH_REQUESTED: {
       return {
         ...state,
-        pending: true,
-        success: false,
-        failed: false,
-        errorMessage: null
+        nextLaunchRequestState: {
+          pending: true,
+          success: false,
+          failed: false,
+          errorMessage: null
+        }
       }
     }
     case NEXT_LAUNCH_FETCH_SUCCEEDED: {
@@ -30,20 +35,24 @@ export default function apiReducer(state = initialState, action) {
       return {
         ...state,
         nextLaunch: data,
-        pending: false,
-        success: true,
-        failed: false,
-        errorMessage: null
+        nextLaunchRequestState: {
+          pending: false,
+          success: true,
+          failed: false,
+          errorMessage: null
+        }
       }
     }
     case NEXT_LAUNCH_FETCH_FAILED: {
       const { errorMessage } = action.payload
       return {
         ...state,
-        pending: false,
-        success: false,
-        failed: true,
-        errorMessage
+        nextLaunchRequestState: {
+          pending: false,
+          success: false,
+          failed: true,
+          errorMessage
+        }
       }
     }
     default:

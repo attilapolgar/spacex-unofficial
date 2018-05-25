@@ -31,7 +31,7 @@ const RootStack = createStackNavigator(
       return {
         headerStyle: { backgroundColor: '#4C3E54', paddingLeft: 5 },
         headerTintColor: 'white',
-        title: 'React!',
+        title: '',
         headerLeft: (
           <HamburgerIcon
             active={isDrawerOpen}
