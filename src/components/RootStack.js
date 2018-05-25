@@ -7,39 +7,59 @@ import SettingsScreen from './SettingsScreen'
 import NextLaunchScreen from './NextLaunchScreen'
 import { DrawerActions } from 'react-navigation'
 import HamburgerIcon from './HamburgerIcon'
+import DrawerIcon from './DrawerIcon'
 
-const DrawerNavigation = createDrawerNavigator(
-  {
-    NextLaunchScreen,
-    SettingsScreen,
-    AboutScreen
-  },
-  {
-    headerMode: 'float',
-    initialRouteName: 'NextLaunchScreen'
-  }
-)
-
-const RootStack = createStackNavigator(
-  {
-    DrawerNavigation
-  },
-  {
-    initialRouteName: 'DrawerNavigation',
-    navigationOptions: ({ navigation }) => {
-      const isDrawerOpen = navigation.state.isDrawerOpen
-      return {
-        headerStyle: { backgroundColor: '#4C3E54', paddingLeft: 5 },
-        headerTintColor: 'white',
-        title: '',
-        headerLeft: (
-          <HamburgerIcon
-            active={isDrawerOpen}
-            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-          />
-        )
+const stackNavigatorHOC = component =>
+  createStackNavigator(
+    {
+      component
+    },
+    {
+      headerMode: 'float',
+      initialRouteName: 'component',
+      navigationOptions: ({ navigation }) => {
+        const isDrawerOpen = navigation.state.isDrawerOpen
+        return {
+          headerStyle: { backgroundColor: '#4C3E54', paddingLeft: 5 },
+          headerTintColor: 'white',
+          headerLeft: (
+            <HamburgerIcon
+              active={isDrawerOpen}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+            />
+          )
+        }
       }
     }
+  )
+
+const RootStack = createDrawerNavigator(
+  {
+    NextLaunchScreen: {
+      screen: stackNavigatorHOC(NextLaunchScreen),
+      navigationOptions: {
+        title: `Next launch`,
+        drawerIcon: <DrawerIcon image={'rocket'} />
+      }
+    },
+    SettingsScreen: {
+      screen: stackNavigatorHOC(SettingsScreen),
+      navigationOptions: {
+        title: `Settings`,
+        drawerIcon: <DrawerIcon image={'settings'} />
+      }
+    },
+    AboutScreen: {
+      screen: stackNavigatorHOC(AboutScreen),
+      navigationOptions: {
+        title: `About`,
+        drawerIcon: <DrawerIcon image={'info'} />
+      }
+    }
+  },
+  {
+    initialRouteName: 'NextLaunchScreen',
+    navigationOptions: {}
   }
 )
 

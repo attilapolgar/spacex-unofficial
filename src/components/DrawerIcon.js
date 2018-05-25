@@ -2,12 +2,12 @@ import React from 'react'
 import { Image, StyleSheet } from 'react-native'
 import info from '../assets/img/info.png'
 import settings from '../assets/img/settings.png'
-import time from '../assets/img/time.png'
+import rocket from '../assets/img/rocket.png'
 
 const images = {
-  user: info,
+  info,
   settings,
-  time
+  rocket
 }
 
 export default ({ image }) => (

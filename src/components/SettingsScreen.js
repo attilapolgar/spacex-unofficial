@@ -5,8 +5,7 @@ import DrawerIcon from './DrawerIcon'
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      drawerLabel: 'Settings',
-      drawerIcon: <DrawerIcon image={'settings'} />
+      title: 'Settings'
     }
   }
   render() {
