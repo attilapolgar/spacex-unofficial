@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
   StyleSheet,
   Image,
   Linking,
   TouchableOpacity
 } from 'react-native'
-import DrawerIcon from './DrawerIcon'
-import reactReduxLogo from '../assets/img/react-redux.png'
-import githubImage from '../assets/img/github.png'
-import linkedinImage from '../assets/img/linkedin.png'
+import DrawerIcon from '../DrawerIcon'
+import githubImage from '../../assets/img/github.png'
+import linkedinImage from '../../assets/img/linkedin.png'
 
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {

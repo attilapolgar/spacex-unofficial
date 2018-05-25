@@ -1,50 +1,20 @@
 import React from 'react'
-import {
-  createStackNavigator,
-  createDrawerNavigator,
-  SafeAreaView,
-  DrawerActions,
-  DrawerItems
-} from 'react-navigation'
+import { createDrawerNavigator } from 'react-navigation'
 import { Image, ScrollView, StyleSheet } from 'react-native'
 
-import AboutScreen from './AboutScreen'
-import SettingsScreen from './SettingsScreen'
-import NextLaunchScreen from './NextLaunchScreen'
-import HamburgerIcon from './HamburgerIcon'
+import AboutScreen from './screens/AboutScreen'
+import SettingsScreen from './screens/SettingsScreen'
+import LaunchesScreen from './screens/LaunchesScreen'
 import DrawerIcon from './DrawerIcon'
 import DrawerContent from './DrawerContent'
-
-const stackNavigatorHOC = component =>
-  createStackNavigator(
-    {
-      component
-    },
-    {
-      headerMode: 'float',
-      initialRouteName: 'component',
-      navigationOptions: ({ navigation }) => {
-        const isDrawerOpen = navigation.state.isDrawerOpen
-        return {
-          headerStyle: { backgroundColor: '#4C3E54', paddingLeft: 5 },
-          headerTintColor: 'white',
-          headerLeft: (
-            <HamburgerIcon
-              active={isDrawerOpen}
-              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-            />
-          )
-        }
-      }
-    }
-  )
+import stackNavigatorHOC from './StackNavigatorHOC'
 
 const RootStack = createDrawerNavigator(
   {
-    NextLaunchScreen: {
-      screen: stackNavigatorHOC(NextLaunchScreen),
+    LaunchesScreen: {
+      screen: LaunchesScreen,
       navigationOptions: {
-        title: `Next launch`,
+        title: `Launches`,
         drawerIcon: <DrawerIcon image={'rocket'} />
       }
     },
@@ -64,7 +34,7 @@ const RootStack = createDrawerNavigator(
     }
   },
   {
-    initialRouteName: 'NextLaunchScreen',
+    initialRouteName: 'LaunchesScreen',
     navigationOptions: {},
     contentComponent: DrawerContent
   }

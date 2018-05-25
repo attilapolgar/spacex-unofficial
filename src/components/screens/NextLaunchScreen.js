@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import DrawerIcon from './DrawerIcon'
-import { fetchNextLaunchFetchRequested } from '../actions'
+import { fetchNextLaunchFetchRequested } from '../../actions'
 import { connect } from 'react-redux'
 
-import LaunchView from './LaunchView'
+import LaunchView from '../LaunchView'
 
-import RefreshableScrollView from './RefreshableScrollView'
+import RefreshableScrollView from '../RefreshableScrollView'
 class NextLaunchScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return { title: 'Next launch', drawerIcon: <DrawerIcon image={'user'} /> }
+  static navigationOptions = {
+    title: 'Next launch'
   }
 
   render() {
