@@ -43,17 +43,35 @@ export default ({ data }) => {
           <Thumbnail source={require('../assets/img/street-map.png')} />
         </Left>
       </CardItem>
-      <CardItem style={[styles.cardItem, styles.result]}>
-        <Text
-          note
-          style={[
-            styles.resultText,
-            data.launch_success ? styles.success : styles.fail
-          ]}
-        >
-          {data.launch_success ? 'SUCCESS' : 'FAILED'}
-        </Text>
-      </CardItem>
+      {data.launch_success !== null && (
+        <CardItem style={[styles.cardItem, styles.result]}>
+          <Text>Launch: </Text>
+          <Text
+            note
+            style={[
+              styles.resultText,
+              data.launch_success ? styles.success : styles.fail
+            ]}
+          >
+            {data.launch_success ? 'SUCCESS' : 'FAILED'}
+          </Text>
+        </CardItem>
+      )}
+      {data.land_success &&
+        data.land_success !== null && (
+          <CardItem style={[styles.cardItem, styles.result]}>
+            <Text>Land: </Text>
+            <Text
+              note
+              style={[
+                styles.resultText,
+                data.land_success ? styles.success : styles.fail
+              ]}
+            >
+              {data.land_success ? 'SUCCESS' : 'FAILED'}
+            </Text>
+          </CardItem>
+        )}
     </Card>
   )
 }

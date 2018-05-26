@@ -1,36 +1,29 @@
 import { randomIntegerInRange } from '../utils'
 import {
-  NEXT_LAUNCH_FETCH_REQUESTED,
-  NEXT_LAUNCH_FETCH_SUCCEEDED,
-  NEXT_LAUNCH_FETCH_FAILED,
-  LATEST_LAUNCH_FETCH_FAILED,
-  LATEST_LAUNCH_FETCH_REQUESTED,
-  LATEST_LAUNCH_FETCH_SUCCEEDED
+  LAUNCH_DATA_FETCH_REQUESTED,
+  LAUNCH_DATA_FETCH_SUCCEEDED,
+  LAUNCH_DATA_FETCH_FAILED,
+  SELECT_NEXT_LAUNCH,
+  SELECT_PREV_LAUNCH
 } from '../constants/action-types'
 
-export const nextLaunchFetchRequested = payload => ({
-  type: NEXT_LAUNCH_FETCH_REQUESTED,
-  payload
+export const launchDataFetchRequested = () => ({
+  type: LAUNCH_DATA_FETCH_REQUESTED
 })
-export const nextLaunchFetchSuceeded = payload => ({
-  type: NEXT_LAUNCH_FETCH_SUCCEEDED,
+
+export const launchDataFetchFailed = () => ({
+  type: LAUNCH_DATA_FETCH_FAILED
+})
+
+export const launchDataFetchSucceeded = payload => ({
+  type: LAUNCH_DATA_FETCH_SUCCEEDED,
   payload
 })
 
-export const nextLaunchFetchFailed = payload => ({
-  type: NEXT_LAUNCH_FETCH_FAILED,
-  payload
-})
-export const latestLaunchFetchRequested = payload => ({
-  type: LATEST_LAUNCH_FETCH_REQUESTED,
-  payload
-})
-export const latestLaunchFetchSuceeded = payload => ({
-  type: LATEST_LAUNCH_FETCH_SUCCEEDED,
-  payload
+export const selectNextLaunch = () => ({
+  type: SELECT_NEXT_LAUNCH
 })
 
-export const latestLaunchFetchFailed = payload => ({
-  type: LATEST_LAUNCH_FETCH_FAILED,
-  payload
+export const selectPrevLaunch = () => ({
+  type: SELECT_PREV_LAUNCH
 })

@@ -2,7 +2,8 @@ const baseUrl = 'https://api.spacexdata.com/v2'
 const urls = {
   launches: {
     latest: `${baseUrl}/launches/latest`,
-    next: `${baseUrl}/launches/next`
+    next: `${baseUrl}/launches/next`,
+    all: `${baseUrl}/launches/all`
   }
 }
 
@@ -28,7 +29,20 @@ const fetchLatestLaunch = id => {
     })
     .then(myJson => myJson)
 }
+const fetchAllLaunchData = id => {
+  return fetch(urls.launches.all)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json()
+      } else {
+        throw new Error('Request failed: no response')
+      }
+    })
+    .then(myJson => myJson)
+}
+
 export default {
   fetchNextLaunch,
-  fetchLatestLaunch
+  fetchLatestLaunch,
+  fetchAllLaunchData
 }

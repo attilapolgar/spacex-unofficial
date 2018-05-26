@@ -1,11 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation'
 
-import AboutScreen from './AboutScreen'
 import NextLaunchScreen from './NextLaunchScreen'
-import LatestLaunchScreen from './LatestLaunchScreen'
-import PastLaunchesScreen from './PastLaunchesScreen'
-import UpcomingLaunchesScreen from './UpcomingLaunchesScreen'
 
 import stackNavigatorHOC from '../StackNavigatorHOC'
 
@@ -16,28 +12,10 @@ const TabbedLaunchesScreen = createBottomTabNavigator(
       navigationOptions: {
         title: `Next`
       }
-    },
-    LatestLaunchScreen: {
-      screen: stackNavigatorHOC(LatestLaunchScreen),
-      navigationOptions: {
-        title: `Latest`
-      }
-    },
-    UpcomingLaunchesScreen: {
-      screen: stackNavigatorHOC(UpcomingLaunchesScreen),
-      navigationOptions: {
-        title: `Upcoming`
-      }
-    },
-    PastLaunchesScreen: {
-      screen: stackNavigatorHOC(PastLaunchesScreen),
-      navigationOptions: {
-        title: `Past`
-      }
     }
   },
   {
-    initialRouteName: 'LatestLaunchScreen',
+    initialRouteName: 'NextLaunchScreen',
     navigationOptions: { title: 'Launches' },
     tabBarOptions: {
       labelStyle: {

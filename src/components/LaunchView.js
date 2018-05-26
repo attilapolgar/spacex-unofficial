@@ -31,7 +31,7 @@ const LaunchView = ({ data }) => {
     data.links.video_link &&
     data.links.video_link.replace('watch?v=', 'embed/')
   return (
-    <View>
+    <View style={styles.container}>
       <LaunchViewSummary data={data} />
 
       {data.details && (
@@ -102,7 +102,7 @@ const LaunchView = ({ data }) => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: '#fff' },
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,

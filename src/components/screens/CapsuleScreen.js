@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-export default class UpcimongLaunchesScreen extends Component {
-  static navigationOptions = { title: 'Upcming launches' }
+export default class AboutScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Settings'
+    }
+  }
   render() {
     const { navigation } = this.props
     return (

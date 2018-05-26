@@ -19,6 +19,7 @@ class RefreshableScrollView extends Component {
     return (
       <ScrollView
         style={{ flex: 1 }}
+        {...this.props}
         refreshControl={
           <RefreshControl refreshing={pending} onRefresh={this.updateData} />
         }

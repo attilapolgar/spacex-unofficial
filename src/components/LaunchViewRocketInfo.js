@@ -16,7 +16,10 @@ export default ({ data }) => {
       </CardItem>
       <CardItem style={[styles.cardItem]}>
         <Left>
-          <Image source={falcon9Image} style={styles.image} />
+          <Image
+            source={rocketImages[data.rocket.rocket_id]}
+            style={styles.image}
+          />
 
           <Body>
             <Text style={styles.stageType}>First stage</Text>
