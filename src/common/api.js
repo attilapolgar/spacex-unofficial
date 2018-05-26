@@ -17,6 +17,18 @@ const fetchNextLaunch = id => {
     })
     .then(myJson => myJson)
 }
+const fetchLatestLaunch = id => {
+  return fetch(urls.launches.latest)
+    .then(response => {
+      if (response.status === 200) {
+        return response.json()
+      } else {
+        throw new Error('Request failed: no response')
+      }
+    })
+    .then(myJson => myJson)
+}
 export default {
-  fetchNextLaunch
+  fetchNextLaunch,
+  fetchLatestLaunch
 }

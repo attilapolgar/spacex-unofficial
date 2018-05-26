@@ -23,20 +23,21 @@ const TabbedLaunchesScreen = createBottomTabNavigator(
         title: `Latest`
       }
     },
-    PastLaunchesScreen: {
-      screen: stackNavigatorHOC(PastLaunchesScreen),
-      navigationOptions: {
-        title: `Past`
-      }
-    },
     UpcomingLaunchesScreen: {
       screen: stackNavigatorHOC(UpcomingLaunchesScreen),
       navigationOptions: {
         title: `Upcoming`
       }
+    },
+    PastLaunchesScreen: {
+      screen: stackNavigatorHOC(PastLaunchesScreen),
+      navigationOptions: {
+        title: `Past`
+      }
     }
   },
   {
+    initialRouteName: 'LatestLaunchScreen',
     navigationOptions: { title: 'Launches' },
     tabBarOptions: {
       labelStyle: {

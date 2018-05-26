@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet } from 'react-native'
-import { fetchNextLaunchFetchRequested } from '../../actions'
+import { nextLaunchFetchRequested } from '../../actions'
 import { connect } from 'react-redux'
 
 import LaunchView from '../LaunchView'
@@ -23,17 +22,13 @@ class NextLaunchScreen extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {}
-})
-
 const mapStateToProps = state => ({
   data: state.api.nextLaunch,
   requestState: state.api.nextLaunchRequestState
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchNextLaunch: () => dispatch(fetchNextLaunchFetchRequested())
+  fetchNextLaunch: () => dispatch(nextLaunchFetchRequested())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NextLaunchScreen)

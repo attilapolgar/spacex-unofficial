@@ -1,15 +1,34 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { latestLaunchFetchRequested } from '../../actions'
+import { connect } from 'react-redux'
 
-export default class LatestLaunchScreen extends Component {
-  static navigationOptions = { title: 'Latest launch' }
+import LaunchView from '../LaunchView'
+
+import RefreshableScrollView from '../RefreshableScrollView'
+class LatestLaunchScreen extends Component {
+  static navigationOptions = {
+    title: 'Latest launch'
+  }
+
   render() {
-    const { navigation } = this.props
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>coming soon...</Text>
-      </View>
+      <RefreshableScrollView
+        updateMethod={this.props.fetchLaunch}
+        requestState={this.props.requestState}
+      >
+        <LaunchView data={this.props.data} />
+      </RefreshableScrollView>
     )
   }
 }
-const styles = StyleSheet.create({})
+
+const mapStateToProps = state => ({
+  data: state.api.latestLaunch,
+  requestState: state.api.latestLaunchRequestState
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchLaunch: () => dispatch(latestLaunchFetchRequested())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LatestLaunchScreen)
