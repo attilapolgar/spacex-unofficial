@@ -39,12 +39,10 @@ export default ({ data }) => {
                   <Text style={styles.info}>Payload: {payload.payload_id}</Text>
                   <Text style={styles.info}>
                     Reused:{' '}
-                    {payload.reused
-                      ? `yes (it\'s ${core.flight}. flight)`
-                      : 'no'}
+                    {payload.reused ? `yes (${core.flight}. flight)` : 'no'}
                   </Text>
                   <Text style={styles.info}>
-                    Customers:
+                    Customers:{' '}
                     {payload.customers
                       .toString()
                       .split(',')

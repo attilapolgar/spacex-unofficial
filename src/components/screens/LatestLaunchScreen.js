@@ -23,8 +23,8 @@ class LatestLaunchScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.api.latestLaunch,
-  requestState: state.api.latestLaunchRequestState
+  data: state.latestLaunch.data,
+  requestState: state.latestLaunch.requestState
 })
 
 const mapDispatchToProps = dispatch => ({

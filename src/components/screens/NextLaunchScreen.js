@@ -23,8 +23,8 @@ class NextLaunchScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.api.nextLaunch,
-  requestState: state.api.nextLaunchRequestState
+  data: state.nextLaunch.data,
+  requestState: state.nextLaunch.requestState
 })
 
 const mapDispatchToProps = dispatch => ({

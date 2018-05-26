@@ -26,19 +26,24 @@ const LaunchView = ({ data }) => {
   const launchDateUTC = moment
     .utc(data.launch_date_utc)
     .format('MM/DD/YYYY HH:mm:ss')
-  const embedVideoLink = data.links.video_link.replace('watch?v=', 'embed/')
+  const embedVideoLink =
+    data.links &&
+    data.links.video_link &&
+    data.links.video_link.replace('watch?v=', 'embed/')
   return (
     <View>
       <LaunchViewSummary data={data} />
 
-      <Card>
-        <CardItem header style={styles.cardItem}>
-          <Text>Details</Text>
-        </CardItem>
-        <CardItem style={[styles.cardItem]}>
-          <Text style={styles.details}>{data.details}</Text>
-        </CardItem>
-      </Card>
+      {data.details && (
+        <Card>
+          <CardItem header style={styles.cardItem}>
+            <Text>Details</Text>
+          </CardItem>
+          <CardItem style={[styles.cardItem]}>
+            <Text style={styles.details}>{data.details}</Text>
+          </CardItem>
+        </Card>
+      )}
 
       <Card>
         <CardItem header style={styles.cardItem}>
@@ -51,17 +56,19 @@ const LaunchView = ({ data }) => {
 
       <LaunchViewRocketInfo data={data} />
 
-      <Card>
-        <CardItem style={styles.cardItem}>
-          <WebView
-            style={styles.video}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            source={{ uri: embedVideoLink }}
-            scalesPageToFit={true}
-          />
-        </CardItem>
-      </Card>
+      {embedVideoLink && (
+        <Card>
+          <CardItem style={styles.cardItem}>
+            <WebView
+              style={styles.video}
+              javaScriptEnabled={true}
+              domStorageEnabled={true}
+              source={{ uri: embedVideoLink }}
+              scalesPageToFit={true}
+            />
+          </CardItem>
+        </Card>
+      )}
 
       <Card>
         <CardItem header style={styles.cardItem}>

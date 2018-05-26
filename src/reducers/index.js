@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
-import api from './apiReducer'
+import nextLaunch from './nextLaunchReducer'
+import latestLaunch from './latestLaunchReducer'
 
-export default combineReducers({ api })
+export default combineReducers({ nextLaunch, latestLaunch })
