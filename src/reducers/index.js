@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import launches from './launchReducer'
+import launchBrowser from '@components/LaunchBrowser/reducer'
 
-export default combineReducers({ launches })
+export default combineReducers({ launchBrowser })

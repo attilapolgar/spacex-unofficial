@@ -1,11 +1,11 @@
-import { randomIntegerInRange } from '../utils'
+import { randomIntegerInRange } from '@utils'
 import {
   LAUNCH_DATA_FETCH_REQUESTED,
   LAUNCH_DATA_FETCH_SUCCEEDED,
   LAUNCH_DATA_FETCH_FAILED,
   SELECT_NEXT_LAUNCH,
   SELECT_PREV_LAUNCH
-} from '../constants/action-types'
+} from './action-types'
 
 export const launchDataFetchRequested = () => ({
   type: LAUNCH_DATA_FETCH_REQUESTED

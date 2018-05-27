@@ -1,21 +1,21 @@
 import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation'
 
-import NextLaunchScreen from './NextLaunchScreen'
+import LaunchBrowser from '@components/LaunchBrowser'
 
-import stackNavigatorHOC from '../StackNavigatorHOC'
+import stackNavigatorHOC from '@components/StackNavigatorHOC'
 
 const TabbedLaunchesScreen = createBottomTabNavigator(
   {
-    NextLaunchScreen: {
-      screen: stackNavigatorHOC(NextLaunchScreen),
+    LaunchBrowser: {
+      screen: stackNavigatorHOC(LaunchBrowser),
       navigationOptions: {
-        title: `Next`
+        title: `Browse`
       }
     }
   },
   {
-    initialRouteName: 'NextLaunchScreen',
+    initialRouteName: 'LaunchBrowser',
     navigationOptions: { title: 'Launches' },
     tabBarOptions: {
       labelStyle: {

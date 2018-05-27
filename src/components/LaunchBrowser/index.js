@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-import {
-  nextLaunchFetchRequested,
-  launchDataFetchRequested,
-  selectNextLaunch,
-  selectPrevLaunch
-} from '../../actions'
 import { connect } from 'react-redux'
 import { Text, View } from 'react-native'
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures'
 import {
   DeckSwiper,
   Card,
@@ -16,13 +11,20 @@ import {
   Container,
   Header
 } from 'native-base'
-import LaunchView from '../LaunchView'
-import RefreshableScrollView from '../RefreshableScrollView'
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures'
 
-class NextLaunchScreen extends Component {
+import LaunchView from '@components/LaunchView'
+import RefreshableScrollView from '@components/RefreshableScrollView'
+
+import {
+  nextLaunchFetchRequested,
+  launchDataFetchRequested,
+  selectNextLaunch,
+  selectPrevLaunch
+} from './actions'
+
+class LaunchBrowser extends Component {
   static navigationOptions = {
-    title: 'Next launch'
+    title: 'Launch browser'
   }
 
   componentWillMount = () => {}
@@ -61,9 +63,9 @@ class NextLaunchScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.launches.data,
-  selectedLaunch: state.launches.selectedLaunch,
-  requestState: state.launches.requestState
+  data: state.launchBrowser.data,
+  selectedLaunch: state.launchBrowser.selectedLaunch,
+  requestState: state.launchBrowser.requestState
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -73,4 +75,4 @@ const mapDispatchToProps = dispatch => ({
   selectPrevLaunch: () => dispatch(selectPrevLaunch())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NextLaunchScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchBrowser)

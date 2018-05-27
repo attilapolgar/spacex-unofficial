@@ -4,7 +4,7 @@ import {
   LAUNCH_DATA_FETCH_REQUESTED,
   SELECT_NEXT_LAUNCH,
   SELECT_PREV_LAUNCH
-} from '../constants/action-types'
+} from './action-types'
 
 const initialRequestState = {
   success: false,
