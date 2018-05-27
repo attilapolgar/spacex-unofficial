@@ -1,87 +1,66 @@
 import React from 'react'
 import moment from 'moment'
-import { StyleSheet, Linking, Image } from 'react-native'
-import { Right, Left, Thumbnail, Card, CardItem, Text, Body } from 'native-base'
+import { StyleSheet, Linking, Image, View } from 'react-native'
+import {
+  Right,
+  Left,
+  Thumbnail,
+  Card,
+  Badge,
+  CardItem,
+  Text,
+  Body
+} from 'native-base'
 
-export default ({ data }) => {
+export default ({ data, onPress }) => {
   const launchDate = moment(data.launch_date_utc).format('MM/DD/YYYY HH:mm:ss')
   const launchDateUTC = moment
     .utc(data.launch_date_utc)
     .format('MM/DD/YYYY HH:mm:ss')
   return (
-    <Card>
-      <CardItem header style={styles.cardItem}>
+    <Card
+      style={[
+        styles.container,
+        data.launch_success === true ? styles.success : '',
+        data.launch_success === false ? styles.fail : ''
+      ]}
+    >
+      <CardItem header style={[styles.cardItem]}>
         <Left>
-          <Image
-            source={{ uri: data.links.mission_patch }}
-            style={styles.image}
-          />
+          {data && data.links && data.links.mission_patch ? (
+            <Image
+              source={{ uri: data.links.mission_patch }}
+              style={styles.image}
+            />
+          ) : (
+            <View style={styles.imagePlaceholder} />
+          )}
+
           <Body>
-            <Text style={styles.missionName}>{data.mission_name}</Text>
-            <Text>Launch #{data.flight_number}</Text>
+            <Text style={styles.missionName}>
+              #{data.flight_number}: {data.mission_name}
+            </Text>
+
             <Text note>Local: {launchDate}</Text>
             <Text note>UTC: {launchDateUTC}</Text>
+            <Text note>LS: {data.launch_site.site_name}</Text>
           </Body>
         </Left>
       </CardItem>
-      <CardItem style={[styles.cardItem]}>
-        <Left>
-          <Body>
-            <Text
-              style={styles.link}
-              onPress={() =>
-                Linking.openURL(
-                  `https://www.google.com/maps/search/${
-                    data.launch_site.site_name_long
-                  }`
-                )
-              }
-            >
-              {data.launch_site.site_name_long} ({data.launch_site.site_name})
-            </Text>
-          </Body>
-          <Thumbnail source={require('../assets/img/street-map.png')} />
-        </Left>
-      </CardItem>
-      {data.launch_success !== null && (
-        <CardItem style={[styles.cardItem, styles.result]}>
-          <Text>Launch: </Text>
-          <Text
-            note
-            style={[
-              styles.resultText,
-              data.launch_success ? styles.success : styles.fail
-            ]}
-          >
-            {data.launch_success ? 'SUCCESS' : 'FAILED'}
-          </Text>
-        </CardItem>
-      )}
-      {data.land_success &&
-        data.land_success !== null && (
-          <CardItem style={[styles.cardItem, styles.result]}>
-            <Text>Land: </Text>
-            <Text
-              note
-              style={[
-                styles.resultText,
-                data.land_success ? styles.success : styles.fail
-              ]}
-            >
-              {data.land_success ? 'SUCCESS' : 'FAILED'}
-            </Text>
-          </CardItem>
-        )}
     </Card>
   )
 }
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+    borderLeftWidth: 5
+  },
   missionName: {
-    fontSize: 24
+    fontSize: 18
   },
   cardItem: {
     flex: 1,
+    padding: 10,
     borderBottomWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.2)'
   },
@@ -89,19 +68,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     resizeMode: 'contain'
+  },
+  imagePlaceholder: {
+    width: 100,
+    height: 100
   },
   resultText: {
     fontWeight: 'bold',
     fontSize: 24
   },
   success: {
-    color: 'green'
+    borderColor: 'green'
   },
   fail: {
-    color: 'red'
+    borderColor: 'red'
   },
   link: { textDecorationLine: 'underline' }
 })

@@ -3,9 +3,7 @@ import { Text, View, StyleSheet } from 'react-native'
 
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Settings'
-    }
+    return {}
   }
   render() {
     const { navigation } = this.props

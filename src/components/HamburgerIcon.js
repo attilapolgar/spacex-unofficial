@@ -1,16 +1,13 @@
 import React from 'react'
 import { TouchableOpacity, Image, StyleSheet } from 'react-native'
-import menuImage from '../assets/img/menu.png'
+import Ionicons from 'react-native-vector-icons/Entypo'
 
 export default ({ active, navigation, onPress }) => (
   <TouchableOpacity onPress={onPress}>
-    <Image style={styles.icon} source={menuImage} />
+    <Ionicons name={'menu'} size={36} color={'white'} />
   </TouchableOpacity>
 )
 
 const styles = StyleSheet.create({
-  icon: {
-    width: 36,
-    height: 36
-  }
+  icon: {}
 })

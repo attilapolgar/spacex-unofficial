@@ -14,7 +14,6 @@ import linkedinImage from '../../assets/img/linkedin.png'
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'About',
       drawerIcon: <DrawerIcon image={'user'} />
     }
   }
