@@ -11,7 +11,7 @@ class RefreshableScrollView extends Component {
   }
 
   componentWillMount = () => {
-    this.updateData()
+    this.props.initialUpdate && this.updateData()
   }
 
   render() {

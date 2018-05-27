@@ -1,4 +1,4 @@
-import { randomIntegerInRange } from '@utils'
+import { randomIntegerInRange } from '@common/utils'
 import {
   LAUNCH_DATA_FETCH_REQUESTED,
   LAUNCH_DATA_FETCH_SUCCEEDED,
@@ -11,8 +11,9 @@ export const launchDataFetchRequested = () => ({
   type: LAUNCH_DATA_FETCH_REQUESTED
 })
 
-export const launchDataFetchFailed = () => ({
-  type: LAUNCH_DATA_FETCH_FAILED
+export const launchDataFetchFailed = payload => ({
+  type: LAUNCH_DATA_FETCH_FAILED,
+  payload
 })
 
 export const launchDataFetchSucceeded = payload => ({

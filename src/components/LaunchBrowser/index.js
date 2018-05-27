@@ -52,10 +52,9 @@ class LaunchBrowser extends Component {
         <RefreshableScrollView
           updateMethod={this.props.fetchLaunchData}
           requestState={this.props.requestState}
+          initialUpdate={!this.props.data}
         >
-          {this.props.requestState.success && (
-            <LaunchView data={this.props.selectedLaunch} />
-          )}
+          <LaunchView data={this.props.selectedLaunch} />
         </RefreshableScrollView>
       </GestureRecognizer>
     )

@@ -1,7 +1,9 @@
 import { all } from 'redux-saga/effects'
 
-import launcherBrowser from '@components/LaunchBrowser/saga'
+import launchBrowser from '@components/LaunchBrowser/saga'
+import nextLaunch from '@components/NextLaunch/saga'
+import lastestLaunch from '@components/LatestLaunch/saga'
 
 export default function* rootSaga() {
-  yield all([launcherBrowser()])
+  yield all([launchBrowser(), nextLaunch(), lastestLaunch()])
 }

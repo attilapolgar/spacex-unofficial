@@ -7,7 +7,7 @@ const urls = {
   }
 }
 
-const fetchNextLaunch = id => {
+const fetchNextLaunchData = () => {
   return fetch(urls.launches.next)
     .then(response => {
       if (response.status === 200) {
@@ -18,7 +18,7 @@ const fetchNextLaunch = id => {
     })
     .then(myJson => myJson)
 }
-const fetchLatestLaunch = id => {
+const fetchLatestLaunchData = () => {
   return fetch(urls.launches.latest)
     .then(response => {
       if (response.status === 200) {
@@ -29,7 +29,7 @@ const fetchLatestLaunch = id => {
     })
     .then(myJson => myJson)
 }
-const fetchAllLaunchData = id => {
+const fetchAllLaunchData = () => {
   return fetch(urls.launches.all)
     .then(response => {
       if (response.status === 200) {
@@ -42,7 +42,7 @@ const fetchAllLaunchData = id => {
 }
 
 export default {
-  fetchNextLaunch,
-  fetchLatestLaunch,
+  fetchNextLaunchData,
+  fetchLatestLaunchData,
   fetchAllLaunchData
 }
