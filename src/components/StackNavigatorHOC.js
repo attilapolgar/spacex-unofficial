@@ -20,7 +20,11 @@ const stackNavigatorHOC = (component, component2) => {
     navigationOptions: ({ navigation }) => {
       const isDrawerOpen = navigation.state.isDrawerOpen
       return {
-        headerStyle: { backgroundColor: '#4C3E54', paddingLeft: 5 },
+        headerStyle: {
+          backgroundColor: '#005288',
+          paddingLeft: 5,
+          paddingRight: 5
+        },
         headerTintColor: 'white',
         headerLeft: (
           <HamburgerIcon

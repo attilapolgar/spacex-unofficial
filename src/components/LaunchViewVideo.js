@@ -1,28 +1,11 @@
 import React from 'react'
-import moment from 'moment'
-import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import {
-  StyleSheet,
-  Linking,
-  Image,
-  View,
-  WebView,
-  Dimensions
-} from 'react-native'
-import {
-  Right,
-  Left,
-  Thumbnail,
-  Card,
-  Badge,
-  CardItem,
-  Text,
-  Body
-} from 'native-base'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { StyleSheet, WebView, Dimensions } from 'react-native'
+import { Card, CardItem, Text } from 'native-base'
 
 const deviceHeight = Dimensions.get('window').height
 const deviceWidth = Dimensions.get('window').width
+
 export default ({ data }) => {
   const embedVideoLink =
     data.links &&
@@ -32,7 +15,11 @@ export default ({ data }) => {
     embedVideoLink && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <Thumbnail small source={require('../assets/img/play-button.png')} />
+          <MaterialIcon
+            name={'play-circle-filled'}
+            size={32}
+            color={'#005288'}
+          />
           <Text style={styles.headerText}>Video</Text>
         </CardItem>
         <CardItem style={styles.cardItem}>

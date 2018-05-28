@@ -7,15 +7,12 @@ import {
   Linking,
   TouchableOpacity
 } from 'react-native'
-import DrawerIcon from '../DrawerIcon'
 import githubImage from '../../assets/img/github.png'
 import linkedinImage from '../../assets/img/linkedin.png'
 
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    return {
-      drawerIcon: <DrawerIcon image={'user'} />
-    }
+    return {}
   }
   render() {
     return (

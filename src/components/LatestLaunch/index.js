@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, ScrollView } from 'react-native'
-import { Card, CardItem, Left, Body, Container, Header } from 'native-base'
+import { ScrollView } from 'react-native'
 
 import LaunchView from '@components/LaunchView'
 
 class LatestLaunch extends Component {
-  static navigationOptions = {
-    title: 'Latest launch'
-  }
+  static navigationOptions = ({ navigation }) => ({
+    title: `Latest mission`
+  })
 
   render() {
     return (
@@ -23,6 +22,4 @@ const mapStateToProps = state => ({
   data: state.data.latestLaunch
 })
 
-const mapDispatchToProps = dispatch => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(LatestLaunch)
+export default connect(mapStateToProps)(LatestLaunch)

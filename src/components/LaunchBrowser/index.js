@@ -24,7 +24,6 @@ import {
 } from 'native-base'
 
 import LaunchViewSummary from '@components/LaunchViewSummary'
-import RefreshableScrollView from '@components/RefreshableScrollView'
 import LaunchFilter from './LaunchFilter'
 
 class LaunchBrowser extends Component {
@@ -48,7 +47,7 @@ class LaunchBrowser extends Component {
   }
 
   onLaunchSelected = data => {
-    this.props.navigation.navigate('LaunchDetails', {
+    this.props.navigation.navigate('MissionDetails', {
       data
     })
   }

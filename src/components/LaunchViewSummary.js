@@ -1,21 +1,13 @@
 import React from 'react'
 import moment from 'moment'
-import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { StyleSheet, Linking, Image, View } from 'react-native'
-import {
-  Right,
-  Left,
-  Thumbnail,
-  Card,
-  Badge,
-  CardItem,
-  Text,
-  Body
-} from 'native-base'
+import { Left, Card, CardItem, Text, Body } from 'native-base'
 
 export default ({ data, onPress }) => {
   const launchDateUTC = moment.utc(data.launch_date_utc).format('MM/DD/YYYY')
+
   return (
     <Card
       style={[
@@ -41,7 +33,7 @@ export default ({ data, onPress }) => {
             </Text>
 
             <Text note>
-              <Ionicons name={`calendar`} color={'black'} />
+              <MaterialCommunityIcons name={`calendar`} color={'black'} />
               {'  '} {launchDateUTC}
             </Text>
             <Text note>

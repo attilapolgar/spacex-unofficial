@@ -1,8 +1,9 @@
 import React from 'react'
 import moment from 'moment'
-import { StyleSheet, Linking, Image } from 'react-native'
-import { View, Left, Thumbnail, Card, CardItem, Text, Body } from 'native-base'
+import { StyleSheet, Image } from 'react-native'
+import { View, Left, Card, CardItem, Text, Body } from 'native-base'
 import falcon9Image from '../assets/img/falcon9-render.png'
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const rocketImages = {
   falcon9: falcon9Image
@@ -12,7 +13,7 @@ export default ({ data }) => {
   return (
     <Card>
       <CardItem header style={styles.cardItem}>
-        <Thumbnail small source={require('../assets/img/rocket.png')} />
+        <MaterialCommunityIcon name={'rocket'} size={32} color={'#005288'} />
         <Text style={styles.headerText}>Rocket: {data.rocket.rocket_name}</Text>
       </CardItem>
       <CardItem style={[styles.cardItem]}>

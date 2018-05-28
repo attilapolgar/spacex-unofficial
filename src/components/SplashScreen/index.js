@@ -26,12 +26,14 @@ class SplashScreen extends Component {
         source={require('../../assets/img/splashScreen.jpg')}
       >
         <View style={styles.title}>
-          <Image source={require('../../assets/img/spacex-logo.png')} />
-          <Text style={styles.titleText}>UNOFFICIAL</Text>
+          <Image
+            style={styles.logo}
+            source={require('../../assets/img/spacex-logo.png')}
+          />
+          <Text style={styles.titleText}>companion</Text>
         </View>
-        <View>
+        <View style={styles.indicator}>
           <Text style={styles.statusText}>
-            {this.props.requestState.success && 'Ready to go'}
             {this.props.requestState.failed && 'Something went wrong'}
           </Text>
           {this.props.requestState.pending && (
@@ -51,17 +53,31 @@ const styles = StyleSheet.create({
   },
   title: {
     alignItems: 'center',
-    marginTop: 50
+    marginTop: 50,
+    padding: 25,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    // backgroundColor: 'rgba(0,0,0,0.1)',
+    borderRadius: 5
+  },
+  logo: {
+    height: 30,
+    width: 300,
+    resizeMode: 'contain'
   },
   titleText: {
     marginTop: 10,
-    fontSize: 16,
-    color: '#fff'
+    fontSize: 18,
+    // color: '#000',
+    color: '#fff',
+    fontWeight: '100'
   },
   statusText: {
     color: '#fff',
     fontSize: 18,
     marginBottom: 50
+  },
+  indicator: {
+    height: 30
   }
 })
 

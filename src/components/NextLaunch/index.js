@@ -6,7 +6,7 @@ import LaunchView from '@components/LaunchView'
 
 class NextLaunch extends Component {
   static navigationOptions = {
-    title: 'Next launch'
+    title: `Next mission`
   }
 
   render() {

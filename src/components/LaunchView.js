@@ -1,5 +1,4 @@
 import React from 'react'
-import moment from 'moment'
 import { View, StyleSheet } from 'react-native'
 
 import LaunchViewSummary from './LaunchViewSummary'
@@ -34,18 +33,3 @@ const styles = StyleSheet.create({
 })
 
 export default LaunchView
-
-const data = {
-  launch_year: '2018',
-  launch_date_unix: 1527018478,
-  launch_date_utc: '2018-05-22T19:47:58Z',
-  launch_date_local: '2018-05-22T12:47:58-08:00',
-  reuse: {
-    core: true,
-    side_core1: false,
-    side_core2: false,
-    fairings: false,
-    capsule: false
-  },
-  launch_success: true
-}

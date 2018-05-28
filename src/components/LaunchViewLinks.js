@@ -1,18 +1,7 @@
 import React from 'react'
 import { StyleSheet, Linking } from 'react-native'
-import {
-  Right,
-  Left,
-  Thumbnail,
-  Card,
-  Badge,
-  List,
-  CardItem,
-  ListItem,
-  Text,
-  Content,
-  Body
-} from 'native-base'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { Card, List, CardItem, ListItem, Text, Content } from 'native-base'
 
 export default ({ data }) => {
   const validLinks = Object.keys(data.links)
@@ -30,24 +19,22 @@ export default ({ data }) => {
     validLinks.length > 0 && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <Thumbnail small source={require('../assets/img/chains.png')} />
+          <MaterialIcon name={'link'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Links</Text>
         </CardItem>
         <CardItem>
           <Content>
             <List>
-              {validLinks.map(link => {
-                return (
-                  <ListItem key={link.key}>
-                    <Text
-                      style={styles.link}
-                      onPress={() => Linking.openURL(link.url)}
-                    >
-                      {link.provider}
-                    </Text>
-                  </ListItem>
-                )
-              })}
+              {validLinks.map(link => (
+                <ListItem key={link.key}>
+                  <Text
+                    style={styles.link}
+                    onPress={() => Linking.openURL(link.url)}
+                  >
+                    {link.provider}
+                  </Text>
+                </ListItem>
+              ))}
             </List>
           </Content>
         </CardItem>

@@ -17,6 +17,7 @@ const filterForLaunchStatus = (data, status) =>
     if (status === 'success') return launch.launch_success === true
     if (status === 'failed') return launch.launch_success === false
   })
+
 const filterForRocket = (data, rocketId) =>
   data.filter(launch => {
     if (rocketId === 'all') return launch

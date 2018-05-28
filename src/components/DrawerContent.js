@@ -3,7 +3,7 @@ import { SafeAreaView, DrawerItems } from 'react-navigation'
 import { Image, ScrollView, StyleSheet } from 'react-native'
 
 const DrawerContent = props => (
-  <ScrollView>
+  <ScrollView style={styles.container}>
     <Image
       style={styles.headerImage}
       source={require('../assets/img/falcon.jpg')}
