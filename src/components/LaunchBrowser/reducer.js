@@ -5,7 +5,8 @@ import {
   SELECT_NEXT_LAUNCH,
   SELECT_PREV_LAUNCH,
   SELECT_LAUNCH,
-  FILTER_FOR_LAUNCH_STATUS
+  FILTER_FOR_LAUNCH_STATUS,
+  FILTER_FOR_ROCKET
 } from './action-types'
 
 import { PREFETCH_DATA_SUCCEEDED } from '../../action-types'
@@ -16,6 +17,11 @@ const filterForLaunchStatus = (data, status) =>
     if (status === 'success') return launch.launch_success === true
     if (status === 'failed') return launch.launch_success === false
   })
+const filterForRocket = (data, rocketId) =>
+  data.filter(launch => {
+    if (rocketId === 'all') return launch
+    return launch.rocket.rocket_id === rocketId
+  })
 
 const initialRequestState = {
   success: false,
@@ -25,14 +31,16 @@ const initialRequestState = {
 }
 
 const initialState = {
-  data: null,
+  launches: null,
   filteredData: null,
   launchStatusFilter: 'all',
+  rocketFilter: 'all',
+  isFilterActive: false,
   selectedLaunch: null,
   requestState: { ...initialRequestState }
 }
 
-export default function apiReducer(state = initialState, action) {
+export default function launchReducer(state = initialState, action) {
   switch (action.type) {
     case LAUNCH_DATA_FETCH_REQUESTED: {
       return {
@@ -48,14 +56,14 @@ export default function apiReducer(state = initialState, action) {
     case PREFETCH_DATA_SUCCEEDED: {
       let { launches } = action.payload
 
-      const sortedData = launches.sort(
+      let sortedData = launches.sort(
         (a, b) => b.flight_number - a.flight_number
       )
 
       return {
         ...state,
         launches: sortedData,
-        filteredData: filterForLaunchStatus(launches, state.launchStatusFilter),
+        filteredData: sortedData,
         selectedLaunch: launches[0],
         requestState: {
           pending: false,
@@ -65,55 +73,23 @@ export default function apiReducer(state = initialState, action) {
         }
       }
     }
-    case LAUNCH_DATA_FETCH_FAILED: {
-      const { errorMessage } = action.payload
-      return {
-        ...state,
-        requestState: {
-          pending: false,
-          success: false,
-          failed: true,
-          errorMessage
-        }
-      }
-    }
-    case SELECT_NEXT_LAUNCH: {
-      return {
-        ...state,
-        selectedLaunch: state.data.find(
-          launch =>
-            launch.flight_number ===
-            (state.selectedLaunch.flight_number === state.data.length
-              ? 1
-              : state.selectedLaunch.flight_number + 1)
-        )
-      }
-    }
-    case SELECT_LAUNCH: {
-      const { id } = action.payload
-      return {
-        ...state,
-        selectedLaunchId: id
-      }
-    }
-    case SELECT_PREV_LAUNCH: {
-      return {
-        ...state,
-        selectedLaunch: state.data.find(
-          launch =>
-            launch.flight_number ===
-            (state.selectedLaunch.flight_number === 1
-              ? state.data.length
-              : state.selectedLaunch.flight_number - 1)
-        )
-      }
-    }
+
     case FILTER_FOR_LAUNCH_STATUS: {
       const { status } = action.payload
       return {
         ...state,
-        launchStatusFilter: status,
-        filteredData: filterForLaunchStatus(state.data, status)
+        isFilterActive: state.rocketFilter !== 'all' || status !== 'all',
+        filteredData: filterForLaunchStatus(state.filteredData, status)
+      }
+    }
+    case FILTER_FOR_ROCKET: {
+      const { rocketId } = action.payload
+      return {
+        ...state,
+        isFilterActive:
+          state.launchStatusFilter !== 'all' || rocketId !== 'all',
+        rocketFilter: rocketId,
+        filteredData: filterForRocket(state.filteredData, rocketId)
       }
     }
     default:

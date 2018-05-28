@@ -19,7 +19,7 @@ class LaunchDetails extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { render: false }
+    this.state = { render: true }
   }
 
   componentDidMount = () => {

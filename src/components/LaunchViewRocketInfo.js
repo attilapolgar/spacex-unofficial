@@ -61,7 +61,7 @@ export default ({ data }) => {
                   <Text style={styles.info}>Payload: {payload.payload_id}</Text>
                   <Text style={styles.info}>
                     Reused:{' '}
-                    {payload.reused ? `YES (${core.flight}. flight)` : 'NO'}
+                    {payload.reused ? `YES (${payload.flight}. flight)` : 'NO'}
                   </Text>
                   <Text style={styles.info}>
                     Customers:{' '}

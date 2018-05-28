@@ -26,7 +26,6 @@ export default ({ data }) => {
       url: data.links[key]
     }))
 
-  console.log('validLinks', validLinks)
   return (
     validLinks.length > 0 && (
       <Card>

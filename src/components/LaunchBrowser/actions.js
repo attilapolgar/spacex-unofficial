@@ -6,7 +6,8 @@ import {
   SELECT_NEXT_LAUNCH,
   SELECT_PREV_LAUNCH,
   SELECT_LAUNCH,
-  FILTER_FOR_LAUNCH_STATUS
+  FILTER_FOR_LAUNCH_STATUS,
+  FILTER_FOR_ROCKET
 } from './action-types'
 
 export const launchDataFetchRequested = () => ({
@@ -33,5 +34,9 @@ export const selectPrevLaunch = () => ({
 })
 export const filterForLaunchStatus = payload => ({
   type: FILTER_FOR_LAUNCH_STATUS,
+  payload
+})
+export const filterForRocket = payload => ({
+  type: FILTER_FOR_ROCKET,
   payload
 })

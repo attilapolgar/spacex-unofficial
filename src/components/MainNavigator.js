@@ -1,6 +1,6 @@
 import React from 'react'
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation'
-import { Image, ScrollView, StyleSheet } from 'react-native'
+import { Image, ScrollView, StyleSheet, Button } from 'react-native'
 import Ionicons from 'react-native-vector-icons/MaterialIcons'
 
 import AboutScreen from './screens/AboutScreen'
@@ -98,7 +98,7 @@ const AppScreen = createDrawerNavigator(
     }
   },
   {
-    initialRouteName: 'LatestLaunchScreen',
+    initialRouteName: 'LaunchesScreen',
     navigationOptions: {},
     contentComponent: DrawerContent
   }

@@ -16,7 +16,7 @@ const initialState = {
   requestState: { ...initialRequestState }
 }
 
-export default function apiReducer(state = initialState, action) {
+export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case PREFETCH_DATA_REQUESTED: {
       return {
@@ -30,13 +30,12 @@ export default function apiReducer(state = initialState, action) {
       }
     }
     case PREFETCH_DATA_SUCCEEDED: {
-      const { nextLaunch, latestLaunch, launches } = action.payload
+      const { nextLaunch, latestLaunch } = action.payload
 
       return {
         ...state,
         nextLaunch,
         latestLaunch,
-        launches,
         requestState: {
           pending: false,
           success: true,
