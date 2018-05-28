@@ -1,5 +1,7 @@
 import React from 'react'
 import moment from 'moment'
+import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { StyleSheet, Linking, Image, View } from 'react-native'
 import {
   Right,
@@ -13,10 +15,7 @@ import {
 } from 'native-base'
 
 export default ({ data, onPress }) => {
-  const launchDate = moment(data.launch_date_utc).format('MM/DD/YYYY HH:mm:ss')
-  const launchDateUTC = moment
-    .utc(data.launch_date_utc)
-    .format('MM/DD/YYYY HH:mm:ss')
+  const launchDateUTC = moment.utc(data.launch_date_utc).format('MM/DD/YYYY')
   return (
     <Card
       style={[
@@ -41,9 +40,14 @@ export default ({ data, onPress }) => {
               #{data.flight_number}: {data.mission_name}
             </Text>
 
-            <Text note>Local: {launchDate}</Text>
-            <Text note>UTC: {launchDateUTC}</Text>
-            <Text note>LS: {data.launch_site.site_name}</Text>
+            <Text note>
+              <Ionicons name={`calendar`} color={'black'} />
+              {launchDateUTC}
+            </Text>
+            <Text note>
+              <MaterialIcons name={`place`} color={'black'} /> 
+              {data.launch_site.site_name}
+            </Text>
           </Body>
         </Left>
       </CardItem>

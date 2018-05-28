@@ -4,13 +4,13 @@ import { Provider } from 'react-redux'
 
 import store from './src/store'
 
-import RootStack from './src/components/RootStack'
+import MainNavigator from './src/components/MainNavigator'
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <RootStack />
+        <MainNavigator />
       </Provider>
     )
   }

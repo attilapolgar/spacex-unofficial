@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View } from 'react-native'
-import {
-  DeckSwiper,
-  Card,
-  CardItem,
-  Left,
-  Body,
-  Container,
-  Header
-} from 'native-base'
+import { ScrollView } from 'react-native'
 
 import LaunchView from '@components/LaunchView'
-import RefreshableScrollView from '@components/RefreshableScrollView'
-
-import { nextLaunchFetchRequested } from './actions'
 
 class NextLaunch extends Component {
   static navigationOptions = {
@@ -23,24 +11,17 @@ class NextLaunch extends Component {
 
   render() {
     return (
-      <RefreshableScrollView
-        updateMethod={this.props.fetchNextLaunch}
-        requestState={this.props.requestState}
-        initialUpdate={!this.props.data}
-      >
+      <ScrollView style={{ flex: 1 }}>
         <LaunchView data={this.props.data} />
-      </RefreshableScrollView>
+      </ScrollView>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  data: state.nextLaunch.data,
-  requestState: state.nextLaunch.requestState
+  data: state.data.nextLaunch
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchNextLaunch: () => dispatch(nextLaunchFetchRequested())
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(NextLaunch)

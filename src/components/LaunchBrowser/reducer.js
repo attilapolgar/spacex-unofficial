@@ -8,6 +8,8 @@ import {
   FILTER_FOR_LAUNCH_STATUS
 } from './action-types'
 
+import { PREFETCH_DATA_SUCCEEDED } from '../../action-types'
+
 const filterForLaunchStatus = (data, status) =>
   data.filter(launch => {
     if (status === 'all') return launch
@@ -43,15 +45,18 @@ export default function apiReducer(state = initialState, action) {
         }
       }
     }
-    case LAUNCH_DATA_FETCH_SUCCEEDED: {
-      const { data } = action.payload
-      const sortedData = data.sort((a, b) => b.flight_number - a.flight_number)
+    case PREFETCH_DATA_SUCCEEDED: {
+      let { launches } = action.payload
+
+      const sortedData = launches.sort(
+        (a, b) => b.flight_number - a.flight_number
+      )
 
       return {
         ...state,
-        data: sortedData,
-        filteredData: filterForLaunchStatus(data, state.launchStatusFilter),
-        selectedLaunch: data[0],
+        launches: sortedData,
+        filteredData: filterForLaunchStatus(launches, state.launchStatusFilter),
+        selectedLaunch: launches[0],
         requestState: {
           pending: false,
           success: true,

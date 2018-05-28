@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View, TouchableOpacity } from 'react-native'
+
 import {
-  DeckSwiper,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native'
+import {
   Card,
   CardItem,
   Left,
@@ -33,25 +40,28 @@ class LaunchBrowser extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      selected: 'key1'
-    }
+
+    this.state = { render: false }
   }
   onValueChange = status => {
-    console.log('onValueChange', status)
     this.props.filterForLaunchStatus({ status })
   }
 
-  onLaunchSelected = id => {
+  onLaunchSelected = data => {
     this.props.navigation.navigate('LaunchDetails', {
-      itemId: id
+      data
     })
-    this.props.selectLaunch({ id })
+  }
+
+  componentDidMount = () => {
+    window.setTimeout(() => {
+      this.setState({ render: true })
+    }, 0)
   }
 
   render() {
     return (
-      <RefreshableScrollView
+      <ScrollView
         updateMethod={this.props.fetchLaunchData}
         requestState={this.props.requestState}
         initialUpdate={!this.props.data}
@@ -79,22 +89,26 @@ class LaunchBrowser extends Component {
           </CardItem>
         </Card>
 
-        {this.props.data &&
+        {this.state.render ? (
+          this.props.data &&
           this.props.filteredData.map(launch => (
             <TouchableOpacity
               key={launch.flight_number}
-              onPress={() => this.onLaunchSelected(launch.flight_number)}
+              onPress={() => this.onLaunchSelected(launch)}
             >
               <LaunchViewSummary data={launch} />
             </TouchableOpacity>
-          ))}
-      </RefreshableScrollView>
+          ))
+        ) : (
+          <ActivityIndicator size="large" color="#0000ff" />
+        )}
+      </ScrollView>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  data: state.launchBrowser.data,
+  data: state.data.launches,
   filteredData: state.launchBrowser.filteredData,
   selectedLaunch: state.launchBrowser.selectedLaunch,
   requestState: state.launchBrowser.requestState,
@@ -102,11 +116,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchNextLaunch: () => dispatch(nextLaunchFetchRequested()),
-  fetchLaunchData: () => dispatch(launchDataFetchRequested()),
-  selectLaunch: payload => dispatch(selectLaunch(payload)),
-  selectNextLaunch: () => dispatch(selectNextLaunch()),
-  selectPrevLaunch: () => dispatch(selectPrevLaunch()),
   filterForLaunchStatus: payload => dispatch(filterForLaunchStatus(payload))
 })
 

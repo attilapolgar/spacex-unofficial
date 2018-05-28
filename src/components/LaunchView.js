@@ -121,7 +121,7 @@ const LaunchView = ({ data }) => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { flex: 1 },
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View } from 'react-native'
+import { Text, ScrollView } from 'react-native'
 import { Card, CardItem, Left, Body, Container, Header } from 'native-base'
 
 import LaunchView from '@components/LaunchView'
-import RefreshableScrollView from '@components/RefreshableScrollView'
-
-import { latestLaunchFetchRequested } from './actions'
 
 class LatestLaunch extends Component {
   static navigationOptions = {
@@ -15,24 +12,17 @@ class LatestLaunch extends Component {
 
   render() {
     return (
-      <RefreshableScrollView
-        updateMethod={this.props.fetchLaunch}
-        requestState={this.props.requestState}
-        initialUpdate={!this.props.data}
-      >
+      <ScrollView style={{ flex: 1 }}>
         <LaunchView data={this.props.data} />
-      </RefreshableScrollView>
+      </ScrollView>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  data: state.latestLaunch.data,
-  requestState: state.latestLaunch.requestState
+  data: state.data.latestLaunch
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchLaunch: () => dispatch(latestLaunchFetchRequested())
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LatestLaunch)

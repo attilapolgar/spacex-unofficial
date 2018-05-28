@@ -9,10 +9,8 @@ import { repeatedRequest } from '@common/utils'
 function* fetchNextLaunchData() {
   try {
     const data = yield call(repeatedRequest, Api.fetchNextLaunchData)
-    console.log('fetchNextLaunchData', data)
     yield put(nextLaunchFetchSucceeded({ data }))
   } catch (error) {
-    console.log('fetchNextLaunchData error', error)
     yield put(nextLaunchFetchFailed({ errorMessage: error.message }))
   }
 }
