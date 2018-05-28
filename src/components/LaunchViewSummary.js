@@ -42,11 +42,11 @@ export default ({ data, onPress }) => {
 
             <Text note>
               <Ionicons name={`calendar`} color={'black'} />
-              {launchDateUTC}
+              {'  '} {launchDateUTC}
             </Text>
             <Text note>
-              <MaterialIcons name={`place`} color={'black'} /> 
-              {data.launch_site.site_name}
+              <MaterialIcons name={`place`} color={'black'} />
+              {'  '} {data.launch_site.site_name}
             </Text>
           </Body>
         </Left>

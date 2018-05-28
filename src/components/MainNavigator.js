@@ -38,14 +38,10 @@ const AppScreen = createDrawerNavigator(
       }
     },
     LaunchesScreen: {
-      screen: createStackNavigator(
-        { LaunchBrowserScreen, LaunchDetails },
-        {
-          navigationOptions: {
-            initialRouteName: 'LaunchBrowserScreen'
-          }
-        }
-      ),
+      screen: stackNavigatorHOC(LaunchBrowserScreen, {
+        key: 'LaunchDetails',
+        component: LaunchDetails
+      }),
       navigationOptions: {
         title: `Launch browser`,
         drawerIcon: <DrawerIcon image={'rocket'} />
@@ -102,7 +98,7 @@ const AppScreen = createDrawerNavigator(
     }
   },
   {
-    initialRouteName: 'NextLaunchScreen',
+    initialRouteName: 'LatestLaunchScreen',
     navigationOptions: {},
     contentComponent: DrawerContent
   }

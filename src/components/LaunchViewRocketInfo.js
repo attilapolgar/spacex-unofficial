@@ -12,7 +12,8 @@ export default ({ data }) => {
   return (
     <Card>
       <CardItem header style={styles.cardItem}>
-        <Text>Rocket: {data.rocket.rocket_name}</Text>
+        <Thumbnail small source={require('../assets/img/rocket.png')} />
+        <Text style={styles.headerText}>Rocket: {data.rocket.rocket_name}</Text>
       </CardItem>
       <CardItem style={[styles.cardItem]}>
         <Left>
@@ -29,8 +30,26 @@ export default ({ data }) => {
                   <Text style={styles.info}>Serial: {core.core_serial}</Text>
                   <Text style={styles.info}>
                     Reused:{' '}
-                    {core.reused ? `yes (it\'s ${core.flight}. flight)` : 'no'}
+                    {core.reused ? `YES (${core.flight}. flight)` : 'NO'}
                   </Text>
+                  {core.block && (
+                    <Text style={styles.info}>Blocks: {core.block}</Text>
+                  )}
+                  {core.land_success && (
+                    <Text style={styles.info}>
+                      Land success: {core.land_success ? 'YES' : 'NO'}
+                    </Text>
+                  )}
+                  {core.landing_type && (
+                    <Text style={styles.info}>
+                      Landing Type: {core.landing_type}
+                    </Text>
+                  )}
+                  {core.landing_vehicle && (
+                    <Text style={styles.info}>
+                      Landing vehicle: {core.landing_vehicle}
+                    </Text>
+                  )}
                 </View>
               ))}
             </View>
@@ -42,7 +61,7 @@ export default ({ data }) => {
                   <Text style={styles.info}>Payload: {payload.payload_id}</Text>
                   <Text style={styles.info}>
                     Reused:{' '}
-                    {payload.reused ? `yes (${core.flight}. flight)` : 'no'}
+                    {payload.reused ? `YES (${core.flight}. flight)` : 'NO'}
                   </Text>
                   <Text style={styles.info}>
                     Customers:{' '}
@@ -52,10 +71,13 @@ export default ({ data }) => {
                       .join(', ')}
                   </Text>
                   <Text style={styles.info}>Type: {payload.payload_type}</Text>
-                  <Text style={styles.info}>
-                    Mass: {payload.payload_mass_kg}kg /{' '}
-                    {payload.payload_mass_lbs}lbs
-                  </Text>
+                  {payload.payload_mass_kg &&
+                    payload.payload_mass_lbs && (
+                      <Text style={styles.info}>
+                        Mass: {payload.payload_mass_kg}kg /{' '}
+                        {payload.payload_mass_lbs}lbs
+                      </Text>
+                    )}
                   <Text style={styles.info}>Orbit: {payload.orbit}</Text>
                 </View>
               ))}
@@ -73,6 +95,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.2)'
   },
+  headerText: {
+    marginLeft: 10
+  },
   stageInfo: {
     marginLeft: 15
   },
@@ -81,7 +106,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 500,
+    height: 300,
     resizeMode: 'contain'
   },
   payload: {

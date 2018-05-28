@@ -62,6 +62,7 @@ class LaunchBrowser extends Component {
   render() {
     return (
       <ScrollView
+        style={{ flex: 1 }}
         updateMethod={this.props.fetchLaunchData}
         requestState={this.props.requestState}
         initialUpdate={!this.props.data}
@@ -100,7 +101,11 @@ class LaunchBrowser extends Component {
             </TouchableOpacity>
           ))
         ) : (
-          <ActivityIndicator size="large" color="#0000ff" />
+          <View
+            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+          >
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
         )}
       </ScrollView>
     )

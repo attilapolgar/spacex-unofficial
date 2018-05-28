@@ -13,7 +13,7 @@ import LaunchView from '@components/LaunchView'
 class LaunchDetails extends Component {
   static navigationOptions = ({ navigation }) => {
     const data = navigation.getParam('data')
-    // return { title: `Mission ${data.mission_name}` }
+    return { title: `Mission: ${data.mission_name}` }
   }
 
   constructor(props) {
