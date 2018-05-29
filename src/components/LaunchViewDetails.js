@@ -1,5 +1,5 @@
 import React from 'react'
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 import { StyleSheet } from 'react-native'
 import { Card, CardItem, Text } from 'native-base'
 
@@ -8,7 +8,7 @@ export default ({ data }) => {
     data.details && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcon name={'info'} size={32} color={'#005288'} />
+          <MaterialIcons name={'info'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Details</Text>
         </CardItem>
         <CardItem style={[styles.cardItem]}>

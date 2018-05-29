@@ -13,14 +13,14 @@ import { PREFETCH_DATA_SUCCEEDED } from '../../action-types'
 
 const filterForLaunchStatus = (data, status) =>
   data.filter(launch => {
-    if (status === 'all') return launch
+    if (status === 'all') return true
     if (status === 'success') return launch.launch_success === true
     if (status === 'failed') return launch.launch_success === false
   })
 
 const filterForRocket = (data, rocketId) =>
   data.filter(launch => {
-    if (rocketId === 'all') return launch
+    if (rocketId === 'all') return true
     return launch.rocket.rocket_id === rocketId
   })
 
@@ -80,7 +80,7 @@ export default function launchReducer(state = initialState, action) {
       return {
         ...state,
         isFilterActive: state.rocketFilter !== 'all' || status !== 'all',
-        filteredData: filterForLaunchStatus(state.filteredData, status)
+        filteredData: filterForLaunchStatus(state.launches, status)
       }
     }
     case FILTER_FOR_ROCKET: {
@@ -90,7 +90,7 @@ export default function launchReducer(state = initialState, action) {
         isFilterActive:
           state.launchStatusFilter !== 'all' || rocketId !== 'all',
         rocketFilter: rocketId,
-        filteredData: filterForRocket(state.filteredData, rocketId)
+        filteredData: filterForRocket(state.launches, rocketId)
       }
     }
     default:

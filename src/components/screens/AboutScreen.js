@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import {
-  View,
-  StyleSheet,
-  Image,
-  Text,
-  Linking,
-  TouchableOpacity
-} from 'react-native'
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import githubImage from '../../assets/img/github.png'
 import linkedinImage from '../../assets/img/linkedin.png'
+import { Constants, WebBrowser } from 'expo'
 
 export default class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -24,14 +18,18 @@ export default class AboutScreen extends Component {
           <View style={styles.socialImages}>
             <TouchableOpacity
               onPress={() =>
-                Linking.openURL('https://www.linkedin.com/in/attilapolgar/')
+                WebBrowser.openBrowserAsync(
+                  'https://www.linkedin.com/in/attilapolgar/'
+                )
               }
             >
               <Image style={styles.socialImage} source={linkedinImage} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() =>
-                Linking.openURL('https://github.com/raglopa/lbd-react-native')
+                WebBrowser.openBrowserAsync(
+                  'https://github.com/raglopa/lbd-react-native'
+                )
               }
             >
               <Image style={styles.socialImage} source={githubImage} />

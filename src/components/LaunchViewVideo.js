@@ -1,5 +1,6 @@
 import React from 'react'
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
+
 import { StyleSheet, WebView, Dimensions } from 'react-native'
 import { Card, CardItem, Text } from 'native-base'
 
@@ -15,7 +16,7 @@ export default ({ data }) => {
     embedVideoLink && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcon
+          <MaterialIcons
             name={'play-circle-filled'}
             size={32}
             color={'#005288'}

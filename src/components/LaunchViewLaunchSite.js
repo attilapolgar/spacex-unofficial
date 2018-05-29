@@ -1,5 +1,5 @@
 import React from 'react'
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 import { StyleSheet, Linking, Image, View } from 'react-native'
 import { Left, Card, CardItem, Text, Body } from 'native-base'
 
@@ -8,7 +8,7 @@ export default ({ data }) => {
     data.launch_site && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcon name={'place'} size={32} color={'#005288'} />
+          <MaterialIcons name={'place'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Launch site</Text>
         </CardItem>
         <CardItem style={[styles.cardItem]}>

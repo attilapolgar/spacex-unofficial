@@ -52,7 +52,7 @@ class LaunchFilter extends Component {
           selectedValue={this.props.rocketFilter}
           onValueChange={this.onRocketChange}
         >
-          <Picker.Item label="All" value="all" />
+          <Picker.Item label="All rockets" value="all" />
           <Picker.Item label="Falcon 1" value="falcon1" />
           <Picker.Item label="Falcon 9" value="falcon9" />
           <Picker.Item label="Falcon Heavy" value="falconheavy" />

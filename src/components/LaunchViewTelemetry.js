@@ -1,5 +1,6 @@
 import React from 'react'
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
+
 import { StyleSheet, Linking } from 'react-native'
 import { Card, CardItem, Text } from 'native-base'
 
@@ -9,7 +10,7 @@ export default ({ data }) => {
     data.telemetry.flight_club && (
       <Card>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcon name={'multiline-chart'} size={32} color={'#005288'} />
+          <MaterialIcons name={'multiline-chart'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Telemetry</Text>
         </CardItem>
         <CardItem style={[styles.cardItem]}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation'
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 
 import AboutScreen from './screens/AboutScreen'
 import SettingsScreen from './screens/SettingsScreen'
@@ -26,7 +26,7 @@ const AppScreen = createDrawerNavigator(
       navigationOptions: {
         title: `Next mission`,
         drawerIcon: (
-          <MaterialIcon name={'access-time'} size={24} color={'black'} />
+          <MaterialIcons name={'access-time'} size={24} color={'black'} />
         )
       }
     },
@@ -34,7 +34,7 @@ const AppScreen = createDrawerNavigator(
       screen: stackNavigatorHOC(LatestLaunchScreen),
       navigationOptions: {
         title: `Latest mission`,
-        drawerIcon: <MaterialIcon name={'tv'} size={24} color={'black'} />
+        drawerIcon: <MaterialIcons name={'tv'} size={24} color={'black'} />
       }
     },
     LaunchesScreen: {
@@ -44,7 +44,7 @@ const AppScreen = createDrawerNavigator(
       }),
       navigationOptions: {
         title: `MissionBrowser`,
-        drawerIcon: <MaterialIcon name={'search'} size={24} color={'black'} />
+        drawerIcon: <MaterialIcons name={'search'} size={24} color={'black'} />
       }
     },
     // RocketScreen: {
@@ -89,7 +89,7 @@ const AppScreen = createDrawerNavigator(
       navigationOptions: {
         title: `About`,
         drawerIcon: (
-          <MaterialIcon name={'info-outline'} size={24} color={'black'} />
+          <MaterialIcons name={'info-outline'} size={24} color={'black'} />
         )
       }
     }

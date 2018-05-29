@@ -1,6 +1,6 @@
 {
   "name": "lbd-react-native",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -11,18 +11,17 @@
     "test": "jest"
   },
   "dependencies": {
-    "expo": "^27.0.1",
+    "expo": "^27.0.0",
     "moment": "^2.22.1",
     "native-base": "^2.4.5",
-    "react": "16.4.0",
-    "react-native": "~0.55.2",
-    "react-native-swipe-gestures": "^1.0.2",
-    "react-native-vector-icons": "^4.6.0",
+    "react": "16.3.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
     "react-navigation": "^2.0.1",
     "react-redux": "^5.0.7",
     "recompose": "^0.27.1",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "sentry-expo": "^1.7.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
