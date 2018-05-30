@@ -16,6 +16,12 @@
       "image": "./src/assets/img/splash.png",
       "resizeMode": "cover"
     },
+    "ios": {
+      "bundleIdentifier": "com.attilapolgar.spacexcompanion"
+    },
+    "android": {
+      "package": "com.attilapolgar.spacexcompanion"
+    },
     "hooks": {
       "postPublish": [
         {
