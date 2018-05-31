@@ -1,92 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { prefetchDataRequested } from '../../actions'
+import { AppLoading } from 'expo'
+import PropTypes from 'prop-types'
 
-import {
-  Text,
-  ImageBackground,
-  Image,
-  View,
-  StyleSheet,
-  ActivityIndicator
-} from 'react-native'
+import { prefetchDataRequested, preloadAssetsRequested } from '../../actions'
 
 class SplashScreen extends Component {
   componentDidMount = () => {
     this.props.fetchData()
+    this.props.preloadAssets()
   }
-  componentDidUpdate = props => {
-    const { navigation } = this.props
-    this.props.requestState.success && navigation.replace('AppScreen')
+  componentDidUpdate = () => {
+    this.props.requestState.success &&
+      this.props.preloadState.success &&
+      this.props.onFinish()
   }
+
   render() {
     return (
-      <ImageBackground
-        style={styles.container}
-        source={require('../../assets/img/splashScreen.jpg')}
-      >
-        <View style={styles.title}>
-          <Image
-            style={styles.logo}
-            source={require('../../assets/img/spacex-logo.png')}
-          />
-          <Text style={styles.titleText}>companion</Text>
-        </View>
-        <View style={styles.indicator}>
-          <Text style={styles.statusText}>
-            {this.props.requestState.failed && 'Something went wrong'}
-          </Text>
-          {this.props.requestState.pending && (
-            <ActivityIndicator size="large" color="#fff" />
-          )}
-        </View>
-      </ImageBackground>
+      <AppLoading
+        startAsync={this._cacheResourcesAsync}
+        onError={console.warn}
+      />
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-  title: {
-    alignItems: 'center',
-    marginTop: 50,
-    padding: 25,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    // backgroundColor: 'rgba(0,0,0,0.1)',
-    borderRadius: 5
-  },
-  logo: {
-    height: 30,
-    width: 300,
-    resizeMode: 'contain'
-  },
-  titleText: {
-    marginTop: 10,
-    fontSize: 18,
-    // color: '#000',
-    color: '#fff',
-    fontWeight: '100'
-  },
-  statusText: {
-    color: '#fff',
-    fontSize: 18,
-    marginBottom: 50
-  },
-  indicator: {
-    height: 30
-  }
-})
-
 const mapStateToProps = state => ({
-  requestState: state.data.requestState
+  requestState: state.data.requestState,
+  preloadState: state.preload.preloadState
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: () => dispatch(prefetchDataRequested())
+  fetchData: () => dispatch(prefetchDataRequested()),
+  preloadAssets: () => dispatch(preloadAssetsRequested())
 })
+
+SplashScreen.propTypes = {
+  requestState: PropTypes.object.isRequired,
+  preloadState: PropTypes.object.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  onFinish: PropTypes.func.isRequired,
+  preloadAssets: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen)
