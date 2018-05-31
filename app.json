@@ -1,8 +1,8 @@
 {
   "expo": {
     "sdkVersion": "27.0.0",
-    "name": "SpaceX companion",
-    "slug": "spacex-companion",
+    "name": "SpaceX unofficial",
+    "slug": "spacex-unofficial",
     "description":
       "An unofficial companion app for those who want to know everything about SpaceX.",
     "privacy": "unlisted",
@@ -17,10 +17,10 @@
       "resizeMode": "cover"
     },
     "ios": {
-      "bundleIdentifier": "com.attilapolgar.spacexcompanion"
+      "bundleIdentifier": "com.attilapolgar.spacexunofficial"
     },
     "android": {
-      "package": "com.attilapolgar.spacexcompanion"
+      "package": "com.attilapolgar.spacexunofficial"
     },
     "hooks": {
       "postPublish": [
@@ -28,7 +28,7 @@
           "file": "sentry-expo/upload-sourcemaps",
           "config": {
             "organization": "attila-polgar",
-            "project": "spacex-companion",
+            "project": "spacex-unofficial",
             "authToken":
               "dea59fa01cf449afae530b84a25c8683805ed04e1f204210a6066472cdfc3c8d"
           }

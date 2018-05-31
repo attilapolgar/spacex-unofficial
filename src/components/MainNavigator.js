@@ -1,6 +1,12 @@
 import React from 'react'
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation'
-import { MaterialIcons } from '@expo/vector-icons'
+import {
+  MaterialIcons,
+  MaterialCommunityIcons,
+  Entypo,
+  FontAwesome,
+  SimpleLineIcons
+} from '@expo/vector-icons'
 
 import AboutScreen from './screens/AboutScreen'
 import SettingsScreen from './screens/SettingsScreen'
@@ -26,7 +32,7 @@ const AppScreen = createDrawerNavigator(
       navigationOptions: {
         title: `Next mission`,
         drawerIcon: (
-          <MaterialIcons name={'access-time'} size={24} color={'black'} />
+          <MaterialIcons name={'access-time'} size={24} color={'#005288'} />
         )
       }
     },
@@ -34,7 +40,7 @@ const AppScreen = createDrawerNavigator(
       screen: stackNavigatorHOC(LatestLaunchScreen),
       navigationOptions: {
         title: `Latest mission`,
-        drawerIcon: <MaterialIcons name={'tv'} size={24} color={'black'} />
+        drawerIcon: <MaterialIcons name={'tv'} size={24} color={'#005288'} />
       }
     },
     LaunchesScreen: {
@@ -44,52 +50,67 @@ const AppScreen = createDrawerNavigator(
       }),
       navigationOptions: {
         title: `MissionBrowser`,
-        drawerIcon: <MaterialIcons name={'search'} size={24} color={'black'} />
+        drawerIcon: (
+          <MaterialIcons name={'search'} size={24} color={'#005288'} />
+        )
       }
     },
-    // RocketScreen: {
-    //   screen: stackNavigatorHOC(RocketScreen),
-    //   navigationOptions: {
-    //     title: `Rockets`,
-    //   }
-    // },
-    // CapsuleScreen: {
-    //   screen: stackNavigatorHOC(CapsuleScreen),
-    //   navigationOptions: {
-    //     title: `Capsule`,
-    //   }
-    // },
-    // CoreScreen: {
-    //   screen: stackNavigatorHOC(CoreScreen),
-    //   navigationOptions: {
-    //     title: `Core`,
-    //   }
-    // },
-    // CompanyScreen: {
-    //   screen: stackNavigatorHOC(CompanyScreen),
-    //   navigationOptions: {
-    //     title: `About SpaceX`,
-    //   }
-    // },
-    // LaunchpadScreen: {
-    //   screen: stackNavigatorHOC(LaunchpadScreen),
-    //   navigationOptions: {
-    //     title: `Launchpads`,
-    //   }
-    // },
-    // SettingsScreen: {
-    //   screen: stackNavigatorHOC(SettingsScreen),
-    //   navigationOptions: {
-    //     title: `Settings`,
-    //     drawerIcon: <MaterialIcon name={'settings'} size={24} color={'black'} />
-    //   }
-    // },
+    RocketScreen: {
+      screen: stackNavigatorHOC(RocketScreen),
+      navigationOptions: {
+        title: `Rockets`,
+        drawerIcon: (
+          <SimpleLineIcons name={'rocket'} size={24} color={'#005288'} />
+        )
+      }
+    },
+    CapsuleScreen: {
+      screen: stackNavigatorHOC(CapsuleScreen),
+      navigationOptions: {
+        title: `Capsule`,
+        drawerIcon: <Entypo name={'basecamp'} size={24} color={'#005288'} />
+      }
+    },
+    CoreScreen: {
+      screen: stackNavigatorHOC(CoreScreen),
+      navigationOptions: {
+        title: `Core`,
+        drawerIcon: <FontAwesome name={'minus'} size={24} color={'#005288'} />
+      }
+    },
+    CompanyScreen: {
+      screen: stackNavigatorHOC(CompanyScreen),
+      navigationOptions: {
+        title: `About SpaceX`,
+        drawerIcon: (
+          <SimpleLineIcons name={'briefcase'} size={24} color={'#005288'} />
+        )
+      }
+    },
+    LaunchpadScreen: {
+      screen: stackNavigatorHOC(LaunchpadScreen),
+      navigationOptions: {
+        title: `Launchpads`,
+        drawerIcon: (
+          <SimpleLineIcons name={'location-pin'} size={24} color={'#005288'} />
+        )
+      }
+    },
+    SettingsScreen: {
+      screen: stackNavigatorHOC(SettingsScreen),
+      navigationOptions: {
+        title: `Settings`,
+        drawerIcon: (
+          <MaterialIcons name={'settings'} size={24} color={'#005288'} />
+        )
+      }
+    },
     AboutScreen: {
       screen: stackNavigatorHOC(AboutScreen),
       navigationOptions: {
         title: `About`,
         drawerIcon: (
-          <MaterialIcons name={'info-outline'} size={24} color={'black'} />
+          <MaterialIcons name={'info-outline'} size={24} color={'#005288'} />
         )
       }
     }

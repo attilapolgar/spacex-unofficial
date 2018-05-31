@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
-import githubImage from '../../assets/img/github.png'
-import linkedinImage from '../../assets/img/linkedin.png'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { WebBrowser } from 'expo'
 
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 export default class AboutScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.container}>
-          <Text>Created by Attila Polgar with ❤</Text>
-          <Text>and</Text>
-          <Text>React Native + Redux</Text>
+          <Text>Created by Attila Polgar</Text>
+          <Text>raglopa@gmail.com</Text>
           <View style={styles.socialImages}>
             <TouchableOpacity
               onPress={() =>
@@ -20,7 +18,11 @@ export default class AboutScreen extends Component {
                 )
               }
             >
-              <Image style={styles.socialImage} source={linkedinImage} />
+              <MaterialCommunityIcons
+                name={'linkedin-box'}
+                size={75}
+                color={'black'}
+              />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() =>
@@ -29,7 +31,11 @@ export default class AboutScreen extends Component {
                 )
               }
             >
-              <Image style={styles.socialImage} source={githubImage} />
+              <MaterialCommunityIcons
+                name={'github-circle'}
+                size={75}
+                color={'black'}
+              />
             </TouchableOpacity>
           </View>
         </View>

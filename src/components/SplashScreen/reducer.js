@@ -2,7 +2,7 @@ import {
   PRELOAD_ASSETS_FAILED,
   PRELOAD_ASSETS_REQUESTED,
   PRELOAD_ASSETS_SUCCEEDED
-} from '../action-types'
+} from './action-types'
 
 const initialRequestState = {
   success: false,

@@ -1,6 +1,4 @@
-import { delay } from 'redux-saga'
-import { all, call, put, takeLatest } from 'redux-saga/effects'
-import { NavigationActions } from 'react-navigation'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import Api from '@common/api'
 import { PREFETCH_DATA_REQUESTED } from '../action-types'
 import { prefetchDataFailed, prefetchDataSucceeded } from '../actions'

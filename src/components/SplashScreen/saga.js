@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { PRELOAD_ASSETS_REQUESTED } from '../action-types'
-import { preloadAssetsFailed, preloadAssetsSucceeded } from '../actions'
+import { PRELOAD_ASSETS_REQUESTED } from './action-types'
+import { preloadAssetsFailed, preloadAssetsSucceeded } from './actions'
 import { Image } from 'react-native'
 import { Asset, Font } from 'expo'
 import {
@@ -25,10 +25,7 @@ function cacheFonts(fonts) {
 }
 
 const _cacheResourcesAsync = async () => {
-  const imageAssets = cacheImages([
-    require('../assets/img/splashScreen.jpg'),
-    require('../assets/img/falcon.jpg')
-  ])
+  const imageAssets = cacheImages([require('../../assets/img/falcon.jpg')])
 
   const fontAssets = cacheFonts([
     FontAwesome.font,

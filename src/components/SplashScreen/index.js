@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
 import PropTypes from 'prop-types'
 
-import { prefetchDataRequested, preloadAssetsRequested } from '../../actions'
+import { prefetchDataRequested } from '../../actions'
+import { preloadAssetsRequested } from './actions'
 
 class SplashScreen extends Component {
   componentDidMount = () => {
