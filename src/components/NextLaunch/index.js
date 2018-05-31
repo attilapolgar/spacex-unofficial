@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
 
 import LaunchView from '@components/LaunchView'
 
@@ -22,6 +23,8 @@ const mapStateToProps = state => ({
   data: state.data.nextLaunch
 })
 
-const mapDispatchToProps = dispatch => ({})
+NextLaunch.propTypes = {
+  data: PropTypes.object
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NextLaunch)
+export default connect(mapStateToProps)(NextLaunch)

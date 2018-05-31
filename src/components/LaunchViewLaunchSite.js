@@ -1,6 +1,6 @@
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import { StyleSheet, Linking, Image, View } from 'react-native'
+import { StyleSheet, Linking } from 'react-native'
 import { Left, Card, CardItem, Text, Body } from 'native-base'
 
 export default ({ data }) => {

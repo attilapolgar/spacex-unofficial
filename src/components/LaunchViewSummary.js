@@ -3,10 +3,10 @@ import moment from 'moment'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { StyleSheet, Linking, Image, View } from 'react-native'
+import { StyleSheet, Image, View } from 'react-native'
 import { Left, Card, CardItem, Text, Body } from 'native-base'
 
-export default ({ data, onPress }) => {
+const LaunchViewSummary = ({ data }) => {
   const launchDateUTC = moment.utc(data.launch_date_utc).format('MM/DD/YYYY')
 
   return (
@@ -85,3 +85,5 @@ const styles = StyleSheet.create({
   },
   link: { textDecorationLine: 'underline' }
 })
+
+export default LaunchViewSummary

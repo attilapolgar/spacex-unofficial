@@ -1,13 +1,16 @@
 import React from 'react'
-import { TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { Entypo } from '@expo/vector-icons'
+import PropTypes from 'prop-types'
 
-export default ({ active, navigation, onPress }) => (
+const HamburgerIcon = ({ onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Entypo name={'menu'} size={36} color={'white'} />
   </TouchableOpacity>
 )
 
-const styles = StyleSheet.create({
-  icon: {}
-})
+HamburgerIcon.propTypes = {
+  onPress: PropTypes.func
+}
+
+export default HamburgerIcon

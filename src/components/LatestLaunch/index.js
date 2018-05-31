@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
 
 import LaunchView from '@components/LaunchView'
 
 class LatestLaunch extends Component {
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = {
     title: `Latest mission`
-  })
+  }
 
   render() {
     return (
@@ -21,5 +22,9 @@ class LatestLaunch extends Component {
 const mapStateToProps = state => ({
   data: state.data.latestLaunch
 })
+
+LatestLaunch.propTypes = {
+  data: PropTypes.obj
+}
 
 export default connect(mapStateToProps)(LatestLaunch)

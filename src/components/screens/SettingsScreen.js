@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
 
 export default class AboutScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {}
-  }
   render() {
-    const { navigation } = this.props
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Settings Screen</Text>
@@ -14,4 +10,3 @@ export default class AboutScreen extends Component {
     )
   }
 }
-const styles = StyleSheet.create({})

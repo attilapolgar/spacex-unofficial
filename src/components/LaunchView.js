@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
+import PropTypes from 'prop-types'
 
 import LaunchViewSummary from './LaunchViewSummary'
 import LaunchViewDetails from './LaunchViewDetails'
@@ -31,5 +32,9 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.2)'
   }
 })
+
+LaunchView.propTypes = {
+  data: PropTypes.object
+}
 
 export default LaunchView

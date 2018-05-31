@@ -1,4 +1,3 @@
-import { randomIntegerInRange } from '@common/utils'
 import {
   LAUNCH_DATA_FETCH_REQUESTED,
   LAUNCH_DATA_FETCH_SUCCEEDED,
@@ -21,14 +20,6 @@ export const launchDataFetchSucceeded = payload => ({
   payload
 })
 
-export const selectNextLaunch = () => ({
-  type: SELECT_NEXT_LAUNCH
-})
-export const selectLaunch = payload => ({ type: SELECT_LAUNCH, payload })
-
-export const selectPrevLaunch = () => ({
-  type: SELECT_PREV_LAUNCH
-})
 export const filterForLaunchStatus = payload => ({
   type: FILTER_FOR_LAUNCH_STATUS,
   payload

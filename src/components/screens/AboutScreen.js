@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import githubImage from '../../assets/img/github.png'
 import linkedinImage from '../../assets/img/linkedin.png'
-import { Constants, WebBrowser } from 'expo'
+import { WebBrowser } from 'expo'
 
 export default class AboutScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {}
-  }
   render() {
     return (
       <View style={styles.container}>

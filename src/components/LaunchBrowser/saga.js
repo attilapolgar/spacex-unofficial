@@ -1,5 +1,4 @@
-import { delay } from 'redux-saga'
-import { all, call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 
 import Api from '@common/api'
 import { LAUNCH_DATA_FETCH_REQUESTED } from './action-types'

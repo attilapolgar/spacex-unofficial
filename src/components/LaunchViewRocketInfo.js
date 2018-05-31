@@ -1,5 +1,4 @@
 import React from 'react'
-import moment from 'moment'
 import { StyleSheet, Image } from 'react-native'
 import { View, Left, Card, CardItem, Text, Body } from 'native-base'
 import falcon9Image from '../assets/img/falcon9-render.png'
@@ -9,7 +8,7 @@ const rocketImages = {
   falcon9: falcon9Image
 }
 
-export default ({ data }) => {
+const LaunchViewRocket = ({ data }) => {
   return (
     <Card>
       <CardItem header style={styles.cardItem}>
@@ -114,3 +113,5 @@ const styles = StyleSheet.create({
     padding: 5
   }
 })
+
+export default LaunchViewRocket

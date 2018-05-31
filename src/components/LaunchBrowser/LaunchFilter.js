@@ -1,26 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import {
-  Text,
-  View,
-  TouchableWithoutFeedback,
-  ActivityIndicator,
-  ScrollView,
-  TouchableOpacity,
-  FlatList
-} from 'react-native'
-import {
-  Card,
-  CardItem,
-  Left,
-  Body,
-  Container,
-  Header,
-  Form,
-  Picker,
-  Icon
-} from 'native-base'
+import { Form, Picker } from 'native-base'
 
 import { filterForLaunchStatus, filterForRocket } from './actions'
 
@@ -71,5 +53,12 @@ const mapDispatchToProps = dispatch => ({
   filterForLaunchStatus: payload => dispatch(filterForLaunchStatus(payload)),
   filterForRocket: payload => dispatch(filterForRocket(payload))
 })
+
+LaunchFilter.propTypes = {
+  launchStatusFilter: PropTypes.string,
+  rocketFilter: PropTypes.string,
+  filterForLaunchStatus: PropTypes.func,
+  filterForRocket: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(LaunchFilter)

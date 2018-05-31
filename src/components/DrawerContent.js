@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, DrawerItems } from 'react-navigation'
+import { DrawerItems } from 'react-navigation'
 import { Image, ScrollView, StyleSheet } from 'react-native'
 
 const DrawerContent = props => (

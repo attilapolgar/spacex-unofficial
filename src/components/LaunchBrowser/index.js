@@ -1,27 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
-import {
-  Text,
-  View,
-  TouchableWithoutFeedback,
-  ActivityIndicator,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-  Button
-} from 'react-native'
-import {
-  Card,
-  CardItem,
-  Left,
-  Body,
-  Container,
-  Header,
-  Form,
-  Picker,
-  Icon
-} from 'native-base'
+import PropTypes from 'prop-types'
+
+import { ScrollView, TouchableOpacity, FlatList } from 'react-native'
 
 import LaunchViewSummary from '@components/LaunchViewSummary'
 import LaunchFilter from './LaunchFilter'
@@ -29,13 +11,6 @@ import LaunchFilter from './LaunchFilter'
 class LaunchBrowser extends Component {
   static navigationOptions = () => ({
     title: 'Launch browser'
-    // headerRight: (
-    //   <Button
-    //     onPress={() => {}}
-    //     disabled={this.props.isFilterActive}
-    //     title={'Reset filters'}
-    //   />
-    // )
   })
 
   constructor(props) {
@@ -82,6 +57,10 @@ const mapStateToProps = state => ({
   launchStatusFilter: state.launchBrowser.launchStatusFilter
 })
 
-const mapDispatchToProps = dispatch => ({})
+LaunchBrowser.propTypes = {
+  filterForLaunchStatus: PropTypes.func,
+  filteredData: PropTypes.array,
+  navigation: PropTypes.object
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LaunchBrowser)
+export default connect(mapStateToProps)(LaunchBrowser)

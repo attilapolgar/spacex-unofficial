@@ -4,7 +4,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { StyleSheet, WebView, Dimensions } from 'react-native'
 import { Card, CardItem, Text } from 'native-base'
 
-const deviceHeight = Dimensions.get('window').height
 const deviceWidth = Dimensions.get('window').width
 
 export default ({ data }) => {

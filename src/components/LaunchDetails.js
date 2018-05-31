@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
 
 import LaunchView from '@components/LaunchView'
 
@@ -19,6 +20,9 @@ class LaunchDetails extends Component {
     )
   }
 }
-const styles = StyleSheet.create({})
+
+LaunchDetails.propTypes = {
+  navigation: PropTypes.object
+}
 
 export default LaunchDetails
