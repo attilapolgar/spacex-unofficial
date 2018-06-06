@@ -4,11 +4,12 @@ const urls = {
     latest: `${baseUrl}/launches/latest`,
     next: `${baseUrl}/launches/next`,
     all: `${baseUrl}/launches/all`
-  }
+  },
+  rockets: `${baseUrl}/rockets`
 }
 
-const fetchNextLaunchData = () => {
-  return fetch(urls.launches.next)
+const fetchData = url => {
+  return fetch(url)
     .then(response => {
       if (response.status === 200) {
         return response.json()
@@ -18,31 +19,15 @@ const fetchNextLaunchData = () => {
     })
     .then(myJson => myJson)
 }
-const fetchLatestLaunchData = () => {
-  return fetch(urls.launches.latest)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      } else {
-        throw new Error('Request failed: no response')
-      }
-    })
-    .then(myJson => myJson)
-}
-const fetchAllLaunchData = () => {
-  return fetch(urls.launches.all)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      } else {
-        throw new Error('Request failed: no response')
-      }
-    })
-    .then(myJson => myJson)
-}
+
+const fetchNextLaunchData = () => fetchData(urls.launches.next)
+const fetchLatestLaunchData = () => fetchData(urls.launches.latest)
+const fetchAllLaunchData = () => fetchData(urls.launches.all)
+const fetchRocketData = () => fetchData(urls.rockets)
 
 export default {
   fetchNextLaunchData,
   fetchLatestLaunchData,
-  fetchAllLaunchData
+  fetchAllLaunchData,
+  fetchRocketData
 }

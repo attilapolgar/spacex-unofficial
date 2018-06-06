@@ -9,7 +9,10 @@ function* fetchAllData() {
     const nextLaunch = yield call(repeatedRequest, Api.fetchNextLaunchData)
     const latestLaunch = yield call(repeatedRequest, Api.fetchLatestLaunchData)
     const launches = yield call(repeatedRequest, Api.fetchAllLaunchData)
-    yield put(prefetchDataSucceeded({ nextLaunch, latestLaunch, launches }))
+    const rockets = yield call(repeatedRequest, Api.fetchRocketData)
+    yield put(
+      prefetchDataSucceeded({ nextLaunch, latestLaunch, launches, rockets })
+    )
   } catch (error) {
     yield put(prefetchDataFailed({ errorMessage: error.message }))
   }

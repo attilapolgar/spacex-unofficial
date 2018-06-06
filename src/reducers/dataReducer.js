@@ -30,12 +30,13 @@ export default function dataReducer(state = initialState, action) {
       }
     }
     case PREFETCH_DATA_SUCCEEDED: {
-      const { nextLaunch, latestLaunch } = action.payload
+      const { nextLaunch, latestLaunch, rockets } = action.payload
 
       return {
         ...state,
         nextLaunch,
         latestLaunch,
+        rockets,
         requestState: {
           pending: false,
           success: true,

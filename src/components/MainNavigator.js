@@ -49,7 +49,7 @@ const AppScreen = createDrawerNavigator(
         component: LaunchDetails
       }),
       navigationOptions: {
-        title: `MissionBrowser`,
+        title: `Mission browser`,
         drawerIcon: (
           <MaterialIcons name={'search'} size={24} color={'#005288'} />
         )
@@ -116,7 +116,7 @@ const AppScreen = createDrawerNavigator(
     }
   },
   {
-    initialRouteName: 'NextLaunchScreen',
+    initialRouteName: 'RocketScreen',
     navigationOptions: {},
     contentComponent: DrawerContent
   }
