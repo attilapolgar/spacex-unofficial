@@ -3,21 +3,22 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { StyleSheet } from 'react-native'
 import { Card, CardItem, Text } from 'native-base'
 
-export default ({ data }) => {
+const LaunchViewDetails = ({ data }) => {
   return (
-    data.details && (
-      <Card>
-        <CardItem header style={styles.cardItem}>
-          <MaterialIcons name={'info'} size={32} color={'#005288'} />
-          <Text style={styles.headerText}>Details</Text>
-        </CardItem>
-        <CardItem style={[styles.cardItem]}>
-          <Text style={styles.details}>{data.details}</Text>
-        </CardItem>
-      </Card>
-    )
+    <Card>
+      <CardItem header style={styles.cardItem}>
+        <MaterialIcons name={'info'} size={32} color={'#005288'} />
+        <Text style={styles.headerText}>Details</Text>
+      </CardItem>
+      <CardItem style={[styles.cardItem]}>
+        <Text style={styles.details}>
+          {data.details ? data.details : 'No details yet.'}
+        </Text>
+      </CardItem>
+    </Card>
   )
 }
+
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
@@ -28,3 +29,5 @@ const styles = StyleSheet.create({
     marginLeft: 10
   }
 })
+
+export default LaunchViewDetails

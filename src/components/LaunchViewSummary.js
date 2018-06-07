@@ -7,7 +7,10 @@ import { StyleSheet, Image, View } from 'react-native'
 import { Left, Card, CardItem, Text, Body } from 'native-base'
 
 const LaunchViewSummary = ({ data }) => {
-  const launchDateUTC = moment.utc(data.launch_date_utc).format('MM/DD/YYYY')
+  const launchDateUTC = moment
+    .utc(data.launch_date_utc)
+    .format('MM/DD/YYYY hh:mm:ss')
+  const diff = moment(launchDateUTC, 'MM/DD/YYYY').fromNow()
 
   return (
     <Card
@@ -19,14 +22,13 @@ const LaunchViewSummary = ({ data }) => {
     >
       <CardItem header style={[styles.cardItem]}>
         <Left>
-          {data && data.links && data.links.mission_patch ? (
-            <Image
-              source={{ uri: data.links.mission_patch }}
-              style={styles.image}
-            />
-          ) : (
-            <View style={styles.imagePlaceholder} />
-          )}
+          {data.links &&
+            data.links.mission_patch && (
+              <Image
+                source={{ uri: data.links.mission_patch }}
+                style={styles.image}
+              />
+            )}
 
           <Body>
             <Text style={styles.missionName}>
@@ -35,7 +37,7 @@ const LaunchViewSummary = ({ data }) => {
 
             <Text note>
               <MaterialCommunityIcons name={`calendar`} color={'black'} />
-              {'  '} {launchDateUTC}
+              {'  '} {launchDateUTC} ({diff})
             </Text>
             <Text note>
               <MaterialIcons name={`place`} color={'black'} />

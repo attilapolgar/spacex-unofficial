@@ -4,10 +4,12 @@ import { Container, Header, Tabs, Tab } from 'native-base'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import AppHeader from '@components/AppHeader'
 import RocketDetails from '@components/RocketDetails'
 class RocketScreen extends Component {
   static propTypes = {
-    data: PropTypes.array
+    data: PropTypes.array,
+    navigation: PropTypes.object
   }
   render() {
     const f1 = this.props.data.find(r => r.id === 'falcon1')
@@ -16,6 +18,7 @@ class RocketScreen extends Component {
     const bfr = this.props.data.find(r => r.id === 'bfr')
     return (
       <Container>
+        <AppHeader navigation={this.props.navigation} title="Rockets" />
         <Tabs initialPage={0} tabBarPosition="bottom">
           <Tab heading="F1">
             <RocketDetails data={f1} />

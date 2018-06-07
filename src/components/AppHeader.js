@@ -26,11 +26,7 @@ const AppHeader = ({ navigation, title, subtitle }) => {
         <Title>{title}</Title>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </Body>
-      <Right>
-        <Button transparent>
-          <Icon name="arrow-back" />
-        </Button>
-      </Right>
+      <Right />
     </Header>
   )
 }
