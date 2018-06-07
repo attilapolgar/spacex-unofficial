@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 import PropTypes from 'prop-types'
 
 import LaunchViewSummary from './LaunchViewSummary'
@@ -13,7 +13,8 @@ import LaunchViewLinks from './LaunchViewLinks'
 const LaunchView = ({ data }) => {
   return (
     <View style={styles.container}>
-      <LaunchViewSummary data={data} />
+      <LaunchViewSummary data={data} showImage={false} />
+      <Image style={styles.image} source={{ uri: data.links.mission_patch }} />
       <LaunchViewDetails data={data} />
       <LaunchViewLaunchSite data={data} />
       <LaunchViewTelemetry data={data} />
@@ -30,6 +31,13 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.2)'
+  },
+  image: {
+    width: undefined,
+    height: 300,
+    resizeMode: 'contain',
+    marginTop: 15,
+    marginBottom: 15
   }
 })
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Tabs, Tab, Header, Content } from 'native-base'
-import { ScrollView } from 'react-native'
+import { Container, Tabs, Tab, Content } from 'native-base'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -21,14 +20,14 @@ class LaunchScreen extends Component {
         <AppHeader navigation={this.props.navigation} title="Launches" />
         <Tabs initialPage={0} tabBarPosition="bottom">
           <Tab heading="Next">
-            <ScrollView style={{ flex: 1 }}>
+            <Content>
               <LaunchView data={this.props.nextLaunch} />
-            </ScrollView>
+            </Content>
           </Tab>
           <Tab heading="Latest">
-            <ScrollView style={{ flex: 1 }}>
+            <Content>
               <LaunchView data={this.props.latestLaunch} />
-            </ScrollView>
+            </Content>
           </Tab>
           <Tab heading="Browse">
             <LaunchBrowser navigation={this.props.navigation} />

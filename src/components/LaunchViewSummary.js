@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { StyleSheet, Image, View } from 'react-native'
 import { Left, Card, CardItem, Text, Body } from 'native-base'
 
-const LaunchViewSummary = ({ data }) => {
+const LaunchViewSummary = ({ data, showImage = true }) => {
   const launchDateUTC = moment
     .utc(data.launch_date_utc)
     .format('MM/DD/YYYY hh:mm:ss')
@@ -23,9 +23,10 @@ const LaunchViewSummary = ({ data }) => {
       <CardItem header style={[styles.cardItem]}>
         <Left>
           {data.links &&
-            data.links.mission_patch && (
+            data.links.mission_patch &&
+            showImage && (
               <Image
-                source={{ uri: data.links.mission_patch }}
+                source={{ uri: data.links.mission_patch_small }}
                 style={styles.image}
               />
             )}
