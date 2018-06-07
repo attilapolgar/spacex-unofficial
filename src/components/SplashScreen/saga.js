@@ -28,6 +28,7 @@ const _cacheResourcesAsync = async () => {
   const imageAssets = cacheImages([require('../../assets/img/falcon.jpg')])
 
   const fontAssets = cacheFonts([
+    { Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf') },
     FontAwesome.font,
     Entypo.font,
     MaterialIcons.font,

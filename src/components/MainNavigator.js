@@ -2,7 +2,6 @@ import React from 'react'
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation'
 import {
   MaterialIcons,
-  MaterialCommunityIcons,
   Entypo,
   FontAwesome,
   SimpleLineIcons
@@ -10,8 +9,6 @@ import {
 
 import AboutScreen from './screens/AboutScreen'
 import SettingsScreen from './screens/SettingsScreen'
-import NextLaunchScreen from './NextLaunch'
-import LatestLaunchScreen from './LatestLaunch'
 import LaunchBrowserScreen from './LaunchBrowser'
 import CapsuleScreen from './screens/CapsuleScreen'
 import CoreScreen from './screens/CoreScreen'
@@ -20,6 +17,7 @@ import LaunchpadScreen from './screens/LaunchpadScreen'
 import RocketScreen from './screens/RocketScreen'
 import LaunchDetails from './LaunchDetails'
 import SplashScreen from './SplashScreen'
+import LaunchScreen from './screens/LaunchScreen'
 
 import DrawerContent from './DrawerContent'
 
@@ -27,31 +25,15 @@ import stackNavigatorHOC from './StackNavigatorHOC'
 
 const AppScreen = createDrawerNavigator(
   {
-    NextLaunchScreen: {
-      screen: stackNavigatorHOC(NextLaunchScreen),
-      navigationOptions: {
-        title: `Next mission`,
-        drawerIcon: (
-          <MaterialIcons name={'access-time'} size={24} color={'#005288'} />
-        )
-      }
-    },
-    LatestLaunchScreen: {
-      screen: stackNavigatorHOC(LatestLaunchScreen),
-      navigationOptions: {
-        title: `Latest mission`,
-        drawerIcon: <MaterialIcons name={'tv'} size={24} color={'#005288'} />
-      }
-    },
-    LaunchesScreen: {
-      screen: stackNavigatorHOC(LaunchBrowserScreen, {
+    LaunchScreen: {
+      screen: stackNavigatorHOC(LaunchScreen, {
         key: 'MissionDetails',
         component: LaunchDetails
       }),
       navigationOptions: {
-        title: `Mission browser`,
+        title: `Missions`,
         drawerIcon: (
-          <MaterialIcons name={'search'} size={24} color={'#005288'} />
+          <SimpleLineIcons name={'rocket'} size={24} color={'#005288'} />
         )
       }
     },
@@ -116,7 +98,7 @@ const AppScreen = createDrawerNavigator(
     }
   },
   {
-    initialRouteName: 'RocketScreen',
+    initialRouteName: 'LaunchScreen',
     navigationOptions: {},
     contentComponent: DrawerContent
   }

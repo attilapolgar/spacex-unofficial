@@ -20,6 +20,7 @@ const stackNavigatorHOC = (component, component2) => {
     navigationOptions: ({ navigation }) => {
       const isDrawerOpen = navigation.state.isDrawerOpen
       return {
+        header: null,
         headerStyle: {
           backgroundColor: '#005288',
           paddingLeft: 5,
