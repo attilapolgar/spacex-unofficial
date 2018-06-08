@@ -6,7 +6,7 @@ const DrawerContent = props => (
   <ScrollView style={styles.container}>
     <Image
       style={styles.headerImage}
-      source={require('../assets/img/falcon.jpg')}
+      source={require('../assets/img/drawer-image.jpg')}
     />
     <DrawerItems {...props} />
   </ScrollView>
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   headerImage: {
     flex: 1,
     width: undefined,
-    height: 200,
+    height: 150,
     resizeMode: 'cover'
   }
 })

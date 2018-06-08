@@ -25,7 +25,9 @@ function cacheFonts(fonts) {
 }
 
 const _cacheResourcesAsync = async () => {
-  const imageAssets = cacheImages([require('../../assets/img/falcon.jpg')])
+  const imageAssets = cacheImages([
+    // require('../../assets/img/falcon.jpg')
+  ])
 
   const fontAssets = cacheFonts([
     { Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf') },
