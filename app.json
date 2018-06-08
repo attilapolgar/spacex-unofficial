@@ -3,12 +3,11 @@
     "sdkVersion": "27.0.0",
     "name": "SpaceX unofficial",
     "slug": "spacex-unofficial",
-    "description": "An unofficial companion app for those who want to know everything about SpaceX.",
+    "description":
+      "An unofficial companion app for those who want to know everything about SpaceX.",
     "privacy": "unlisted",
     "version": "0.0.1",
-    "platforms": [
-      "android"
-    ],
+    "platforms": ["android"],
     "githubUrl": "https://github.com/raglopa/lbd-react-native",
     "orientation": "portrait",
     "primaryColor": "#005288",
@@ -30,7 +29,8 @@
           "config": {
             "organization": "attila-polgar",
             "project": "spacex-unofficial",
-            "authToken": "dea59fa01cf449afae530b84a25c8683805ed04e1f204210a6066472cdfc3c8d"
+            "authToken":
+              "dea59fa01cf449afae530b84a25c8683805ed04e1f204210a6066472cdfc3c8d"
           }
         }
       ]
