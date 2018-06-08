@@ -27,7 +27,7 @@ export default class AboutScreen extends Component {
             <TouchableOpacity
               onPress={() =>
                 WebBrowser.openBrowserAsync(
-                  'https://github.com/raglopa/lbd-react-native'
+                  'https://github.com/raglopa/spacex-unofficial'
                 )
               }
             >

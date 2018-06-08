@@ -8,7 +8,7 @@
     "privacy": "unlisted",
     "version": "0.0.1",
     "platforms": ["android"],
-    "githubUrl": "https://github.com/raglopa/lbd-react-native",
+    "githubUrl": "https://github.com/raglopa/spacex-unofficial",
     "orientation": "portrait",
     "primaryColor": "#005288",
     "icon": "./src/assets/img/app-icon.png",
