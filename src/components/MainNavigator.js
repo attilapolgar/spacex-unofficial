@@ -32,9 +32,7 @@ const AppScreen = createDrawerNavigator(
       }),
       navigationOptions: {
         title: `Missions`,
-        drawerIcon: (
-          <SimpleLineIcons name={'rocket'} size={24} color={'#005288'} />
-        )
+        drawerIcon: <Entypo name={'browser'} size={24} color={'#005288'} />
       }
     },
     RocketScreen: {
@@ -46,47 +44,47 @@ const AppScreen = createDrawerNavigator(
         )
       }
     },
-    CapsuleScreen: {
-      screen: stackNavigatorHOC(CapsuleScreen),
-      navigationOptions: {
-        title: `Capsule`,
-        drawerIcon: <Entypo name={'basecamp'} size={24} color={'#005288'} />
-      }
-    },
-    CoreScreen: {
-      screen: stackNavigatorHOC(CoreScreen),
-      navigationOptions: {
-        title: `Core`,
-        drawerIcon: <FontAwesome name={'minus'} size={24} color={'#005288'} />
-      }
-    },
-    CompanyScreen: {
-      screen: stackNavigatorHOC(CompanyScreen),
-      navigationOptions: {
-        title: `About SpaceX`,
-        drawerIcon: (
-          <SimpleLineIcons name={'briefcase'} size={24} color={'#005288'} />
-        )
-      }
-    },
-    LaunchpadScreen: {
-      screen: stackNavigatorHOC(LaunchpadScreen),
-      navigationOptions: {
-        title: `Launchpads`,
-        drawerIcon: (
-          <SimpleLineIcons name={'location-pin'} size={24} color={'#005288'} />
-        )
-      }
-    },
-    SettingsScreen: {
-      screen: stackNavigatorHOC(SettingsScreen),
-      navigationOptions: {
-        title: `Settings`,
-        drawerIcon: (
-          <MaterialIcons name={'settings'} size={24} color={'#005288'} />
-        )
-      }
-    },
+    // CapsuleScreen: {
+    //   screen: stackNavigatorHOC(CapsuleScreen),
+    //   navigationOptions: {
+    //     title: `Capsule`,
+    //     drawerIcon: <Entypo name={'basecamp'} size={24} color={'#005288'} />
+    //   }
+    // },
+    // CoreScreen: {
+    //   screen: stackNavigatorHOC(CoreScreen),
+    //   navigationOptions: {
+    //     title: `Core`,
+    //     drawerIcon: <FontAwesome name={'minus'} size={24} color={'#005288'} />
+    //   }
+    // },
+    // CompanyScreen: {
+    //   screen: stackNavigatorHOC(CompanyScreen),
+    //   navigationOptions: {
+    //     title: `About SpaceX`,
+    //     drawerIcon: (
+    //       <SimpleLineIcons name={'briefcase'} size={24} color={'#005288'} />
+    //     )
+    //   }
+    // },
+    // LaunchpadScreen: {
+    //   screen: stackNavigatorHOC(LaunchpadScreen),
+    //   navigationOptions: {
+    //     title: `Launchpads`,
+    //     drawerIcon: (
+    //       <SimpleLineIcons name={'location-pin'} size={24} color={'#005288'} />
+    //     )
+    //   }
+    // },
+    // SettingsScreen: {
+    //   screen: stackNavigatorHOC(SettingsScreen),
+    //   navigationOptions: {
+    //     title: `Settings`,
+    //     drawerIcon: (
+    //       <MaterialIcons name={'settings'} size={24} color={'#005288'} />
+    //     )
+    //   }
+    // },
     AboutScreen: {
       screen: stackNavigatorHOC(AboutScreen),
       navigationOptions: {
