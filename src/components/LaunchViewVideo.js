@@ -1,8 +1,8 @@
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { StyleSheet, WebView, Dimensions } from 'react-native'
-import { Card, CardItem, Text } from 'native-base'
+import { StyleSheet, WebView, Dimensions, View } from 'react-native'
+import { CardItem, Text } from 'native-base'
 
 const deviceWidth = Dimensions.get('window').width
 
@@ -13,7 +13,7 @@ export default ({ data }) => {
     data.links.video_link.replace('watch?v=', 'embed/')
   return (
     embedVideoLink && (
-      <Card>
+      <View>
         <CardItem header style={styles.cardItem}>
           <MaterialIcons
             name={'play-circle-filled'}
@@ -31,7 +31,7 @@ export default ({ data }) => {
             scalesPageToFit={true}
           />
         </CardItem>
-      </Card>
+      </View>
     )
   )
 }

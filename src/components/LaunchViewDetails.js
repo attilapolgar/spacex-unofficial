@@ -1,12 +1,12 @@
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import { StyleSheet } from 'react-native'
-import { Card, CardItem, Text } from 'native-base'
+import { StyleSheet, View } from 'react-native'
+import { CardItem, Text } from 'native-base'
 
 const LaunchViewDetails = ({ data }) => {
   return (
-    <Card>
-      <CardItem header style={styles.cardItem}>
+    <View>
+      <CardItem header style={[styles.cardItem, styles.cardHeader]}>
         <MaterialIcons name={'info'} size={32} color={'#005288'} />
         <Text style={styles.headerText}>Details</Text>
       </CardItem>
@@ -15,7 +15,7 @@ const LaunchViewDetails = ({ data }) => {
           {data.details ? data.details : 'No details yet.'}
         </Text>
       </CardItem>
-    </Card>
+    </View>
   )
 }
 

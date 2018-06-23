@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Linking } from 'react-native'
+import { StyleSheet, Linking, View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import { Card, List, CardItem, ListItem, Text, Content } from 'native-base'
+import { List, CardItem, ListItem, Text, Content } from 'native-base'
 
 export default ({ data }) => {
   const validLinks = Object.keys(data.links)
@@ -17,7 +17,7 @@ export default ({ data }) => {
 
   return (
     validLinks.length > 0 && (
-      <Card>
+      <View>
         <CardItem header style={styles.cardItem}>
           <MaterialIcons name={'link'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Links</Text>
@@ -38,7 +38,7 @@ export default ({ data }) => {
             </List>
           </Content>
         </CardItem>
-      </Card>
+      </View>
     )
   )
 }

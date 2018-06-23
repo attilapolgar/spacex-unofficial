@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { StyleSheet, Image, View } from 'react-native'
-import { Left, Card, CardItem, Text, Body } from 'native-base'
+import { Left, CardItem, Text, Body } from 'native-base'
 
 const LaunchViewSummary = ({ data, showImage = true }) => {
   const launchDateUTC = moment
@@ -13,14 +13,16 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
   const diff = moment(launchDateUTC, 'MM/DD/YYYY').fromNow()
 
   return (
-    <Card
-      style={[
-        styles.container,
-        data.launch_success === true ? styles.success : '',
-        data.launch_success === false ? styles.fail : ''
-      ]}
-    >
-      <CardItem header style={[styles.cardItem]}>
+    <View>
+      <CardItem
+        header
+        style={[
+          styles.cardItem,
+          styles.container,
+          data.launch_success === true ? styles.success : '',
+          data.launch_success === false ? styles.fail : ''
+        ]}
+      >
         <Left>
           {data.links &&
             data.links.mission_patch &&
@@ -47,13 +49,12 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
           </Body>
         </Left>
       </CardItem>
-    </Card>
+    </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    borderLeftWidth: 5
+    flex: 1
   },
   missionName: {
     fontSize: 18
@@ -62,7 +63,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
+    borderTopWidth: 1,
+    borderBottomColor: 'rgba(0, 0, 0, 0.2)',
+    borderLeftColor: 'rgba(0, 0, 0, 0.2)',
+    borderTopColor: 'rgba(0, 0, 0, 0.2)'
   },
   result: {
     justifyContent: 'center'
@@ -81,10 +85,12 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   success: {
-    borderColor: 'green'
+    borderLeftWidth: 5,
+    borderLeftColor: 'green'
   },
   fail: {
-    borderColor: 'red'
+    borderLeftWidth: 5,
+    borderLeftColor: 'red'
   },
   link: { textDecorationLine: 'underline' }
 })

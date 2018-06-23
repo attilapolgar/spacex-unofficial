@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Image } from 'react-native'
-import { View, Left, Card, CardItem, Text, Body } from 'native-base'
+import { StyleSheet, Image, View } from 'react-native'
+import { Left, CardItem, Text, Body } from 'native-base'
 import falcon9Image from '../assets/img/falcon9-render.png'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -10,7 +10,7 @@ const rocketImages = {
 
 const LaunchViewRocket = ({ data }) => {
   return (
-    <Card>
+    <View>
       <CardItem header style={styles.cardItem}>
         <MaterialCommunityIcons name={'rocket'} size={32} color={'#005288'} />
         <Text style={styles.headerText}>Rocket: {data.rocket.rocket_name}</Text>
@@ -85,7 +85,7 @@ const LaunchViewRocket = ({ data }) => {
           </Body>
         </Left>
       </CardItem>
-    </Card>
+    </View>
   )
 }
 
