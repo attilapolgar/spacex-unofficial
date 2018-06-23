@@ -12,6 +12,9 @@
     "orientation": "portrait",
     "primaryColor": "#005288",
     "icon": "./src/assets/img/app-icon.png",
+    "androidStatusBar": {
+      "backgroundColor": "#005288"
+    },
     "splash": {
       "image": "./src/assets/img/splash.png",
       "resizeMode": "cover"
