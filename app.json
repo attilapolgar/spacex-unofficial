@@ -17,10 +17,12 @@
       "resizeMode": "cover"
     },
     "ios": {
-      "bundleIdentifier": "com.attilapolgar.spacexunofficial"
+      "bundleIdentifier": "com.raglopa.spacexunofficial"
     },
     "android": {
-      "package": "com.attilapolgar.spacexunofficial"
+      "versionCode": 1,
+      "package": "com.raglopa.spacexunofficial",
+      "permissions": []
     },
     "hooks": {
       "postPublish": [
