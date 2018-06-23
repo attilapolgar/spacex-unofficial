@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Container } from 'native-base'
 import { WebBrowser } from 'expo'
-
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+
+import AppHeader from '@components/AppHeader'
 export default class AboutScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Container>
+        <AppHeader navigation={this.props.navigation} title="About" />
+
         <View style={styles.container}>
           <Text>Created by Attila Polgar</Text>
           <Text>raglopa@gmail.com</Text>
@@ -34,12 +38,12 @@ export default class AboutScreen extends Component {
               <MaterialCommunityIcons
                 name={'github-circle'}
                 size={75}
-                color={'black'}
+                color={'red'}
               />
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </Container>
     )
   }
 }
