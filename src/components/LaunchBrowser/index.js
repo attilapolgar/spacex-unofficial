@@ -3,7 +3,14 @@ import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { ScrollView, TouchableOpacity, FlatList } from 'react-native'
+import {
+  ScrollView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableNativeFeedback,
+  FlatList,
+  View
+} from 'react-native'
 
 import LaunchViewSummary from '@components/LaunchViewSummary'
 import LaunchFilter from './LaunchFilter'
@@ -36,9 +43,13 @@ class LaunchBrowser extends Component {
             data={this.props.filteredData}
             keyExtractor={item => `${item.flight_number}`}
             renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => this.onLaunchSelected(item)}>
-                <LaunchViewSummary data={item} />
-              </TouchableOpacity>
+              <TouchableNativeFeedback
+                onPress={() => this.onLaunchSelected(item)}
+              >
+                <View>
+                  <LaunchViewSummary data={item} />
+                </View>
+              </TouchableNativeFeedback>
             )}
           />
         )}
@@ -53,7 +64,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   filteredData: state.launchBrowser.filteredData,
-  isFilterActive: state.launchBrowser.isFilterActive,
   launchStatusFilter: state.launchBrowser.launchStatusFilter
 })
 

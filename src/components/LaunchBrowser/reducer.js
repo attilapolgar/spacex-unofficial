@@ -31,7 +31,6 @@ const initialState = {
   filteredData: null,
   launchStatusFilter: 'all',
   rocketFilter: 'all',
-  isFilterActive: false,
   selectedLaunch: null,
   requestState: { ...initialRequestState }
 }
@@ -72,20 +71,21 @@ export default function launchReducer(state = initialState, action) {
 
     case FILTER_FOR_LAUNCH_STATUS: {
       const { status } = action.payload
+      const fd = filterForRocket(state.launches, state.rocketFilter)
       return {
         ...state,
-        isFilterActive: state.rocketFilter !== 'all' || status !== 'all',
-        filteredData: filterForLaunchStatus(state.launches, status)
+        launchStatusFilter: status,
+        filteredData: filterForLaunchStatus(fd, status)
       }
     }
+
     case FILTER_FOR_ROCKET: {
       const { rocketId } = action.payload
+      const fd = filterForLaunchStatus(state.launches, state.launchStatusFilter)
       return {
         ...state,
-        isFilterActive:
-          state.launchStatusFilter !== 'all' || rocketId !== 'all',
         rocketFilter: rocketId,
-        filteredData: filterForRocket(state.launches, rocketId)
+        filteredData: filterForRocket(fd, rocketId)
       }
     }
     default:

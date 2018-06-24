@@ -61,4 +61,7 @@ LaunchFilter.propTypes = {
   filterForRocket: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LaunchFilter)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LaunchFilter)
