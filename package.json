@@ -1,7 +1,7 @@
 {
   "name": "spacex-unofficial",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
@@ -39,7 +39,7 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
     "gh-pages": "^1.2.0",
-    "jest-expo": "~28.0.0",
+    "jest-expo": "^29.0.0",
     "react-native-scripts": "1.14.0",
     "react-test-renderer": "16.4.0",
     "redux-logger": "^3.0.6"
