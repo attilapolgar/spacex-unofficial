@@ -1,9 +1,15 @@
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import { StyleSheet, Linking, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Left, CardItem, Text, Body } from 'native-base'
+import { MapView } from 'expo'
+import { connect } from 'react-redux'
 
-export default ({ data }) => {
+const LaunchViewLaunchSite = ({ data, launchpads }) => {
+  const { location, details } = launchpads.find(
+    pad => pad.id === data.launch_site.site_id
+  )
+
   return (
     data.launch_site && (
       <View>
@@ -11,21 +17,31 @@ export default ({ data }) => {
           <MaterialIcons name={'place'} size={32} color={'#005288'} />
           <Text style={styles.headerText}>Launch site</Text>
         </CardItem>
+
         <CardItem style={[styles.cardItem]}>
           <Left>
             <Body>
-              <Text
-                style={styles.link}
-                onPress={() =>
-                  Linking.openURL(
-                    `https://www.google.com/maps/search/${
-                      data.launch_site.site_name_long
-                    }`
-                  )
-                }
+              <Text style={styles.link}>{location.name}</Text>
+
+              <Text style={styles.details}>{details}</Text>
+
+              <MapView
+                style={{ flex: 1, height: 400 }}
+                initialRegion={{
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                  latitudeDelta: 0.2,
+                  longitudeDelta: 0.2
+                }}
               >
-                {data.launch_site.site_name_long} ({data.launch_site.site_name})
-              </Text>
+                <MapView.Marker
+                  coordinate={{
+                    latitude: location.latitude,
+                    longitude: location.longitude
+                  }}
+                  title={location.name}
+                />
+              </MapView>
             </Body>
           </Left>
         </CardItem>
@@ -42,5 +58,15 @@ const styles = StyleSheet.create({
   headerText: {
     marginLeft: 10
   },
-  link: { textDecorationLine: 'underline' }
+  link: {},
+  details: {
+    marginTop: 25,
+    marginBottom: 25
+  }
 })
+
+const mapStateToProps = state => ({
+  launchpads: state.data.launchpads
+})
+
+export default connect(mapStateToProps)(LaunchViewLaunchSite)

@@ -22,9 +22,7 @@ const stackNavigatorHOC = (component, component2) => {
       return {
         header: null,
         headerStyle: {
-          backgroundColor: '#005288',
-          paddingLeft: 5,
-          paddingRight: 5
+          backgroundColor: '#005288'
         },
         headerTintColor: 'white',
         headerLeft: (
