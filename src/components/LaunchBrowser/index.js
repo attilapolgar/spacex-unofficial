@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 
 import {
   ScrollView,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
   TouchableNativeFeedback,
   FlatList,
   View
@@ -41,7 +39,9 @@ class LaunchBrowser extends Component {
         {this.props.filteredData && (
           <FlatList
             data={this.props.filteredData}
-            keyExtractor={item => `${item.flight_number}`}
+            keyExtractor={item =>
+              `${item.flight_number}-${item.launch_date_unix}`
+            }
             renderItem={({ item }) => (
               <TouchableNativeFeedback
                 onPress={() => this.onLaunchSelected(item)}
