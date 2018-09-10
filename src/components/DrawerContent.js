@@ -1,16 +1,20 @@
-import React from 'react'
-import { DrawerItems } from 'react-navigation'
-import { Image, ScrollView, StyleSheet } from 'react-native'
+import React, { Component } from "react";
+import { DrawerItems } from "react-navigation";
+import { Image, ScrollView, StyleSheet } from "react-native";
 
-const DrawerContent = props => (
-  <ScrollView style={styles.container}>
-    <Image
-      style={styles.headerImage}
-      source={require('../assets/img/drawer-image.jpg')}
-    />
-    <DrawerItems {...props} />
-  </ScrollView>
-)
+class DrawerContent extends Component {
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        <Image
+          style={styles.headerImage}
+          source={require("../assets/img/drawer-image.jpg")}
+        />
+        <DrawerItems {...this.props} />
+      </ScrollView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -20,8 +24,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: undefined,
     height: 150,
-    resizeMode: 'cover'
+    resizeMode: "cover"
   }
-})
+});
 
-export default DrawerContent
+export default DrawerContent;
