@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator, DrawerActions } from 'react-navigation'
 
-import HamburgerIcon from './HamburgerIcon'
+import HamburgerIcon from '../components/HamburgerIcon'
 
 const stackNavigatorHOC = (component, component2) => {
   let components = {
