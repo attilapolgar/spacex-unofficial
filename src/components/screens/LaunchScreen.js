@@ -7,6 +7,20 @@ import LaunchView from '@components/LaunchView'
 import LaunchBrowser from '@components/LaunchBrowser'
 import AppHeader from '@components/AppHeader'
 
+const tabs = [
+  {
+    title: 'Next launch'
+  },
+  {
+    title: 'Latest launch'
+  },
+  {
+    title: 'Launch browser'
+  }
+]
+
+const initialTab = 0
+
 class LaunchScreen extends Component {
   static propTypes = {
     latestLaunch: PropTypes.object,
@@ -14,11 +28,36 @@ class LaunchScreen extends Component {
     navigation: PropTypes.object
   }
 
+  state = {
+    title: 'Launches'
+  }
+
+  setTitle = i => {
+    this.setState({
+      title: tabs[i].title
+    })
+  }
+
+  handleTabChange = tab => {
+    this.setTitle(tab.i)
+  }
+
+  componentDidMount = () => {
+    this.setTitle(initialTab)
+  }
+
   render() {
     return (
       <Container>
-        <AppHeader navigation={this.props.navigation} title="Launches" />
-        <Tabs initialPage={0} tabBarPosition="bottom">
+        <AppHeader
+          navigation={this.props.navigation}
+          title={this.state.title}
+        />
+        <Tabs
+          initialPage={initialTab}
+          tabBarPosition="bottom"
+          onChangeTab={this.handleTabChange}
+        >
           <Tab heading="Next">
             <Content>
               <LaunchView data={this.props.nextLaunch} />
