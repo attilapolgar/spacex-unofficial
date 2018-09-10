@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
-import { ScrollView } from 'react-native'
-import { Container, Header, Tabs, Tab } from 'native-base'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { Component } from "react"
+import { ScrollView } from "react-native"
+import { Container, Header, Tabs, Tab } from "native-base"
+import { connect } from "react-redux"
+import PropTypes from "prop-types"
 
-import AppHeader from '@components/AppHeader'
-import RocketDetails from '@components/RocketDetails'
+import AppHeader from "@components/AppHeader"
+import RocketDetails from "@components/RocketDetails"
 class RocketScreen extends Component {
   static propTypes = {
     data: PropTypes.array,
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
   }
   render() {
-    const f1 = this.props.data.find(r => r.id === 'falcon1')
-    const f9 = this.props.data.find(r => r.id === 'falcon9')
-    const fh = this.props.data.find(r => r.id === 'falconheavy')
-    const bfr = this.props.data.find(r => r.id === 'bfr')
+    const f1 = this.props.data.find(r => r.id === "falcon1")
+    const f9 = this.props.data.find(r => r.id === "falcon9")
+    const fh = this.props.data.find(r => r.id === "falconheavy")
+    const bfr = this.props.data.find(r => r.id === "bfr")
     return (
       <Container>
         <AppHeader navigation={this.props.navigation} title="Rockets" />
@@ -39,7 +39,7 @@ class RocketScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.data.rockets
+  data: state.data.rockets,
 })
 
 export default connect(mapStateToProps)(RocketScreen)

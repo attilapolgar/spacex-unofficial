@@ -4,7 +4,9 @@
 .expo/
 
 # dependencies
-/node_modules
+node_modules
+functions/node_modules
+src/constants/ApiKeys.js
 
 # misc
 .env.local
@@ -21,5 +23,3 @@ yarn-error.log*
 
 .cache/
 .tmp/
-
-demo/dist
