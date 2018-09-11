@@ -26,7 +26,10 @@ export default class App extends React.Component {
         {this.state.isReady ? (
           <MainNavigator />
         ) : (
-          <SplashScreen onFinish={() => this.setState({ isReady: true })} />
+          <SplashScreen
+            onFinish={() => this.setState({ isReady: true })}
+            onError={console.warn}
+          />
         )}
       </Provider>
     )

@@ -21,7 +21,7 @@ class SplashScreen extends Component {
     return (
       <AppLoading
         startAsync={this._cacheResourcesAsync}
-        onError={console.warn}
+        onError={this.props.onError}
       />
     )
   }
@@ -42,7 +42,11 @@ SplashScreen.propTypes = {
   preloadState: PropTypes.object.isRequired,
   fetchData: PropTypes.func.isRequired,
   onFinish: PropTypes.func.isRequired,
-  preloadAssets: PropTypes.func.isRequired
+  preloadAssets: PropTypes.func.isRequired,
+  onError: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SplashScreen)

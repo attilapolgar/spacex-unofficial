@@ -38,7 +38,7 @@ export default class AboutScreen extends Component {
               <MaterialCommunityIcons
                 name={'github-circle'}
                 size={75}
-                color={'red'}
+                color={'black'}
               />
             </TouchableOpacity>
           </View>
