@@ -1,6 +1,6 @@
 {
   "expo": {
-    "sdkVersion": "29.0.0",
+    "sdkVersion": "30.0.0",
     "name": "SpaceX unofficial",
     "slug": "spacex-unofficial",
     "description": "An unofficial companion app for those who want to know everything about SpaceX.",
