@@ -19,24 +19,18 @@
       "resizeMode": "cover"
     },
     "ios": {
-      "bundleIdentifier": "com.raglopa.spacexunofficial"
+      "bundleIdentifier": "com.raglopa.spacexunofficial",
+      "config": {
+        "googleMapsApiKey": "AIzaSyAIpX1LzvYhKBpxjlKW2Ike8h-VYU1q3as"
+      }
     },
     "android": {
-      "versionCode": 1,
+      "versionCode": 3,
       "package": "com.raglopa.spacexunofficial",
-      "permissions": []
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "attila-polgar",
-            "project": "spacex-unofficial",
-            "authToken": "dea59fa01cf449afae530b84a25c8683805ed04e1f204210a6066472cdfc3c8d"
-          }
-        }
-      ]
+      "permissions": [],
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyAIpX1LzvYhKBpxjlKW2Ike8h-VYU1q3as" }
+      }
     }
   }
 }
