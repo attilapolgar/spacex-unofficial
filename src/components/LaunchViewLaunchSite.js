@@ -26,18 +26,18 @@ const LaunchViewLaunchSite = ({ data, launchpads }) => {
               <Text style={styles.details}>{details}</Text>
 
               <MapView
-                style={{ flex: 1, height: 400 }}
+                style={styles.mapView}
                 initialRegion={{
                   latitude: location.latitude,
                   longitude: location.longitude,
                   latitudeDelta: 0.2,
-                  longitudeDelta: 0.2
+                  longitudeDelta: 0.2,
                 }}
               >
                 <MapView.Marker
                   coordinate={{
                     latitude: location.latitude,
-                    longitude: location.longitude
+                    longitude: location.longitude,
                   }}
                   title={location.name}
                 />
@@ -49,24 +49,28 @@ const LaunchViewLaunchSite = ({ data, launchpads }) => {
     )
   )
 }
+
+const borderColor = 'rgba(0, 0, 0, 0.2)'
+
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
+    borderColor,
   },
   headerText: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   link: {},
   details: {
     marginTop: 25,
-    marginBottom: 25
-  }
+    marginBottom: 25,
+  },
+  mapView: { flex: 1, height: 400 },
 })
 
 const mapStateToProps = state => ({
-  launchpads: state.data.launchpads
+  launchpads: state.data.launchpads,
 })
 
 export default connect(mapStateToProps)(LaunchViewLaunchSite)

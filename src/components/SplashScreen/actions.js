@@ -1,19 +1,19 @@
 import {
   PRELOAD_ASSETS_REQUESTED,
   PRELOAD_ASSETS_FAILED,
-  PRELOAD_ASSETS_SUCCEEDED
+  PRELOAD_ASSETS_SUCCEEDED,
 } from './action-types'
 
 export const preloadAssetsRequested = () => ({
-  type: PRELOAD_ASSETS_REQUESTED
+  type: PRELOAD_ASSETS_REQUESTED,
 })
 
 export const preloadAssetsFailed = payload => ({
   type: PRELOAD_ASSETS_FAILED,
-  payload
+  payload,
 })
 
 export const preloadAssetsSucceeded = payload => ({
   type: PRELOAD_ASSETS_SUCCEEDED,
-  payload
+  payload,
 })

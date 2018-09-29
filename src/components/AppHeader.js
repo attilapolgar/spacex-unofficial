@@ -7,7 +7,7 @@ import {
   Body,
   Right,
   Button,
-  Icon
+  Icon,
 } from 'native-base'
 import { DrawerActions } from 'react-navigation'
 

@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableNativeFeedback,
   FlatList,
-  View
+  View,
 } from 'react-native'
 
 import LaunchViewSummary from '@components/LaunchViewSummary'
@@ -15,7 +15,7 @@ import LaunchFilter from './LaunchFilter'
 
 class LaunchBrowser extends Component {
   static navigationOptions = () => ({
-    title: 'Launch browser'
+    title: 'Launch browser',
   })
 
   constructor(props) {
@@ -28,7 +28,7 @@ class LaunchBrowser extends Component {
 
   onLaunchSelected = data => {
     this.props.navigation.navigate('MissionDetails', {
-      data
+      data,
     })
   }
 
@@ -59,18 +59,18 @@ class LaunchBrowser extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {},
 })
 
 const mapStateToProps = state => ({
   filteredData: state.launchBrowser.filteredData,
-  launchStatusFilter: state.launchBrowser.launchStatusFilter
+  launchStatusFilter: state.launchBrowser.launchStatusFilter,
 })
 
 LaunchBrowser.propTypes = {
   filterForLaunchStatus: PropTypes.func,
   filteredData: PropTypes.array,
-  navigation: PropTypes.object
+  navigation: PropTypes.object,
 }
 
 export default connect(mapStateToProps)(LaunchBrowser)

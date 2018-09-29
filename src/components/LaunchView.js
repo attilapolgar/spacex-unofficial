@@ -27,7 +27,7 @@ const LaunchView = ({ data }) => {
 }
 
 LaunchView.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
 }
 
 export default LaunchView

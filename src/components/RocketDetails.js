@@ -11,101 +11,101 @@ const RocketDetails = ({ data }) => {
   const details = [
     {
       id: 'description',
-      text: data.description
+      text: data.description,
     },
     {
       title: 'status',
       id: 'active',
-      text: data.active ? 'In active use' : 'Not in active use'
+      text: data.active ? 'In active use' : 'Not in active use',
     },
     {
       title: 'stages',
       id: 'stages',
-      text: data.stages
+      text: data.stages,
     },
     {
       title: 'boosters',
       id: 'boosters',
-      text: dashIfZero(data.boosters)
+      text: dashIfZero(data.boosters),
     },
     {
       title: 'cost per launch',
       id: 'cost_per_launch',
-      text: `${data.cost_per_launch}$`
+      text: `${data.cost_per_launch}$`,
     },
     {
       title: 'success rate',
       id: 'success_rate_pct',
-      text: `${data.success_rate_pct}%`
+      text: `${data.success_rate_pct}%`,
     },
     {
       title: 'first flight',
       id: 'first_flight',
-      text: data.first_flight
+      text: data.first_flight,
     },
     {
       title: 'height',
       id: 'height',
-      text: `${data.height.meters} m / ${data.height.feet} feet`
+      text: `${data.height.meters} m / ${data.height.feet} feet`,
     },
     {
       title: 'diameter',
       id: 'diameter',
-      text: `${data.diameter.meters} m / ${data.diameter.feet} feet`
+      text: `${data.diameter.meters} m / ${data.diameter.feet} feet`,
     },
     {
       title: 'mass',
       id: 'mass',
-      text: `${data.mass.kg} kg / ${data.mass.lb} lb`
-    }
+      text: `${data.mass.kg} kg / ${data.mass.lb} lb`,
+    },
   ]
 
   const firstStage = [
     {
       title: 'reusable',
       id: 'reusable',
-      text: yesOrNo(data.first_stage.reusable)
+      text: yesOrNo(data.first_stage.reusable),
     },
     {
       title: 'engines',
       id: 'engines',
-      text: data.first_stage.engines
+      text: data.first_stage.engines,
     },
     {
       title: 'fuel amount',
       id: 'fuel_amount_tons',
-      text: `${data.first_stage.fuel_amount_tons} tons`
+      text: `${data.first_stage.fuel_amount_tons} tons`,
     },
     {
       title: 'cores',
       id: 'cores',
-      text: data.first_stage.cores
+      text: data.first_stage.cores,
     },
     {
       title: 'burn time',
       id: 'burn_time_sec',
-      text: dashIfZero(data.first_stage.burn_time_sec, 'sec')
+      text: dashIfZero(data.first_stage.burn_time_sec, 'sec'),
     },
     {
       title: 'thrust sea level',
       id: 'thrust_sea_level',
       text: `${data.first_stage.thrust_sea_level.kN} kN / ${
         data.first_stage.thrust_sea_level.lbf
-      } lbf`
+      } lbf`,
     },
     {
       title: 'thrust vacuum',
       id: 'thrust_vacuum',
       text: `${data.first_stage.thrust_vacuum.kN} kN / ${
         data.first_stage.thrust_vacuum.lbf
-      } lbf`
-    }
+      } lbf`,
+    },
   ].filter(d => !!d.text)
 
   const payloadWeights = data.payload_weights.map((p, k) => ({
     title: p.name,
     id: k,
-    text: `${p.kg} kg / ${p.lb} lb`
+    text: `${p.kg} kg / ${p.lb} lb`,
   }))
 
   // TODO: second_stage payloads
@@ -113,24 +113,24 @@ const RocketDetails = ({ data }) => {
     {
       title: 'engines',
       id: 'engines',
-      text: data.second_stage.engines
+      text: data.second_stage.engines,
     },
     {
       title: 'fuel amount',
       id: 'fuel_amount_tons',
-      text: `${data.second_stage.fuel_amount_tons} tons`
+      text: `${data.second_stage.fuel_amount_tons} tons`,
     },
     {
       title: 'burn time',
       id: 'burn_time_sec',
-      text: dashIfZero(data.second_stage.burn_time_sec, 'sec')
+      text: dashIfZero(data.second_stage.burn_time_sec, 'sec'),
     },
     {
       title: 'thrust',
       id: 'thrust',
       text: `${data.second_stage.thrust.kN} kN / ${
         data.second_stage.thrust.lbf
-      } lbf`
+      } lbf`,
     },
     {
       title: 'payload options',
@@ -138,10 +138,10 @@ const RocketDetails = ({ data }) => {
       text: [
         data.second_stage.payloads.option_1,
         data.second_stage.payloads.option_2,
-        data.second_stage.payloads.option_3
+        data.second_stage.payloads.option_3,
       ]
         .filter(p => p)
-        .join(', ')
+        .join(', '),
     },
     {
       title: 'composite fairing',
@@ -151,106 +151,106 @@ const RocketDetails = ({ data }) => {
       } m /${data.second_stage.payloads.composite_fairing.height.feet} feet
 diameter: ${data.second_stage.payloads.composite_fairing.diameter.meters} m /${
         data.second_stage.payloads.composite_fairing.diameter.feet
-      } feet`
-    }
+      } feet`,
+    },
   ]
 
   const engines = [
     {
       title: 'number',
       id: 'number',
-      text: data.engines.number
+      text: data.engines.number,
     },
     {
       title: 'type',
       id: 'type',
-      text: data.engines.type
+      text: data.engines.type,
     },
     {
       title: 'version',
       id: 'version',
-      text: data.engines.version
+      text: data.engines.version,
     },
     {
       title: 'layout',
       id: 'layout',
-      text: data.engines.layout
+      text: data.engines.layout,
     },
     {
       title: 'engine loss max',
       id: 'engine_loss_max',
-      text: data.engines.engine_loss_max
+      text: data.engines.engine_loss_max,
     },
     {
       title: 'propellants',
       id: 'propellants',
-      text: `${data.engines.propellant_1}, ${data.engines.propellant_2}`
+      text: `${data.engines.propellant_1}, ${data.engines.propellant_2}`,
     },
     {
       title: 'thrust sea level',
       id: 'thrust_sea_level',
       text: `${data.engines.thrust_sea_level.kN} kN / ${
         data.engines.thrust_sea_level.lbf
-      } lbf`
+      } lbf`,
     },
     {
       title: 'thrust vacuum',
       id: 'thrust_vacuum',
       text: `${data.engines.thrust_vacuum.kN} kN / ${
         data.engines.thrust_vacuum.lbf
-      } lbf`
+      } lbf`,
     },
     {
       title: 'thrust to weight',
       id: 'thrust_to_weight',
-      text: data.engines.thrust_to_weight
-    }
+      text: data.engines.thrust_to_weight,
+    },
   ]
 
   const landingLegs = [
     {
       title: 'number',
       id: 'number',
-      text: data.landing_legs.number
+      text: data.landing_legs.number,
     },
     {
       title: 'material',
       id: 'material',
-      text: data.landing_legs.material
-    }
+      text: data.landing_legs.material,
+    },
   ].filter(d => !!d.text)
 
   const dataMap = [
     {
       rows: details,
       id: 'details',
-      title: data.name
+      title: data.name,
     },
     {
       rows: firstStage,
       id: 'firstStage',
-      title: 'First stage'
+      title: 'First stage',
     },
     {
       rows: payloadWeights,
       id: 'payloadWeights',
-      title: 'Payload weights'
+      title: 'Payload weights',
     },
     {
       rows: secondStage,
       id: 'secondStage',
-      title: 'Second stage'
+      title: 'Second stage',
     },
     {
       rows: engines,
       id: 'engines',
-      title: 'Engines'
+      title: 'Engines',
     },
     {
       rows: landingLegs,
       id: 'landingLegs',
-      title: 'Landing legs'
-    }
+      title: 'Landing legs',
+    },
   ]
   return (
     <Content>
@@ -269,12 +269,14 @@ diameter: ${data.second_stage.payloads.composite_fairing.diameter.meters} m /${
   )
 }
 
+const borderColor = 'rgba(0, 0, 0, 0.2)'
+
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
-  }
+    borderColor,
+  },
 })
 
 export default RocketDetails
@@ -302,7 +304,7 @@ const data = [
       fuel_amount_tons: 44.3,
       burn_time_sec: 169,
       thrust_sea_level: { kN: 420, lbf: 94000 },
-      thrust_vacuum: { kN: 480, lbf: 110000 }
+      thrust_vacuum: { kN: 480, lbf: 110000 },
     },
     second_stage: {
       engines: 1,
@@ -313,9 +315,9 @@ const data = [
         option_1: 'composite fairing',
         composite_fairing: {
           height: { meters: 3.5, feet: 11.5 },
-          diameter: { meters: 1.5, feet: 4.9 }
-        }
-      }
+          diameter: { meters: 1.5, feet: 4.9 },
+        },
+      },
     },
     engines: {
       number: 1,
@@ -327,11 +329,11 @@ const data = [
       propellant_2: 'RP-1 kerosene',
       thrust_sea_level: { kN: 420, lbf: 94000 },
       thrust_vacuum: { kN: 480, lbf: 110000 },
-      thrust_to_weight: 96
+      thrust_to_weight: 96,
     },
     landing_legs: { number: 0, material: null },
     description:
-      'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.'
+      'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.',
   },
   {
     id: 'falcon9',
@@ -351,7 +353,7 @@ const data = [
     payload_weights: [
       { id: 'leo', name: 'Low Earth Orbit', kg: 22800, lb: 50265 },
       { id: 'gto', name: 'Geosynchronous Transfer Orbit', kg: 8300, lb: 18300 },
-      { id: 'mars', name: 'Mars Orbit', kg: 4020, lb: 8860 }
+      { id: 'mars', name: 'Mars Orbit', kg: 4020, lb: 8860 },
     ],
     first_stage: {
       reusable: true,
@@ -359,7 +361,7 @@ const data = [
       fuel_amount_tons: 385,
       burn_time_sec: 162,
       thrust_sea_level: { kN: 7607, lbf: 1710000 },
-      thrust_vacuum: { kN: 8227, lbf: 1849500 }
+      thrust_vacuum: { kN: 8227, lbf: 1849500 },
     },
     second_stage: {
       engines: 1,
@@ -371,9 +373,9 @@ const data = [
         option_2: 'composite fairing',
         composite_fairing: {
           height: { meters: 13.1, feet: 43 },
-          diameter: { meters: 5.2, feet: 17.1 }
-        }
-      }
+          diameter: { meters: 5.2, feet: 17.1 },
+        },
+      },
     },
     engines: {
       number: 9,
@@ -385,11 +387,11 @@ const data = [
       propellant_2: 'RP-1 kerosene',
       thrust_sea_level: { kN: 845, lbf: 190000 },
       thrust_vacuum: { kN: 914, lbf: 205500 },
-      thrust_to_weight: 180.1
+      thrust_to_weight: 180.1,
     },
     landing_legs: { number: 4, material: 'carbon fiber' },
     description:
-      'Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit.'
+      'Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit.',
   },
   {
     id: 'falconheavy',
@@ -412,10 +414,10 @@ const data = [
         id: 'gto',
         name: 'Geosynchronous Transfer Orbit',
         kg: 26700,
-        lb: 58860
+        lb: 58860,
       },
       { id: 'mars', name: 'Mars Orbit', kg: 16800, lb: 37040 },
-      { id: 'pluto', name: 'Pluto Orbit', kg: 3500, lb: 7720 }
+      { id: 'pluto', name: 'Pluto Orbit', kg: 3500, lb: 7720 },
     ],
     first_stage: {
       reusable: true,
@@ -424,7 +426,7 @@ const data = [
       cores: 3,
       burn_time_sec: 162,
       thrust_sea_level: { kN: 22819, lbf: 5130000 },
-      thrust_vacuum: { kN: 24681, lbf: 5548500 }
+      thrust_vacuum: { kN: 24681, lbf: 5548500 },
     },
     second_stage: {
       engines: 1,
@@ -435,9 +437,9 @@ const data = [
         option_2: 'composite fairing',
         composite_fairing: {
           height: { meters: 13.1, feet: 43 },
-          diameter: { meters: 5.2, feet: 17.1 }
-        }
-      }
+          diameter: { meters: 5.2, feet: 17.1 },
+        },
+      },
     },
     engines: {
       number: 27,
@@ -449,11 +451,11 @@ const data = [
       propellant_2: ' RP-1 kerosene',
       thrust_sea_level: { kN: 845, lbf: 190000 },
       thrust_vacuum: { kN: 914, lbf: 205500 },
-      thrust_to_weight: 180.1
+      thrust_to_weight: 180.1,
     },
     landing_legs: { number: 12, material: 'carbon fiber' },
     description:
-      'With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.'
+      'With the ability to lift into orbit over 54 metric tons (119,000 lb)--a mass equivalent to a 737 jetliner loaded with passengers, crew, luggage and fuel--Falcon Heavy can lift more than twice the payload of the next closest operational vehicle, the Delta IV Heavy, at one-third the cost.',
   },
   {
     id: 'bfr',
@@ -472,7 +474,7 @@ const data = [
     mass: { kg: 4400000, lb: 9700000 },
     payload_weights: [
       { id: 'leo', name: 'Low Earth Orbit', kg: 150000, lb: 330000 },
-      { id: 'mars', name: 'Mars Orbit', kg: 150000, lb: 330000 }
+      { id: 'mars', name: 'Mars Orbit', kg: 150000, lb: 330000 },
     ],
     first_stage: {
       reusable: true,
@@ -480,7 +482,7 @@ const data = [
       fuel_amount_tons: 6700,
       burn_time_sec: 0,
       thrust_sea_level: { kN: 128000, lbf: 28775544 },
-      thrust_vacuum: { kN: 138000, lbf: 31023634 }
+      thrust_vacuum: { kN: 138000, lbf: 31023634 },
     },
     second_stage: {
       engines: 6,
@@ -492,9 +494,9 @@ const data = [
         option_2: 'composite fairing',
         composite_fairing: {
           height: { meters: null, feet: null },
-          diameter: { meters: null, feet: null }
-        }
-      }
+          diameter: { meters: null, feet: null },
+        },
+      },
     },
     engines: {
       number: 31,
@@ -506,10 +508,10 @@ const data = [
       propellant_2: 'liquid methane',
       thrust_sea_level: { kN: 1700, lbf: 382175 },
       thrust_vacuum: { kN: 1900, lbf: 427136 },
-      thrust_to_weight: null
+      thrust_to_weight: null,
     },
     landing_legs: { number: 4, material: 'carbon fiber' },
     description:
-      "BFR is a privately funded next-generation reusable launch vehicle and spacecraft system developed by SpaceX. It was announced by Elon Musk in September 2017; the first spacecraft prototype was being manufactured as of March 2018 and will begin testing in early 2019. The overall space vehicle architecture includes both launch vehicles and spacecraft that are intended to completely replace all of SpaceX's existing space hardware by the early 2020s as well as ground infrastructure for rapid launch and relaunch, and zero-gravity propellant transfer technology to be deployed in low Earth orbit (LEO). The large payload to Earth orbit of up to 150,000 kg (330,000 lb) makes BFR a super heavy-lift launch vehicle."
-  }
+      "BFR is a privately funded next-generation reusable launch vehicle and spacecraft system developed by SpaceX. It was announced by Elon Musk in September 2017; the first spacecraft prototype was being manufactured as of March 2018 and will begin testing in early 2019. The overall space vehicle architecture includes both launch vehicles and spacecraft that are intended to completely replace all of SpaceX's existing space hardware by the early 2020s as well as ground infrastructure for rapid launch and relaunch, and zero-gravity propellant transfer technology to be deployed in low Earth orbit (LEO). The large payload to Earth orbit of up to 150,000 kg (330,000 lb) makes BFR a super heavy-lift launch vehicle.",
+  },
 ]

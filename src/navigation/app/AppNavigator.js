@@ -1,24 +1,24 @@
-import React from "react"
-import { createDrawerNavigator } from "react-navigation"
-import { MaterialIcons, Entypo, SimpleLineIcons } from "@expo/vector-icons"
+import React from 'react'
+import { createDrawerNavigator } from 'react-navigation'
+import { MaterialIcons, Entypo, SimpleLineIcons } from '@expo/vector-icons'
 
-import { AboutScreen, RocketScreen, LaunchScreen } from "./screens"
+import { AboutScreen, RocketScreen, LaunchScreen } from './screens'
 
-import LaunchDetails from "../../components/LaunchDetails"
-import DrawerContent from "../../components/DrawerContent"
+import LaunchDetails from '../../components/LaunchDetails'
+import DrawerContent from '../../components/DrawerContent'
 
-import stackNavigatorHOC from "../StackNavigatorHOC"
+import stackNavigatorHOC from '../StackNavigatorHOC'
 
 const AppNavigator = createDrawerNavigator(
   {
     LaunchScreen: {
       screen: stackNavigatorHOC(LaunchScreen, {
-        key: "MissionDetails",
+        key: 'MissionDetails',
         component: LaunchDetails,
       }),
       navigationOptions: {
         title: `Missions`,
-        drawerIcon: <Entypo name={"browser"} size={24} color={"#005288"} />,
+        drawerIcon: <Entypo name={'browser'} size={24} color={'#005288'} />,
       },
     },
     RocketScreen: {
@@ -26,7 +26,7 @@ const AppNavigator = createDrawerNavigator(
       navigationOptions: {
         title: `Rockets`,
         drawerIcon: (
-          <SimpleLineIcons name={"rocket"} size={24} color={"#005288"} />
+          <SimpleLineIcons name={'rocket'} size={24} color={'#005288'} />
         ),
       },
     },
@@ -35,13 +35,13 @@ const AppNavigator = createDrawerNavigator(
       navigationOptions: {
         title: `About`,
         drawerIcon: (
-          <MaterialIcons name={"info-outline"} size={24} color={"#005288"} />
+          <MaterialIcons name={'info-outline'} size={24} color={'#005288'} />
         ),
       },
     },
   },
   {
-    initialRouteName: "LaunchScreen",
+    initialRouteName: 'LaunchScreen',
     navigationOptions: {},
     contentComponent: DrawerContent,
   }

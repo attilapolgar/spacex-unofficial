@@ -1,7 +1,7 @@
 import {
   LAUNCH_DATA_FETCH_REQUESTED,
   FILTER_FOR_LAUNCH_STATUS,
-  FILTER_FOR_ROCKET
+  FILTER_FOR_ROCKET,
 } from './action-types'
 
 import { PREFETCH_DATA_SUCCEEDED } from '../../action-types'
@@ -23,7 +23,7 @@ const initialRequestState = {
   success: false,
   pending: false,
   failed: false,
-  errorMessage: null
+  errorMessage: null,
 }
 
 const initialState = {
@@ -32,7 +32,7 @@ const initialState = {
   launchStatusFilter: 'all',
   rocketFilter: 'all',
   selectedLaunch: null,
-  requestState: { ...initialRequestState }
+  requestState: { ...initialRequestState },
 }
 
 export default function launchReducer(state = initialState, action) {
@@ -44,8 +44,8 @@ export default function launchReducer(state = initialState, action) {
           pending: true,
           success: false,
           failed: false,
-          errorMessage: null
-        }
+          errorMessage: null,
+        },
       }
     }
     case PREFETCH_DATA_SUCCEEDED: {
@@ -64,8 +64,8 @@ export default function launchReducer(state = initialState, action) {
           pending: false,
           success: true,
           failed: false,
-          errorMessage: null
-        }
+          errorMessage: null,
+        },
       }
     }
 
@@ -75,7 +75,7 @@ export default function launchReducer(state = initialState, action) {
       return {
         ...state,
         launchStatusFilter: status,
-        filteredData: filterForLaunchStatus(fd, status)
+        filteredData: filterForLaunchStatus(fd, status),
       }
     }
 
@@ -85,7 +85,7 @@ export default function launchReducer(state = initialState, action) {
       return {
         ...state,
         rocketFilter: rocketId,
-        filteredData: filterForRocket(fd, rocketId)
+        filteredData: filterForRocket(fd, rocketId),
       }
     }
     default:

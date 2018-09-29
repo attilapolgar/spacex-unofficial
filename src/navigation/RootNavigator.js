@@ -1,8 +1,8 @@
-import { createStackNavigator } from "react-navigation"
+import { createStackNavigator } from 'react-navigation'
 
-import DrawerContent from "../components/DrawerContent"
+import DrawerContent from '../components/DrawerContent'
 
-import AppNavigator from "./app/AppNavigator"
+import AppNavigator from './app/AppNavigator'
 
 const RootNavigator = createStackNavigator(
   {
@@ -11,7 +11,7 @@ const RootNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: "App",
+    initialRouteName: 'App',
     navigationOptions: {
       header: null,
     },

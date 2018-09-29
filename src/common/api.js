@@ -3,10 +3,10 @@ const urls = {
   launches: {
     latest: `${baseUrl}/launches/latest`,
     next: `${baseUrl}/launches/next`,
-    all: `${baseUrl}/launches/all`
+    all: `${baseUrl}/launches/all`,
   },
   rockets: `${baseUrl}/rockets`,
-  launchpads: `${baseUrl}/launchpads`
+  launchpads: `${baseUrl}/launchpads`,
 }
 
 const fetchData = url => {
@@ -32,5 +32,5 @@ export default {
   fetchLatestLaunchData,
   fetchAllLaunchData,
   fetchRocketData,
-  fetchLaunchpadData
+  fetchLaunchpadData,
 }

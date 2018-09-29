@@ -5,7 +5,7 @@ import falcon9Image from '../assets/img/falcon9-render.png'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const rocketImages = {
-  falcon9: falcon9Image
+  falcon9: falcon9Image,
 }
 
 const LaunchViewRocket = ({ data }) => {
@@ -74,8 +74,9 @@ const LaunchViewRocket = ({ data }) => {
                   {payload.payload_mass_kg &&
                     payload.payload_mass_lbs && (
                       <Text style={styles.info}>
-                        Mass: {payload.payload_mass_kg}kg /{' '}
-                        {payload.payload_mass_lbs}lbs
+                        Mass: {payload.payload_mass_kg}
+                        kg / {payload.payload_mass_lbs}
+                        lbs
                       </Text>
                     )}
                   <Text style={styles.info}>Orbit: {payload.orbit}</Text>
@@ -89,29 +90,31 @@ const LaunchViewRocket = ({ data }) => {
   )
 }
 
+const borderColor = 'rgba(0, 0, 0, 0.2)'
+
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
+    borderColor,
   },
   headerText: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   stageInfo: {
-    marginLeft: 15
+    marginLeft: 15,
   },
   stageType: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   image: {
     width: 100,
     height: 300,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
   payload: {
-    padding: 5
-  }
+    padding: 5,
+  },
 })
 
 export default LaunchViewRocket

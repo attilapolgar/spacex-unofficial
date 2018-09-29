@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import { ScrollView } from "react-native"
-import PropTypes from "prop-types"
-import { Header, Left, Button, Icon, Title, Right, Body } from "native-base"
-import LaunchView from "@components/LaunchView"
+import React, { Component } from 'react'
+import { ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
+import { Header, Left, Button, Icon, Title, Right, Body } from 'native-base'
+import LaunchView from '@components/LaunchView'
 
 class LaunchDetails extends Component {
   static navigationOptions = ({ navigation }) => {
-    const data = navigation.getParam("data")
+    const data = navigation.getParam('data')
     return { title: `Mission: ${data.mission_name}` }
   }
 
@@ -16,7 +16,7 @@ class LaunchDetails extends Component {
 
   render() {
     const { navigation } = this.props
-    const data = navigation.getParam("data")
+    const data = navigation.getParam('data')
     return (
       <ScrollView>
         <Header>

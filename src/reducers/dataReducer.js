@@ -1,19 +1,19 @@
 import {
   PREFETCH_DATA_FAILED,
   PREFETCH_DATA_REQUESTED,
-  PREFETCH_DATA_SUCCEEDED
+  PREFETCH_DATA_SUCCEEDED,
 } from '../action-types'
 
 const initialRequestState = {
   success: false,
   pending: false,
   failed: false,
-  errorMessage: null
+  errorMessage: null,
 }
 
 const initialState = {
   data: null,
-  requestState: { ...initialRequestState }
+  requestState: { ...initialRequestState },
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -25,8 +25,8 @@ export default function dataReducer(state = initialState, action) {
           pending: true,
           success: false,
           failed: false,
-          errorMessage: null
-        }
+          errorMessage: null,
+        },
       }
     }
     case PREFETCH_DATA_SUCCEEDED: {
@@ -42,8 +42,8 @@ export default function dataReducer(state = initialState, action) {
           pending: false,
           success: true,
           failed: false,
-          errorMessage: null
-        }
+          errorMessage: null,
+        },
       }
     }
     case PREFETCH_DATA_FAILED: {
@@ -52,8 +52,8 @@ export default function dataReducer(state = initialState, action) {
         requestState: {
           pending: false,
           success: false,
-          failed: true
-        }
+          failed: true,
+        },
       }
     }
     default:

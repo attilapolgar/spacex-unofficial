@@ -5,5 +5,5 @@ import preload from '../components/SplashScreen/reducer'
 export default combineReducers({
   launchBrowser,
   data,
-  preload
+  preload,
 })

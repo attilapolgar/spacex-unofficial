@@ -15,13 +15,14 @@ const LaunchViewDetails = ({ data }) => {
     )
   )
 }
+const borderColor = 'rgba(0, 0, 0, 0.2)'
 
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)',
-    justifyContent: 'center'
+    borderColor,
+    justifyContent: 'center',
   },
   image: {
     width: 300,
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
 
     resizeMode: 'contain',
     marginTop: 15,
-    marginBottom: 15
-  }
+    marginBottom: 15,
+  },
 })
 
 export default LaunchViewDetails
