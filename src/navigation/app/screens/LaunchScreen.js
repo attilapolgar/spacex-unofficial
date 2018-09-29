@@ -1,21 +1,21 @@
-import React, { Component } from "react"
-import { Container, Tabs, Tab, Content } from "native-base"
-import { connect } from "react-redux"
-import PropTypes from "prop-types"
+import React, { Component } from 'react'
+import { Container, Tabs, Tab, Content } from 'native-base'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import LaunchView from "@components/LaunchView"
-import LaunchBrowser from "@components/LaunchBrowser"
-import AppHeader from "@components/AppHeader"
+import LaunchView from '@components/LaunchView'
+import LaunchBrowser from '@components/LaunchBrowser'
+import AppHeader from '@components/AppHeader'
 
 const tabs = [
   {
-    title: "Next launch",
+    title: 'Next launch',
   },
   {
-    title: "Latest launch",
+    title: 'Latest launch',
   },
   {
-    title: "Launch browser",
+    title: 'Launch browser',
   },
 ]
 
@@ -29,7 +29,7 @@ class LaunchScreen extends Component {
   }
 
   state = {
-    title: "Launches",
+    title: 'Launches',
   }
 
   setTitle = i => {

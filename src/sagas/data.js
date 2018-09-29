@@ -18,7 +18,7 @@ function* fetchAllData() {
         latestLaunch,
         launches,
         rockets,
-        launchpads
+        launchpads,
       })
     )
   } catch (error) {

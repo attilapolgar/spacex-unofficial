@@ -13,14 +13,15 @@ const CardItemInfoRow = ({ data }) => (
 
 export default CardItemInfoRow
 
+const borderColor = 'rgba(0, 0, 0, 0.2)'
+
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
+    borderColor,
   },
   infoKey: {
-    fontSize: 10
+    fontSize: 10,
   },
-  infoValue: {}
 })

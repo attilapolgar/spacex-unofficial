@@ -1,18 +1,18 @@
 import {
   PRELOAD_ASSETS_FAILED,
   PRELOAD_ASSETS_REQUESTED,
-  PRELOAD_ASSETS_SUCCEEDED
+  PRELOAD_ASSETS_SUCCEEDED,
 } from './action-types'
 
 const initialRequestState = {
   success: false,
   pending: false,
-  failed: false
+  failed: false,
 }
 
 const initialState = {
   data: null,
-  preloadState: { ...initialRequestState }
+  preloadState: { ...initialRequestState },
 }
 
 export default function dataReducer(state = initialState, action) {
@@ -23,8 +23,8 @@ export default function dataReducer(state = initialState, action) {
         preloadState: {
           pending: true,
           success: false,
-          failed: false
-        }
+          failed: false,
+        },
       }
     }
     case PRELOAD_ASSETS_SUCCEEDED: {
@@ -34,8 +34,8 @@ export default function dataReducer(state = initialState, action) {
           pending: false,
           success: true,
           failed: false,
-          errorMessage: null
-        }
+          errorMessage: null,
+        },
       }
     }
     case PRELOAD_ASSETS_FAILED: {
@@ -44,8 +44,8 @@ export default function dataReducer(state = initialState, action) {
         preloadState: {
           pending: false,
           success: false,
-          failed: true
-        }
+          failed: true,
+        },
       }
     }
     default:

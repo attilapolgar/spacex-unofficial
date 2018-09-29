@@ -29,12 +29,12 @@ class SplashScreen extends Component {
 
 const mapStateToProps = state => ({
   requestState: state.data.requestState,
-  preloadState: state.preload.preloadState
+  preloadState: state.preload.preloadState,
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchData: () => dispatch(prefetchDataRequested()),
-  preloadAssets: () => dispatch(preloadAssetsRequested())
+  preloadAssets: () => dispatch(preloadAssetsRequested()),
 })
 
 SplashScreen.propTypes = {
@@ -43,7 +43,7 @@ SplashScreen.propTypes = {
   fetchData: PropTypes.func.isRequired,
   onFinish: PropTypes.func.isRequired,
   preloadAssets: PropTypes.func.isRequired,
-  onError: PropTypes.func.isRequired
+  onError: PropTypes.func.isRequired,
 }
 
 export default connect(

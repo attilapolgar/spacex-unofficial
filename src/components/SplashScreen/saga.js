@@ -7,7 +7,7 @@ import {
   FontAwesome,
   Entypo,
   MaterialIcons,
-  MaterialCommunityIcons
+  MaterialCommunityIcons,
 } from '@expo/vector-icons'
 
 function cacheImages(images) {
@@ -34,7 +34,7 @@ const _cacheResourcesAsync = async () => {
     FontAwesome.font,
     Entypo.font,
     MaterialIcons.font,
-    MaterialCommunityIcons.font
+    MaterialCommunityIcons.font,
   ])
 
   await Promise.all([...imageAssets, ...fontAssets])

@@ -46,19 +46,19 @@ class LaunchFilter extends Component {
 
 const mapStateToProps = state => ({
   launchStatusFilter: state.launchBrowser.launchStatusFilter,
-  rocketFilter: state.launchBrowser.rocketFilter
+  rocketFilter: state.launchBrowser.rocketFilter,
 })
 
 const mapDispatchToProps = dispatch => ({
   filterForLaunchStatus: payload => dispatch(filterForLaunchStatus(payload)),
-  filterForRocket: payload => dispatch(filterForRocket(payload))
+  filterForRocket: payload => dispatch(filterForRocket(payload)),
 })
 
 LaunchFilter.propTypes = {
   launchStatusFilter: PropTypes.string,
   rocketFilter: PropTypes.string,
   filterForLaunchStatus: PropTypes.func,
-  filterForRocket: PropTypes.func
+  filterForRocket: PropTypes.func,
 }
 
 export default connect(

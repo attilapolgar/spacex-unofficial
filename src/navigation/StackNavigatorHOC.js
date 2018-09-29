@@ -5,13 +5,13 @@ import HamburgerIcon from '../components/HamburgerIcon'
 
 const stackNavigatorHOC = (component, component2) => {
   let components = {
-    component
+    component,
   }
 
   if (component2) {
     components = {
       ...components,
-      [component2.key]: component2.component
+      [component2.key]: component2.component,
     }
   }
   return createStackNavigator(components, {
@@ -22,7 +22,7 @@ const stackNavigatorHOC = (component, component2) => {
       return {
         header: null,
         headerStyle: {
-          backgroundColor: '#005288'
+          backgroundColor: '#005288',
         },
         headerTintColor: 'white',
         headerLeft: (
@@ -30,9 +30,9 @@ const stackNavigatorHOC = (component, component2) => {
             active={isDrawerOpen}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
           />
-        )
+        ),
       }
-    }
+    },
   })
 }
 

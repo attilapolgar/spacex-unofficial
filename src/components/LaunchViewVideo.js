@@ -35,19 +35,21 @@ export default ({ data }) => {
     )
   )
 }
+
+const borderColor = 'rgba(0, 0, 0, 0.2)'
 const styles = StyleSheet.create({
   cardItem: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.2)'
+    borderColor,
   },
   headerText: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   video: {
     alignSelf: 'center',
     width: deviceWidth * 0.9,
     height: 300,
-    flex: 1
-  }
+    flex: 1,
+  },
 })

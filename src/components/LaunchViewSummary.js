@@ -20,7 +20,7 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
           styles.cardItem,
           styles.container,
           data.launch_success === true ? styles.success : '',
-          data.launch_success === false ? styles.fail : ''
+          data.launch_success === false ? styles.fail : '',
         ]}
       >
         <Left>
@@ -52,47 +52,29 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
     </View>
   )
 }
+
+const borderColor = 'rgba(0, 0, 0, 0.2)'
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   missionName: {
-    fontSize: 18
+    fontSize: 18,
   },
   cardItem: {
     flex: 1,
     padding: 10,
     borderBottomWidth: 1,
     borderTopWidth: 1,
-    borderBottomColor: 'rgba(0, 0, 0, 0.2)',
-    borderLeftColor: 'rgba(0, 0, 0, 0.2)',
-    borderTopColor: 'rgba(0, 0, 0, 0.2)'
-  },
-  result: {
-    justifyContent: 'center'
+    borderBottomColor: borderColor,
+    borderLeftColor: borderColor,
+    borderTopColor: borderColor,
   },
   image: {
     width: 100,
     height: 100,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
-  imagePlaceholder: {
-    width: 100,
-    height: 100
-  },
-  resultText: {
-    fontWeight: 'bold',
-    fontSize: 24
-  },
-  success: {
-    borderLeftWidth: 5,
-    borderLeftColor: 'green'
-  },
-  fail: {
-    borderLeftWidth: 5,
-    borderLeftColor: 'red'
-  },
-  link: { textDecorationLine: 'underline' }
 })
 
 export default LaunchViewSummary
