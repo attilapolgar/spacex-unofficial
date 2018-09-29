@@ -5,7 +5,9 @@
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "dev": "expo start -c",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "expo": "^30.0.0",
@@ -21,20 +23,31 @@
     "sentry-expo": "~1.9.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^10.0.1",
     "eslint": "^4.19.1",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.7.0",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.8.2",
-    "eslint-plugin-react-native": "^3.2.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.3.0",
     "expo-cli": "^2.2.0",
+    "husky": "^1.0.1",
     "jest-expo": "^30.0.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
     "react-native-scripts": "1.14.0",
     "react-test-renderer": "16.4.0",
     "redux-logger": "^3.0.6"
   },
   "jest": {
     "preset": "jest-expo"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint",
+      "git add"
+    ]
   }
 }
