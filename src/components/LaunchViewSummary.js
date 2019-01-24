@@ -24,14 +24,12 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
         ]}
       >
         <Left>
-          {data.links &&
-            data.links.mission_patch &&
-            showImage && (
-              <Image
-                source={{ uri: data.links.mission_patch_small }}
-                style={styles.image}
-              />
-            )}
+          {data.links && data.links.mission_patch && showImage && (
+            <Image
+              source={{ uri: data.links.mission_patch_small }}
+              style={styles.image}
+            />
+          )}
 
           <Body>
             <Text style={styles.missionName}>
