@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 import DrawerContent from '../components/DrawerContent'
 
@@ -12,10 +12,9 @@ const RootNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'App',
-    navigationOptions: {
-      header: null,
-    },
+    headerMode: 'none',
     contentComponent: DrawerContent,
   }
 )
-export default RootNavigator
+
+export default createAppContainer(RootNavigator)

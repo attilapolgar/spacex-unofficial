@@ -71,14 +71,13 @@ const LaunchViewRocket = ({ data }) => {
                       .join(', ')}
                   </Text>
                   <Text style={styles.info}>Type: {payload.payload_type}</Text>
-                  {payload.payload_mass_kg &&
-                    payload.payload_mass_lbs && (
-                      <Text style={styles.info}>
-                        Mass: {payload.payload_mass_kg}
-                        kg / {payload.payload_mass_lbs}
-                        lbs
-                      </Text>
-                    )}
+                  {payload.payload_mass_kg && payload.payload_mass_lbs && (
+                    <Text style={styles.info}>
+                      Mass: {payload.payload_mass_kg}
+                      kg / {payload.payload_mass_lbs}
+                      lbs
+                    </Text>
+                  )}
                   <Text style={styles.info}>Orbit: {payload.orbit}</Text>
                 </View>
               ))}

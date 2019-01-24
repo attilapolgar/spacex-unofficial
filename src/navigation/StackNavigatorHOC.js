@@ -17,6 +17,7 @@ const stackNavigatorHOC = (component, component2) => {
   return createStackNavigator(components, {
     headerMode: 'float',
     initialRouteName: 'component',
+    headerMode: 'none',
     navigationOptions: ({ navigation }) => {
       const isDrawerOpen = navigation.state.isDrawerOpen
       return {

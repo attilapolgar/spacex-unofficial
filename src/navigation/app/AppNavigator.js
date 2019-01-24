@@ -42,7 +42,10 @@ const AppNavigator = createDrawerNavigator(
   },
   {
     initialRouteName: 'LaunchScreen',
-    navigationOptions: {},
+
+    navigationOptions: {
+      headerMode: 'none',
+    },
     contentComponent: DrawerContent,
   }
 )
