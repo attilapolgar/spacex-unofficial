@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Form, Picker } from 'native-base'
 
-import { filterForLaunchStatus, filterForRocket } from './actions'
+import { filterForLaunchStatus, filterForRocket } from './reducer'
 
 class LaunchFilter extends Component {
   onStatusChange = status => {

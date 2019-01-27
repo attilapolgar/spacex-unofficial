@@ -1,9 +1,4 @@
-import {
-  PREFETCH_DATA_FAILED,
-  PREFETCH_DATA_REQUESTED,
-  PREFETCH_DATA_SUCCEEDED,
-} from '../action-types'
-
+import { createActions, handleActions, combineActions } from 'redux-actions'
 const initialRequestState = {
   success: false,
   pending: false,
@@ -11,25 +6,49 @@ const initialRequestState = {
   errorMessage: null,
 }
 
-const initialState = {
+const defaultState = {
   data: null,
   requestState: { ...initialRequestState },
 }
 
-export default function dataReducer(state = initialState, action) {
-  switch (action.type) {
-    case PREFETCH_DATA_REQUESTED: {
-      return {
-        ...state,
-        requestState: {
-          pending: true,
-          success: false,
-          failed: false,
-          errorMessage: null,
-        },
-      }
-    }
-    case PREFETCH_DATA_SUCCEEDED: {
+export const PREFETCH_DATA_REQUESTED = 'PREFETCH_DATA_REQUESTED'
+export const PREFETCH_DATA_SUCCEEDED = 'PREFETCH_DATA_SUCCEEDED'
+export const PREFETCH_DATA_FAILED = 'PREFETCH_DATA_FAILED'
+
+export const {
+  prefetchDataRequested,
+  prefetchDataFailed,
+  prefetchDataSucceeded,
+} = createActions(
+  {},
+  PREFETCH_DATA_REQUESTED,
+  PREFETCH_DATA_SUCCEEDED,
+  PREFETCH_DATA_FAILED
+)
+
+const reducers = handleActions(
+  {
+    [PREFETCH_DATA_FAILED]: (state, action) => ({
+      ...state,
+      requestState: {
+        pending: false,
+        success: false,
+        failed: true,
+      },
+    }),
+
+    [PREFETCH_DATA_REQUESTED]: (state, action) => ({
+      ...state,
+
+      requestState: {
+        pending: true,
+        success: false,
+        failed: false,
+        errorMessage: null,
+      },
+    }),
+
+    [PREFETCH_DATA_SUCCEEDED]: (state, action) => {
       const { nextLaunch, latestLaunch, rockets, launchpads } = action.payload
 
       return {
@@ -45,18 +64,9 @@ export default function dataReducer(state = initialState, action) {
           errorMessage: null,
         },
       }
-    }
-    case PREFETCH_DATA_FAILED: {
-      return {
-        ...state,
-        requestState: {
-          pending: false,
-          success: false,
-          failed: true,
-        },
-      }
-    }
-    default:
-      return state
-  }
-}
+    },
+  },
+  defaultState
+)
+
+export default reducers

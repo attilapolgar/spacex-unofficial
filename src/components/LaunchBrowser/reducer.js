@@ -1,23 +1,6 @@
-import {
-  LAUNCH_DATA_FETCH_REQUESTED,
-  FILTER_FOR_LAUNCH_STATUS,
-  FILTER_FOR_ROCKET,
-} from './action-types'
+import { createActions, handleActions } from 'redux-actions'
 
-import { PREFETCH_DATA_SUCCEEDED } from '../../action-types'
-
-const filterForLaunchStatus = (data, status) =>
-  data.filter(launch => {
-    if (status === 'all') return true
-    if (status === 'success') return launch.launch_success === true
-    if (status === 'failed') return launch.launch_success === false
-  })
-
-const filterForRocket = (data, rocketId) =>
-  data.filter(launch => {
-    if (rocketId === 'all') return true
-    return launch.rocket.rocket_id === rocketId
-  })
+import { PREFETCH_DATA_SUCCEEDED } from '../../reducers/dataReducer'
 
 const initialRequestState = {
   success: false,
@@ -26,7 +9,7 @@ const initialRequestState = {
   errorMessage: null,
 }
 
-const initialState = {
+const defaultState = {
   launches: null,
   filteredData: null,
   launchStatusFilter: 'all',
@@ -35,20 +18,52 @@ const initialState = {
   requestState: { ...initialRequestState },
 }
 
-export default function launchReducer(state = initialState, action) {
-  switch (action.type) {
-    case LAUNCH_DATA_FETCH_REQUESTED: {
-      return {
-        ...state,
-        requestState: {
-          pending: true,
-          success: false,
-          failed: false,
-          errorMessage: null,
-        },
-      }
-    }
-    case PREFETCH_DATA_SUCCEEDED: {
+export const LAUNCH_DATA_FETCH_REQUESTED = 'LAUNCH_DATA_FETCH_REQUESTED'
+export const LAUNCH_DATA_FETCH_SUCCEEDED = 'LAUNCH_DATA_FETCH_SUCCEEDED'
+export const LAUNCH_DATA_FETCH_FAILED = 'LAUNCH_DATA_FETCH_FAILED'
+export const FILTER_FOR_LAUNCH_STATUS = 'FILTER_FOR_LAUNCH_STATUS'
+export const FILTER_FOR_ROCKET = 'FILTER_FOR_ROCKET'
+
+export const {
+  launchDataFetchRequested,
+  launchDataFetchFailed,
+  launchDataFetchSucceeded,
+  filterForLaunchStatus,
+  filterForRocket,
+} = createActions(
+  {},
+  LAUNCH_DATA_FETCH_REQUESTED,
+  LAUNCH_DATA_FETCH_SUCCEEDED,
+  LAUNCH_DATA_FETCH_FAILED,
+  FILTER_FOR_LAUNCH_STATUS,
+  FILTER_FOR_ROCKET
+)
+
+const filterForLaunchStatus_ = (data, status) =>
+  data.filter(launch => {
+    if (status === 'all') return true
+    if (status === 'success') return launch.launch_success === true
+    if (status === 'failed') return launch.launch_success === false
+  })
+
+const filterForRocket_ = (data, rocketId) =>
+  data.filter(launch => {
+    if (rocketId === 'all') return true
+    return launch.rocket.rocket_id === rocketId
+  })
+
+const reducers = handleActions(
+  {
+    [LAUNCH_DATA_FETCH_REQUESTED]: (state, action) => ({
+      ...state,
+      requestState: {
+        pending: true,
+        success: false,
+        failed: false,
+        errorMessage: null,
+      },
+    }),
+    [PREFETCH_DATA_SUCCEEDED]: (state, action) => {
       let { launches } = action.payload
 
       let sortedData = launches.sort(
@@ -67,28 +82,30 @@ export default function launchReducer(state = initialState, action) {
           errorMessage: null,
         },
       }
-    }
-
-    case FILTER_FOR_LAUNCH_STATUS: {
+    },
+    [FILTER_FOR_LAUNCH_STATUS]: (state, action) => {
       const { status } = action.payload
-      const fd = filterForRocket(state.launches, state.rocketFilter)
+      const fd = filterForRocket_(state.launches, state.rocketFilter)
       return {
         ...state,
         launchStatusFilter: status,
-        filteredData: filterForLaunchStatus(fd, status),
+        filteredData: filterForLaunchStatus_(fd, status),
       }
-    }
-
-    case FILTER_FOR_ROCKET: {
+    },
+    [FILTER_FOR_ROCKET]: (state, action) => {
       const { rocketId } = action.payload
-      const fd = filterForLaunchStatus(state.launches, state.launchStatusFilter)
+      const fd = filterForLaunchStatus_(
+        state.launches,
+        state.launchStatusFilter
+      )
       return {
         ...state,
         rocketFilter: rocketId,
-        filteredData: filterForRocket(fd, rocketId),
+        filteredData: filterForRocket_(fd, rocketId),
       }
-    }
-    default:
-      return state
-  }
-}
+    },
+  },
+  defaultState
+)
+
+export default reducers

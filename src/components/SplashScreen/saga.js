@@ -1,7 +1,5 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
-import { PRELOAD_ASSETS_REQUESTED } from './action-types'
-import { preloadAssetsFailed, preloadAssetsSucceeded } from './actions'
 import { Image } from 'react-native'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { Asset, Font } from 'expo'
 import {
   FontAwesome,
@@ -9,6 +7,12 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from '@expo/vector-icons'
+
+import {
+  PRELOAD_ASSETS_REQUESTED,
+  preloadAssetsFailed,
+  preloadAssetsSucceeded,
+} from './reducer'
 
 function cacheImages(images) {
   return images.map(image => {

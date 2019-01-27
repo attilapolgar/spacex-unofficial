@@ -1,8 +1,4 @@
-import {
-  PRELOAD_ASSETS_FAILED,
-  PRELOAD_ASSETS_REQUESTED,
-  PRELOAD_ASSETS_SUCCEEDED,
-} from './action-types'
+import handleActions from 'redux-actions/lib/handleActions'
 
 const initialRequestState = {
   success: false,
@@ -10,45 +6,58 @@ const initialRequestState = {
   failed: false,
 }
 
-const initialState = {
+const defaultState = {
   data: null,
   preloadState: { ...initialRequestState },
 }
 
-export default function dataReducer(state = initialState, action) {
-  switch (action.type) {
-    case PRELOAD_ASSETS_REQUESTED: {
-      return {
-        ...state,
-        preloadState: {
-          pending: true,
-          success: false,
-          failed: false,
-        },
-      }
-    }
-    case PRELOAD_ASSETS_SUCCEEDED: {
-      return {
-        ...state,
-        preloadState: {
-          pending: false,
-          success: true,
-          failed: false,
-          errorMessage: null,
-        },
-      }
-    }
-    case PRELOAD_ASSETS_FAILED: {
-      return {
-        ...state,
-        preloadState: {
-          pending: false,
-          success: false,
-          failed: true,
-        },
-      }
-    }
-    default:
-      return state
-  }
-}
+export const PRELOAD_ASSETS_REQUESTED = 'PRELOAD_ASSETS_REQUESTED'
+export const PRELOAD_ASSETS_FAILED = 'PRELOAD_ASSETS_FAILED'
+export const PRELOAD_ASSETS_SUCCEEDED = 'PRELOAD_ASSETS_SUCCEEDED'
+
+export const preloadAssetsRequested = () => ({
+  type: PRELOAD_ASSETS_REQUESTED,
+})
+
+export const preloadAssetsFailed = payload => ({
+  type: PRELOAD_ASSETS_FAILED,
+  payload,
+})
+
+export const preloadAssetsSucceeded = payload => ({
+  type: PRELOAD_ASSETS_SUCCEEDED,
+  payload,
+})
+
+const reducers = handleActions(
+  {
+    [PRELOAD_ASSETS_REQUESTED]: (state, action) => ({
+      ...state,
+      preloadState: {
+        pending: true,
+        success: false,
+        failed: false,
+      },
+    }),
+    [PRELOAD_ASSETS_SUCCEEDED]: (state, action) => ({
+      ...state,
+      preloadState: {
+        pending: false,
+        success: true,
+        failed: false,
+        errorMessage: null,
+      },
+    }),
+    [PRELOAD_ASSETS_FAILED]: (state, action) => ({
+      ...state,
+      preloadState: {
+        pending: false,
+        success: false,
+        failed: true,
+      },
+    }),
+  },
+  defaultState
+)
+
+export default reducers

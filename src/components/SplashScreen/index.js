@@ -3,14 +3,15 @@ import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
 import PropTypes from 'prop-types'
 
-import { prefetchDataRequested } from '../../actions'
-import { preloadAssetsRequested } from './actions'
+import { prefetchDataRequested } from '../../reducers/dataReducer'
+import { preloadAssetsRequested } from './reducer'
 
 class SplashScreen extends Component {
   componentDidMount = () => {
     this.props.fetchData()
     this.props.preloadAssets()
   }
+
   componentDidUpdate = () => {
     this.props.requestState.success &&
       this.props.preloadState.success &&

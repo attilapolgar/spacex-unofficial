@@ -1,7 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import Api from '@common/api'
-import { PREFETCH_DATA_REQUESTED } from '../action-types'
-import { prefetchDataFailed, prefetchDataSucceeded } from '../actions'
+import Api from '../common/api'
+import {
+  PREFETCH_DATA_REQUESTED,
+  prefetchDataFailed,
+  prefetchDataSucceeded,
+} from '../reducers/dataReducer'
 import { repeatedRequest } from '@common/utils'
 
 function* fetchAllData() {
@@ -26,6 +29,6 @@ function* fetchAllData() {
   }
 }
 
-export default function* mySaga3() {
+export default function* fetchDataSaga() {
   yield takeLatest(PREFETCH_DATA_REQUESTED, fetchAllData)
 }

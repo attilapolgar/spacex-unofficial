@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 
 import Api from '@common/api'
-import { LAUNCH_DATA_FETCH_REQUESTED } from './action-types'
-import { launchDataFetchFailed, launchDataFetchSucceeded } from './actions'
+import { LAUNCH_DATA_FETCH_REQUESTED } from './reducer'
+import { launchDataFetchFailed, launchDataFetchSucceeded } from './reducer'
 import { repeatedRequest } from '@common/utils'
 
 function* fetchAllLaunchData() {
@@ -14,6 +14,6 @@ function* fetchAllLaunchData() {
   }
 }
 
-export default function* mySaga3() {
+export default function* launchDataSaga() {
   yield takeLatest(LAUNCH_DATA_FETCH_REQUESTED, fetchAllLaunchData)
 }
