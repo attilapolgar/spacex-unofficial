@@ -37,11 +37,12 @@ const LaunchViewSummary = ({ data, showImage = true }) => {
             </Text>
 
             <Text note>
-              <MaterialCommunityIcons name={`calendar`} color={'black'} />
-              {'  '} {launchDateUTC} ({diff})
-            </Text>
+              <MaterialCommunityIcons name="calendar" color="black" />
+              {'  '} {launchDateUTC} ({diff}
+)
+</Text>
             <Text note>
-              <MaterialIcons name={`place`} color={'black'} />
+              <MaterialIcons name="place" color="black" />
               {'  '} {data.launch_site.site_name}
             </Text>
           </Body>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const HamburgerIcon = ({ onPress }) => (
   <TouchableOpacity onPress={onPress}>
-    <Entypo name={'menu'} size={36} color={'white'} />
+    <Entypo name="menu" size={36} color="white" />
   </TouchableOpacity>
 )
 

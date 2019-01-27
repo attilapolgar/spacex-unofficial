@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-import launchBrowser from '@components/LaunchBrowser/reducer'
-import data from '../reducers/dataReducer'
+import launchBrowser from '../components/LaunchBrowser/reducer'
+import data from './dataReducer'
 import preload from '../components/SplashScreen/reducer'
+
 export default combineReducers({
   launchBrowser,
   data,

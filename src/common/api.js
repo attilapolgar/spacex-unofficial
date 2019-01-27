@@ -9,17 +9,15 @@ const urls = {
   launchpads: `${baseUrl}/launchpads`,
 }
 
-const fetchData = url => {
-  return fetch(url)
+const fetchData = url =>
+  fetch(url)
     .then(response => {
       if (response.status === 200) {
         return response.json()
-      } else {
-        throw new Error('Request failed: no response')
       }
+      throw new Error('Request failed: no response')
     })
     .then(myJson => myJson)
-}
 
 const fetchNextLaunchData = () => fetchData(urls.launches.next)
 const fetchLatestLaunchData = () => fetchData(urls.launches.latest)

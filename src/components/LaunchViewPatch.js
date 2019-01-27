@@ -2,19 +2,13 @@ import React from 'react'
 import { StyleSheet, Image } from 'react-native'
 import { CardItem } from 'native-base'
 
-const LaunchViewDetails = ({ data }) => {
-  return (
-    data.links &&
-    data.links.mission_patch && (
-      <CardItem style={[styles.cardItem]}>
-        <Image
-          style={styles.image}
-          source={{ uri: data.links.mission_patch }}
-        />
-      </CardItem>
-    )
+const LaunchViewDetails = ({ data }) =>
+  data.links &&
+  data.links.mission_patch && (
+    <CardItem style={[styles.cardItem]}>
+      <Image style={styles.image} source={{ uri: data.links.mission_patch }} />
+    </CardItem>
   )
-}
 const borderColor = 'rgba(0, 0, 0, 0.2)'
 
 const styles = StyleSheet.create({

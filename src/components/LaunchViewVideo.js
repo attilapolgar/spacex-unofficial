@@ -15,20 +15,16 @@ export default ({ data }) => {
     embedVideoLink && (
       <View>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcons
-            name={'play-circle-filled'}
-            size={32}
-            color={'#005288'}
-          />
+          <MaterialIcons name="play-circle-filled" size={32} color="#005288" />
           <Text style={styles.headerText}>Video</Text>
         </CardItem>
         <CardItem style={styles.cardItem}>
           <WebView
             style={styles.video}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
+            javaScriptEnabled
+            domStorageEnabled
             source={{ uri: embedVideoLink }}
-            scalesPageToFit={true}
+            scalesPageToFit
           />
         </CardItem>
       </View>

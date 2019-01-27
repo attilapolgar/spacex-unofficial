@@ -14,7 +14,7 @@ const LaunchViewLaunchSite = ({ data, launchpads }) => {
     data.launch_site && (
       <View>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcons name={'place'} size={32} color={'#005288'} />
+          <MaterialIcons name="place" size={32} color="#005288" />
           <Text style={styles.headerText}>Launch site</Text>
         </CardItem>
 

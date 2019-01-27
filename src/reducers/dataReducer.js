@@ -1,4 +1,5 @@
-import { createActions, handleActions, combineActions } from 'redux-actions'
+import { createActions, handleActions } from 'redux-actions'
+
 const initialRequestState = {
   success: false,
   pending: false,
@@ -28,7 +29,7 @@ export const {
 
 const reducers = handleActions(
   {
-    [PREFETCH_DATA_FAILED]: (state, action) => ({
+    [PREFETCH_DATA_FAILED]: state => ({
       ...state,
       requestState: {
         pending: false,
@@ -37,7 +38,7 @@ const reducers = handleActions(
       },
     }),
 
-    [PREFETCH_DATA_REQUESTED]: (state, action) => ({
+    [PREFETCH_DATA_REQUESTED]: state => ({
       ...state,
 
       requestState: {

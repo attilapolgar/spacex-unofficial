@@ -19,7 +19,7 @@ export default ({ data }) => {
     validLinks.length > 0 && (
       <View>
         <CardItem header style={styles.cardItem}>
-          <MaterialIcons name={'link'} size={32} color={'#005288'} />
+          <MaterialIcons name="link" size={32} color="#005288" />
           <Text style={styles.headerText}>Links</Text>
         </CardItem>
         <CardItem>

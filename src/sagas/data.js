@@ -1,11 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
+import { repeatedRequest } from '../common/utils'
 import Api from '../common/api'
 import {
   PREFETCH_DATA_REQUESTED,
   prefetchDataFailed,
   prefetchDataSucceeded,
 } from '../reducers/dataReducer'
-import { repeatedRequest } from '@common/utils'
 
 function* fetchAllData() {
   try {

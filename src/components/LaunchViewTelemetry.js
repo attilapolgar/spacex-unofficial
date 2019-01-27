@@ -9,7 +9,7 @@ export default ({ data }) =>
   data.telemetry.flight_club && (
     <View>
       <CardItem header style={styles.cardItem}>
-        <MaterialIcons name={'multiline-chart'} size={32} color={'#005288'} />
+        <MaterialIcons name="multiline-chart" size={32} color="#005288" />
         <Text style={styles.headerText}>Telemetry</Text>
       </CardItem>
       <CardItem style={[styles.cardItem]}>
